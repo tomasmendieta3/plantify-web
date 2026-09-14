@@ -9,25 +9,25 @@ function unsplash(id: string, params = "q=80&auto=format&fit=crop") {
 }
 
 export const images = {
-  // REEMPLAZAR con foto real de Los Tualdos — vista aérea del Delta del Paraná
+  // Foto real: vista aérea de la plantación en Los Tualdos.
   heroFondo: {
-    src: unsplash("1580629677996-fded70cdfd4c", "q=80&w=2400&auto=format&fit=crop"),
-    alt: "Vista aérea de canales de agua entre vegetación en un delta",
+    src: "/reserva/tualdos-aerea.jpg",
+    alt: "Vista aérea de las filas de forestación en Los Tualdos",
   },
   // REEMPLAZAR con foto real del bosque de Los Tualdos
   heroBosque: {
     src: unsplash("1780488417515-5a1f3d7b9328", "q=80&w=2400&auto=format&fit=crop"),
     alt: "Bosque de humedal con árboles reflejados en el agua",
   },
-  // REEMPLAZAR con foto real de Los Tualdos — la reserva forestal
+  // Foto real: el portón de acceso a Los Tualdos.
   reserva: {
-    src: unsplash("1543157446-a57c71334d95", "q=80&w=2000&auto=format&fit=crop"),
-    alt: "Vista aérea de tierra e islas rodeadas de cursos de agua",
+    src: "/reserva/tualdos-porton.jpg",
+    alt: "Portón de acceso a la reserva Los Tualdos, hacienda y estancia",
   },
-  // REEMPLAZAR con foto real de una jornada de plantación en Los Tualdos
+  // Foto real: filas de plantines recién plantados en Los Tualdos.
   plantacion: {
-    src: unsplash("1542601906990-b4d3fb778b09", "q=80&w=1600&auto=format&fit=crop"),
-    alt: "Manos sosteniendo un plantín pequeño sobre la tierra",
+    src: "/reserva/tualdos-plantacion.jpg",
+    alt: "Filas de plantines jóvenes con protectores en Los Tualdos",
   },
   // PLACEHOLDER — reemplazar con fotos reales del equipo de Plantify
   equipo: {
@@ -72,5 +72,13 @@ export const images = {
   arbolCeibo: {
     src: unsplash("1746466405013-3248c8688c34", "q=80&w=600&auto=format&fit=crop"),
     alt: "Ramas cubiertas de flores rojas de ceibo",
+  },
+  logoControlUnion: {
+    src: "/certificaciones/control-union.webp",
+    alt: "Logo de Control Union",
+  },
+  logoGoldStandard: {
+    src: "/certificaciones/gold-standard.webp",
+    alt: "Logo de Gold Standard for the Global Goals",
   },
 } as const;

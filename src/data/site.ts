@@ -503,3 +503,546 @@ export const estimacionAporte = {
   montoMaximoArs: 10000,
   montosSugeridosArs: [2500, 5000, 7500, 10000],
 };
+
+/**
+ * Contenido institucional para empresas, tomado tal cual de
+ * "Plantify - Presentación Institucional V2". Solo se adaptaron los textos
+ * al formato web (de bullets de slide a prosa/listas); la información,
+ * los números y los modelos son los mismos del documento fuente.
+ */
+
+export const empresasHero = {
+  eyebrow: "Para empresas",
+  titulo: "Desarrollamos Reservas Forestales a medida.",
+  bajada:
+    "Cada proyecto se diseña a medida de las metas ambientales y de posicionamiento de cada empresa. Gestionamos desde la selección del campo hasta la certificación de la Reserva Forestal.",
+};
+
+export type CapaEmpresa = {
+  numero: string;
+  titulo: string;
+  bajada: string;
+  texto: string;
+};
+
+export const empresasMision = {
+  eyebrow: "Nuestra misión: facilitar y masificar la plantación de árboles.",
+  titulo: "Tres capas, una sola alianza.",
+  bajada:
+    "Hacemos realidad tu propia reserva, como activo ambiental y herramienta de difusión de marca, política ambiental y cultura organizacional.",
+};
+
+export const capasEmpresa: CapaEmpresa[] = [
+  {
+    numero: "01",
+    titulo: "Reserva forestal",
+    bajada: "El ancla del proyecto",
+    texto:
+      "Diseño, plantación y custodia de tu propio sector forestal. Auditado bajo el estándar de Control Union o Gold Standard (dos modelos).",
+  },
+  {
+    numero: "02",
+    titulo: "Marketing forestal",
+    bajada: "Que la gente lo sepa",
+    texto:
+      "Cada venta, compra o interacción con tu comunidad aportan a la plantación de árboles en tu reserva propia. QR, certificados y contenido conjunto en redes.",
+  },
+  {
+    numero: "03",
+    titulo: "Experiencias",
+    bajada: "Que tu gente lo viva",
+    texto:
+      "Team building, talleres presenciales, visitas con equipo/comunidad a Los Tualdos con un plan anual de educación ambiental para empleados, proveedores y comunidad.",
+  },
+  {
+    numero: "04",
+    titulo: "Acuerdo",
+    bajada: "A tu medida",
+    texto:
+      "Dos modelos posibles, Control Union o Gold Standard, con un abanico amplio de herramientas para convocar a tu comunidad sin que te demande presupuesto propio.",
+  },
+];
+
+export type PasoReserva = {
+  numero: string;
+  titulo: string;
+  texto: string;
+};
+
+// Capa 01 · La reserva — de la idea al sector asignado.
+export const pasosReserva: PasoReserva[] = [
+  {
+    numero: "01",
+    titulo: "Selección del campo",
+    texto: "Búsqueda, análisis técnico y jurídico del terreno adecuado.",
+  },
+  {
+    numero: "02",
+    titulo: "Diseño del proyecto",
+    texto: "Planificación forestal, especies, densidades y cronograma.",
+  },
+  {
+    numero: "03",
+    titulo: "Producción y plantación",
+    texto: "Producción propia de plantines y ejecución de la forestación.",
+  },
+  {
+    numero: "04",
+    titulo: "Custodia y certificación",
+    texto: "Mantenimiento bajo dos estándares.",
+  },
+];
+
+export const auditoriaControlUnion = {
+  titulo: "Modelo Control Union",
+  bajada: "Certificado de verificación de la plantación, con secuestro de carbono verificado.",
+  eyebrow: "Lo que auditamos cada año",
+  items: [
+    "Cantidad de árboles plantados",
+    "Gestión forestal de la reserva",
+    "Estado y supervivencia",
+    "Secuestro de carbono verificado",
+    "Certificado de verificación por 14 años.",
+    "Trazabilidad de cada hectárea",
+  ],
+};
+
+export type ItemGoldStandard = {
+  titulo: string;
+  texto: string;
+};
+
+export const modeloGoldStandard = {
+  titulo: "Modelo Gold Standard",
+  bajada:
+    "Gold Standard certifica por 30 años y emite bonos de carbono: un crédito de carbono certificado bajo un estándar internacional reconocido.",
+  items: [
+    {
+      titulo: "Crédito certificado",
+      texto: "Gold Standard certifica y emite los bonos de carbono que representan una tonelada de CO₂ verificada.",
+    },
+    {
+      titulo: "Estándar internacional",
+      texto: "Reconocido por mercados voluntarios de carbono.",
+    },
+    {
+      titulo: "Tu bono / Claims",
+      texto: "Dos opciones: reclamar tus bonos de carbono o tus claims de carbono.",
+    },
+  ] satisfies ItemGoldStandard[],
+};
+
+export type ActorProceso = "Aportante" | "Empresa" | "Plantify" | "Los Tualdos" | "Certificador";
+
+export type PasoProceso = {
+  numero: number;
+  actor: ActorProceso;
+  texto: string;
+};
+
+export type FaseProceso = {
+  fase: string;
+  pasos: PasoProceso[];
+};
+
+export type ModeloNegocioProceso = {
+  slug: "control-union" | "gold-standard";
+  nombre: string;
+  fases: FaseProceso[];
+};
+
+// Macro proceso funcional del modelo de negocio Plantify, uno por certificador.
+export const procesosModelos: ModeloNegocioProceso[] = [
+  {
+    slug: "control-union",
+    nombre: "Control Union",
+    fases: [
+      {
+        fase: "Proyecto",
+        pasos: [
+          { numero: 1, actor: "Aportante", texto: "Aporta voluntariamente al proyecto." },
+          {
+            numero: 3,
+            actor: "Empresa",
+            texto: "La empresa recibe su proporcional acordado para las acciones con su comunidad.",
+          },
+          {
+            numero: 4,
+            actor: "Empresa",
+            texto: "Realiza acciones con su red y difunde su reserva forestal y para seguir desarrollándola.",
+          },
+          {
+            numero: 2,
+            actor: "Plantify",
+            texto: "Recauda y administra el aporte. Lo destina a plantar, cuidar y mantener árboles por 14 años.",
+          },
+          {
+            numero: 7,
+            actor: "Plantify",
+            texto:
+              "Gestiona, gerencia, desarrolla, comercializa, proporciona reportes, controla trazabilidad y recibe certificación.",
+          },
+          {
+            numero: 5,
+            actor: "Los Tualdos",
+            texto: "Recibe de Plantify la mayor cantidad de recursos para la reserva forestal.",
+          },
+          {
+            numero: 6,
+            actor: "Los Tualdos",
+            texto: "Planta, mantiene, conserva y cuida la reserva forestal por 14 años.",
+          },
+          {
+            numero: 8,
+            actor: "Certificador",
+            texto:
+              "Organismos independientes validan, verifican, auditan y certifican el proyecto. Control Union — auditorías de clientes.",
+          },
+        ],
+      },
+      {
+        fase: "CO₂ y metodología",
+        pasos: [
+          {
+            numero: 9,
+            actor: "Aportante",
+            texto: "El aporte desarrolla la plantación que durante el ciclo del proyecto generará secuestro de carbono.",
+          },
+          {
+            numero: 10,
+            actor: "Empresa",
+            texto: "Las acciones de la empresa apuntalan su reserva propia donde se genera la fijación de carbono.",
+          },
+          {
+            numero: 11,
+            actor: "Los Tualdos",
+            texto:
+              "Realizan los cálculos del CO₂ a campo, anualmente, relevando el total de árboles, dimensiones, variedades y biomasa (metodología ARR).",
+          },
+          {
+            numero: 12,
+            actor: "Certificador",
+            texto: "Auditan anualmente los registros, resultados y cálculos de cada medición.",
+          },
+        ],
+      },
+      {
+        fase: "Impacto real",
+        pasos: [
+          {
+            numero: 13,
+            actor: "Aportante",
+            texto:
+              "La reserva forestal, a lo largo del ciclo del proyecto, secuestra carbono generando un impacto ambiental real.",
+          },
+          {
+            numero: 14,
+            actor: "Empresa",
+            texto: "Compensación real, a través del carbono secuestrado por su reserva propia.",
+          },
+          { numero: 15, actor: "Empresa", texto: "La empresa recibe mensualmente un plan de MKT forestal." },
+          {
+            numero: 16,
+            actor: "Plantify",
+            texto:
+              "Asegura la adicionalidad del proyecto y la no duplicación de impactos reales, siendo solo uno el VVB de cada modelo.",
+          },
+          {
+            numero: 17,
+            actor: "Los Tualdos",
+            texto: "Registro de datos de mediciones. Realiza informes mensuales de la reserva.",
+          },
+          {
+            numero: 18,
+            actor: "Certificador",
+            texto: "Controlan y aseguran que no exista duplicación de impactos.",
+          },
+          {
+            numero: 19,
+            actor: "Certificador",
+            texto:
+              "Mediante la verificación presencial, comprueban la plantación, su estado y el avance de su desarrollo.",
+          },
+        ],
+      },
+      {
+        fase: "Trazabilidad",
+        pasos: [
+          {
+            numero: 25,
+            actor: "Aportante",
+            texto:
+              "El aportante recibe un certificado nominal por su aporte y posee acceso a su dashboard para controlar el impacto positivo del mismo.",
+          },
+          {
+            numero: 23,
+            actor: "Empresa",
+            texto: "La empresa recibe mensualmente de Plantify informes técnicos del proyecto.",
+          },
+          {
+            numero: 24,
+            actor: "Empresa",
+            texto:
+              "La empresa posee acceso a su dashboard donde controla on-line los aportes de su comunidad y el impacto real alcanzado.",
+          },
+          {
+            numero: 28,
+            actor: "Empresa",
+            texto: "La empresa puede realizar auditorías propias o de terceros para controlar el proyecto.",
+          },
+          {
+            numero: 22,
+            actor: "Plantify",
+            texto: "Plantify recibe mensualmente de Los Tualdos informes técnicos del proyecto.",
+          },
+          { numero: 21, actor: "Plantify", texto: "Plantify recibe un certificado de verificación de Control Union." },
+          { numero: 27, actor: "Plantify", texto: "Informes de auditoría administrativa/financiera." },
+          {
+            numero: 20,
+            actor: "Certificador",
+            texto: "Emiten certificados de verificación e informe técnico detallado.",
+          },
+          {
+            numero: 26,
+            actor: "Certificador",
+            texto:
+              "Auditores terceros de las empresas pueden auditar los procesos administrativos/financieros, asegurando la trazabilidad de los aportes.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "gold-standard",
+    nombre: "Gold Standard",
+    fases: [
+      {
+        fase: "Proyecto",
+        pasos: [
+          { numero: 1, actor: "Aportante", texto: "Aporta voluntariamente al proyecto." },
+          {
+            numero: 2,
+            actor: "Empresa",
+            texto: "La empresa recibe el aporte, registra y transfiere a Plantify su proporcional acordado.",
+          },
+          {
+            numero: 3,
+            actor: "Empresa",
+            texto: "Realiza acciones con su red y difunde su reserva forestal y para seguir desarrollándola.",
+          },
+          {
+            numero: 4,
+            actor: "Plantify",
+            texto: "Recibe y administra el aporte. Lo destina a plantar, cuidar y mantener árboles por 30 años.",
+          },
+          {
+            numero: 5,
+            actor: "Plantify",
+            texto:
+              "Gestiona, gerencia, desarrolla, comercializa, proporciona reportes, controla trazabilidad y recibe certificación.",
+          },
+          {
+            numero: 6,
+            actor: "Los Tualdos",
+            texto: "Recibe de Plantify la mayor cantidad de recursos para la reserva forestal.",
+          },
+          {
+            numero: 7,
+            actor: "Los Tualdos",
+            texto: "Planta, mantiene, conserva y cuida la reserva forestal por 30 años.",
+          },
+          {
+            numero: 8,
+            actor: "Certificador",
+            texto:
+              "El proyecto es auditado por una tercera parte independiente, un organismo validador aceptado por Gold Standard, siendo éste quien certifica y emite bonos de carbono.",
+          },
+        ],
+      },
+      {
+        fase: "CO₂ y metodología",
+        pasos: [
+          {
+            numero: 9,
+            actor: "Empresa",
+            texto:
+              "Las acciones y el aporte de la empresa apuntalan su reserva propia donde se genera la fijación de carbono, teniendo dos opciones: reclamar bonos de carbono o claims de carbono.",
+          },
+          {
+            numero: 10,
+            actor: "Los Tualdos",
+            texto:
+              "Realizan los cálculos del CO₂ a campo, anualmente, relevando el total de árboles, dimensiones, variedades y biomasa (metodología ARR).",
+          },
+          {
+            numero: 11,
+            actor: "Certificador",
+            texto: "Auditan anualmente los registros, resultados y cálculos de cada medición.",
+          },
+        ],
+      },
+      {
+        fase: "Impacto real",
+        pasos: [
+          {
+            numero: 12,
+            actor: "Empresa",
+            texto: "Compensación real, a través del carbono secuestrado por su reserva propia.",
+          },
+          { numero: 13, actor: "Empresa", texto: "La empresa recibe mensualmente un plan de MKT forestal." },
+          {
+            numero: 14,
+            actor: "Plantify",
+            texto:
+              "Asegura la adicionalidad del proyecto y la no duplicación de impactos reales, siendo solo uno el VVB de cada modelo.",
+          },
+          {
+            numero: 15,
+            actor: "Los Tualdos",
+            texto: "Registro de datos de mediciones. Realiza informes mensuales de la reserva.",
+          },
+          {
+            numero: 16,
+            actor: "Certificador",
+            texto:
+              "Los créditos certificados son registrados en la plataforma de Gold Standard. Los mismos atraviesan una prueba de no duplicación de impacto.",
+          },
+          {
+            numero: 17,
+            actor: "Certificador",
+            texto:
+              "Mediante la verificación presencial, comprueban la plantación, su estado y el avance de su desarrollo.",
+          },
+        ],
+      },
+      {
+        fase: "Trazabilidad",
+        pasos: [
+          {
+            numero: 23,
+            actor: "Aportante",
+            texto:
+              "El aportante recibe un certificado nominal por su aporte y posee acceso a su dashboard para controlar el impacto positivo del mismo.",
+          },
+          {
+            numero: 21,
+            actor: "Empresa",
+            texto: "La empresa recibe mensualmente de Plantify informes técnicos del proyecto.",
+          },
+          {
+            numero: 22,
+            actor: "Empresa",
+            texto:
+              "La empresa posee acceso a su dashboard donde controla on-line los aportes, el impacto real alcanzado, teniendo dos opciones: reclamar bonos de carbono o claims de carbono.",
+          },
+          {
+            numero: 26,
+            actor: "Empresa",
+            texto: "La empresa puede realizar auditorías propias o de terceros para controlar el proyecto.",
+          },
+          {
+            numero: 20,
+            actor: "Plantify",
+            texto: "Plantify recibe mensualmente de Los Tualdos informes técnicos del proyecto.",
+          },
+          { numero: 19, actor: "Plantify", texto: "Plantify recibe bonos de carbono certificados de Gold Standard." },
+          { numero: 25, actor: "Plantify", texto: "Informes de auditoría administrativa/financiera." },
+          {
+            numero: 18,
+            actor: "Certificador",
+            texto: "Emiten bonos de secuestro de carbono verificado y certificado.",
+          },
+          {
+            numero: 24,
+            actor: "Certificador",
+            texto:
+              "Auditores terceros de las empresas pueden auditar los procesos administrativos/financieros, asegurando la trazabilidad de los aportes.",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export type ItemCapa = {
+  titulo: string;
+  texto: string;
+};
+
+// Capa 02 · Marketing forestal.
+export const marketingForestal = {
+  titulo: "Convertimos cada interacción en plantación de árboles para tu marca y comunidad.",
+  items: [
+    { titulo: "Cartel propio en la reserva", texto: "Tu marca presente físicamente en el sector que financia." },
+    { titulo: "QR único en distintos espacios", texto: "El cliente escanea, ve opciones de aportes y elige aportar." },
+    { titulo: "Certificado al cliente final", texto: "Cada aporte genera un certificado digital nominal." },
+    { titulo: "Campaña conjunta en redes", texto: "Reels, historias y posteos producidos por Plantify." },
+    { titulo: "Material gráfico desde el día uno", texto: "Banners, centros de mesa y piezas con QR para tus espacios físicos." },
+    { titulo: "Reportes de impacto", texto: "Documentación periódica con fotos, métricas y avances de tu sector." },
+  ] satisfies ItemCapa[],
+};
+
+// Capa 03 · Experiencias.
+export const experienciasEmpresa = {
+  titulo: "El bosque también se vive adentro.",
+  bajada:
+    "Plantify diseña un plan a medida según el rubro, tamaño e impacto de la empresa. Combina formación virtual con jornadas presenciales en la reserva.",
+  items: [
+    {
+      titulo: "Team Building y Talleres presenciales",
+      texto: "Jornadas en Los Tualdos con recorrido, charla y plantación. Tu equipo planta su propio árbol.",
+    },
+    {
+      titulo: "Plan anual para empleados",
+      texto: "Programa sobre sostenibilidad y carbono, con módulos virtuales autogestionados.",
+    },
+    {
+      titulo: "Visitas y Programas para la comunidad",
+      texto: "Jornadas educativas para escuelas, proveedores y clientes, con certificado de participación. Team building.",
+    },
+  ] satisfies ItemCapa[],
+};
+
+// Capa 04 · Acuerdo — modelos de negocio.
+export const acuerdoModelos = {
+  titulo: "¿Cómo trabajamos?",
+  bajada: "Abrimos el abanico: cada alianza se arma a medida sobre uno o varios de estos modelos.",
+  controlUnion: {
+    titulo: "Modelo Control Union",
+    bullets: [
+      "Acuerdo sobre 1% de la facturación",
+      "Abonos fijos mensuales",
+      "QR comunidad · aportes voluntarios",
+      "Venta de hectáreas / hectáreas nominales",
+    ],
+  },
+  goldStandard: {
+    titulo: "Modelo Gold Standard",
+    subtitulo: "Emisión de bonos de carbono",
+    texto:
+      "Créditos de carbono certificados, comercializables o retirables a nombre de la empresa en el mercado voluntario.",
+  },
+  flexibilidad: "Flexibilidad total · armamos cada alianza a medida, combinando los modelos según la empresa.",
+};
+
+// Capa 04 · Acuerdo — la alianza en concreto.
+export const alianzaCompleta = {
+  titulo: "Una alianza completa, lo que tu marca gana.",
+  bajada: "Tu bosque desde el día uno, un bosque de 14 años no se levanta en 15 días.",
+  bullets: [
+    "Sector exclusivo en Los Tualdos con cartel de tu marca.",
+    "Custodia y mantenimiento.",
+    "Certificación Control Union o Gold Standard.",
+    "Documentación auditada lista para tu reporte de carbono.",
+    "QR único que conecta tu producto con tu bosque.",
+    "Material gráfico y audiovisual desde el día uno.",
+    "Plan de capacitación a medida para tu equipo.",
+    "Talleres presenciales en la reserva.",
+  ],
+  stats: [
+    { valor: "A medida", label: "Proyecto único" },
+    { valor: "14 años", label: "Control Union" },
+    { valor: "30 años", label: "Gold Standard" },
+    { valor: "Llave en mano", label: "Operado por Plantify" },
+  ],
+};

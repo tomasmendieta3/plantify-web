@@ -56,7 +56,7 @@ export default function ReservaPage() {
         </div>
       </section>
 
-      <section className="bg-card/40">
+      <section id="mapa" className="scroll-mt-24 bg-card/40">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
           <h2 className="font-bold text-3xl text-verde-profundo">Mapa de sectores</h2>
           <p className="mt-3 max-w-lg text-verde-profundo/70">

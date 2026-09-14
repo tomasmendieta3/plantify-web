@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
+  { href: "/empresas", label: "Empresas" },
   { href: "/reserva", label: "Los Tualdos" },
   { href: "/comunidad", label: "Visitas" },
   { href: "/nosotros", label: "Nosotros" },

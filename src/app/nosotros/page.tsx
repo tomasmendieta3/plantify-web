@@ -62,7 +62,7 @@ export default function NosotrosPage() {
 
       <Equipo />
 
-      <section className="bg-card/40">
+      <section id="certificaciones" className="scroll-mt-24 bg-card/40">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
           <h2 className="font-bold text-2xl text-verde-profundo">Certificaciones</h2>
           <div className="mt-8 grid gap-8 sm:grid-cols-2">
