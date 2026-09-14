@@ -81,4 +81,26 @@ export const images = {
     src: "/certificaciones/gold-standard.webp",
     alt: "Logo de Gold Standard for the Global Goals",
   },
+  // Foto real: cartel de la Reserva Forestal Plantify x Los Tualdos.
+  marketingCartel: {
+    src: "/empresas/marketing-cartel.jpg",
+    alt: "Cartel de la Reserva Forestal Plantify x Los Tualdos con las especies nativas plantadas",
+  },
+  acuerdoModelos: {
+    src: "/empresas/acuerdo-modelos.jpg",
+    alt: "Logos de Control Union y Gold Standard",
+  },
+  // Foto real: jornada de team building del equipo en Los Tualdos.
+  teamBuilding: {
+    src: "/empresas/team-building.jpg",
+    alt: "Equipo de Plantify en una jornada de team building y plantación en Los Tualdos",
+  },
+  bannerMockup: {
+    src: "/empresas/banner-mockup.webp",
+    alt: "Banner institucional de Plantify con QR y estadísticas de la reserva",
+  },
+  qrMockup: {
+    src: "/empresas/qr-mockup.webp",
+    alt: "Cartel de mesa con QR para escanear y conocer el aporte",
+  },
 } as const;

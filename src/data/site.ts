@@ -58,7 +58,7 @@ export const calendarioPlantacion = {
 
 export const comoVisitar = {
   descripcion:
-    "Coordinamos la visita con anticipación porque se llega en lancha desde Paranacito. Te llevamos a caminar tu sector y te mostramos cómo medimos y auditamos.",
+    "Coordinamos la visita con anticipación. Te llevamos a caminar tu sector y te mostramos cómo medimos y auditamos.",
   duracion: "Medio día, ida y vuelta desde Paranacito",
 };
 
@@ -125,9 +125,9 @@ export const comunidad = {
   ] satisfies ActividadVisita[],
   duracion: "Un día completo. Si querés quedarte el fin de semana, lo coordinamos con anticipación.",
   comoLlegar:
-    "Se llega en lancha desde Paranacito. Coordinamos el horario de salida con anticipación y volvemos el mismo día, salvo que te quedes el fin de semana.",
+    "Coordinamos el horario de salida con anticipación y volvemos el mismo día, salvo que te quedes el fin de semana.",
   incluye: [
-    "Traslado en lancha desde Paranacito",
+    "Traslado desde Paranacito",
     "Recorrida guiada por la reserva",
     "La posibilidad de plantar tu propio árbol",
     "Avistaje de fauna nativa",
@@ -260,48 +260,34 @@ export const celdasEnPlantacion: string[] = ["c30", "c31"];
 export type MiembroEquipo = {
   nombre: string;
   rol: string;
-  bio: string;
-  placeholder: boolean;
+  foto: string;
 };
 
-// TODO: sumar fotos reales del equipo.
 export const equipo: MiembroEquipo[] = [
+  { nombre: "Ariel", rol: "Gerencia General", foto: "/equipo/ariel.jpg" },
+  { nombre: "Eduardo", rol: "Rel. Institucionales y sustentabilidad", foto: "/equipo/eduardo.jpg" },
+  { nombre: "Tomás", rol: "Comercial - Ingeniero Agrónomo", foto: "/equipo/tomas.jpg" },
   {
-    nombre: "Rubén Palacio",
-    rol: "Agroecología y acompañamiento técnico en campo",
-    bio: "Encargado de reserva forestal.",
-    placeholder: false,
+    nombre: "Natalia",
+    rol: "Comercial - Licenciada en medio ambiente y biodiversidad",
+    foto: "/equipo/natalia.jpg",
   },
-  {
-    nombre: "Sebastián Cardozo",
-    rol: "Desarrollo de plataformas y sistemas de reportería",
-    bio: "Director de proyectos con más de 25 años de experiencia.",
-    placeholder: false,
-  },
-  {
-    nombre: "Sebastián Torres",
-    rol: "Monitoreo satelital y certificación de carbono",
-    bio: "Biólogo con más de 25 años de experiencia en soluciones regenerativas.",
-    placeholder: false,
-  },
-  {
-    nombre: "Alejandro Torres",
-    rol: "Comunicación y engagement corporativo",
-    bio: "Consultora estratégica con foco en experiencia del consumidor y posicionamiento de marca.",
-    placeholder: false,
-  },
-  {
-    nombre: "Gastón Merhar",
-    rol: "Asuntos legales y estructuración de fideicomisos",
-    bio: "Abogado con más de 25 años de experiencia en derecho empresarial.",
-    placeholder: false,
-  },
-  {
-    nombre: "Luciano Navilli",
-    rol: "Gestión y liderazgo del proyecto",
-    bio: "Expertise en desarrollo de proyectos de huella de carbono.",
-    placeholder: false,
-  },
+  { nombre: "Alejandro", rol: "Marketing", foto: "/equipo/alejandro.jpg" },
+  { nombre: "Gastón", rol: "Legales experto en industrias y biodiversidad", foto: "/equipo/gaston.jpg" },
+  { nombre: "Sebastián", rol: "Certificaciones Internacionales", foto: "/equipo/sebastian.jpg" },
+  { nombre: "Verónica", rol: "Administración", foto: "/equipo/veronica.jpg" },
+];
+
+export type AreaDeSoporte = {
+  area: string;
+  nombre: string;
+};
+
+export const areasDeSoporte: AreaDeSoporte[] = [
+  { area: "Sistemas", nombre: "Talo" },
+  { area: "IA", nombre: "Desumo" },
+  { area: "Gestión", nombre: "Sergio" },
+  { area: "Contable", nombre: "Francisco" },
 ];
 
 export type EmpresaAliada = {
@@ -514,8 +500,8 @@ export const estimacionAporte = {
 export const empresasHero = {
   eyebrow: "Para empresas",
   titulo: "Desarrollamos Reservas Forestales a medida.",
-  bajada:
-    "Cada proyecto se diseña a medida de las metas ambientales y de posicionamiento de cada empresa. Gestionamos desde la selección del campo hasta la certificación de la Reserva Forestal.",
+  bajada: "Cada proyecto se diseña a medida de las metas ambientales y de posicionamiento de cada empresa.",
+  bajadaDestacada: "Gestionamos desde la selección del campo hasta la certificación de la Reserva Forestal.",
 };
 
 export type CapaEmpresa = {
@@ -523,11 +509,12 @@ export type CapaEmpresa = {
   titulo: string;
   bajada: string;
   texto: string;
+  imagen: "plantacion" | "marketingCartel" | "teamBuilding" | "acuerdoModelos";
 };
 
 export const empresasMision = {
   eyebrow: "Nuestra misión: facilitar y masificar la plantación de árboles.",
-  titulo: "Tres capas, una sola alianza.",
+  titulo: "Cuatro capas, una sola alianza.",
   bajada:
     "Hacemos realidad tu propia reserva, como activo ambiental y herramienta de difusión de marca, política ambiental y cultura organizacional.",
 };
@@ -539,6 +526,7 @@ export const capasEmpresa: CapaEmpresa[] = [
     bajada: "El ancla del proyecto",
     texto:
       "Diseño, plantación y custodia de tu propio sector forestal. Auditado bajo el estándar de Control Union o Gold Standard (dos modelos).",
+    imagen: "plantacion",
   },
   {
     numero: "02",
@@ -546,6 +534,7 @@ export const capasEmpresa: CapaEmpresa[] = [
     bajada: "Que la gente lo sepa",
     texto:
       "Cada venta, compra o interacción con tu comunidad aportan a la plantación de árboles en tu reserva propia. QR, certificados y contenido conjunto en redes.",
+    imagen: "marketingCartel",
   },
   {
     numero: "03",
@@ -553,6 +542,7 @@ export const capasEmpresa: CapaEmpresa[] = [
     bajada: "Que tu gente lo viva",
     texto:
       "Team building, talleres presenciales, visitas con equipo/comunidad a Los Tualdos con un plan anual de educación ambiental para empleados, proveedores y comunidad.",
+    imagen: "teamBuilding",
   },
   {
     numero: "04",
@@ -560,6 +550,7 @@ export const capasEmpresa: CapaEmpresa[] = [
     bajada: "A tu medida",
     texto:
       "Dos modelos posibles, Control Union o Gold Standard, con un abanico amplio de herramientas para convocar a tu comunidad sin que te demande presupuesto propio.",
+    imagen: "acuerdoModelos",
   },
 ];
 
@@ -632,337 +623,42 @@ export const modeloGoldStandard = {
   ] satisfies ItemGoldStandard[],
 };
 
-export type ActorProceso = "Aportante" | "Empresa" | "Plantify" | "Los Tualdos" | "Certificador";
-
-export type PasoProceso = {
-  numero: number;
-  actor: ActorProceso;
+export type PasoRecorrido = {
+  titulo: string;
   texto: string;
 };
 
-export type FaseProceso = {
-  fase: string;
-  pasos: PasoProceso[];
+// Cómo viaja un aporte, de punta a punta — versión simple para mostrar en la web.
+export const recorridoAportante = {
+  titulo: "Así viajan los aportes en tu empresa.",
+  bajada: "El mismo recorrido para cualquiera de los dos modelos, de punta a punta.",
+  pasos: [
+    {
+      titulo: "Escanea el QR",
+      texto: "La persona escanea el QR en el punto hecho para tu empresa.",
+    },
+    {
+      titulo: "Elige cómo sumarse",
+      texto: "Su aporte queda destinado a tu sector en Los Tualdos.",
+    },
+    {
+      titulo: "Plantamos y cuidamos",
+      texto: "Los Tualdos planta, mantiene y mide el árbol durante todo el proyecto.",
+    },
+    {
+      titulo: "Auditan y certifican",
+      texto: "Control Union o Gold Standard auditan la plantación y certifican el carbono capturado.",
+    },
+    {
+      titulo: "Certificado y dashboard",
+      texto: "La persona recibe su certificado y accede a un dashboard para seguir el impacto.",
+    },
+    {
+      titulo: "Reportes para tu marca",
+      texto: "Tu empresa recibe informes y material con fotos y métricas de tu sector.",
+    },
+  ] satisfies PasoRecorrido[],
 };
-
-export type ModeloNegocioProceso = {
-  slug: "control-union" | "gold-standard";
-  nombre: string;
-  fases: FaseProceso[];
-};
-
-// Macro proceso funcional del modelo de negocio Plantify, uno por certificador.
-export const procesosModelos: ModeloNegocioProceso[] = [
-  {
-    slug: "control-union",
-    nombre: "Control Union",
-    fases: [
-      {
-        fase: "Proyecto",
-        pasos: [
-          { numero: 1, actor: "Aportante", texto: "Aporta voluntariamente al proyecto." },
-          {
-            numero: 3,
-            actor: "Empresa",
-            texto: "La empresa recibe su proporcional acordado para las acciones con su comunidad.",
-          },
-          {
-            numero: 4,
-            actor: "Empresa",
-            texto: "Realiza acciones con su red y difunde su reserva forestal y para seguir desarrollándola.",
-          },
-          {
-            numero: 2,
-            actor: "Plantify",
-            texto: "Recauda y administra el aporte. Lo destina a plantar, cuidar y mantener árboles por 14 años.",
-          },
-          {
-            numero: 7,
-            actor: "Plantify",
-            texto:
-              "Gestiona, gerencia, desarrolla, comercializa, proporciona reportes, controla trazabilidad y recibe certificación.",
-          },
-          {
-            numero: 5,
-            actor: "Los Tualdos",
-            texto: "Recibe de Plantify la mayor cantidad de recursos para la reserva forestal.",
-          },
-          {
-            numero: 6,
-            actor: "Los Tualdos",
-            texto: "Planta, mantiene, conserva y cuida la reserva forestal por 14 años.",
-          },
-          {
-            numero: 8,
-            actor: "Certificador",
-            texto:
-              "Organismos independientes validan, verifican, auditan y certifican el proyecto. Control Union — auditorías de clientes.",
-          },
-        ],
-      },
-      {
-        fase: "CO₂ y metodología",
-        pasos: [
-          {
-            numero: 9,
-            actor: "Aportante",
-            texto: "El aporte desarrolla la plantación que durante el ciclo del proyecto generará secuestro de carbono.",
-          },
-          {
-            numero: 10,
-            actor: "Empresa",
-            texto: "Las acciones de la empresa apuntalan su reserva propia donde se genera la fijación de carbono.",
-          },
-          {
-            numero: 11,
-            actor: "Los Tualdos",
-            texto:
-              "Realizan los cálculos del CO₂ a campo, anualmente, relevando el total de árboles, dimensiones, variedades y biomasa (metodología ARR).",
-          },
-          {
-            numero: 12,
-            actor: "Certificador",
-            texto: "Auditan anualmente los registros, resultados y cálculos de cada medición.",
-          },
-        ],
-      },
-      {
-        fase: "Impacto real",
-        pasos: [
-          {
-            numero: 13,
-            actor: "Aportante",
-            texto:
-              "La reserva forestal, a lo largo del ciclo del proyecto, secuestra carbono generando un impacto ambiental real.",
-          },
-          {
-            numero: 14,
-            actor: "Empresa",
-            texto: "Compensación real, a través del carbono secuestrado por su reserva propia.",
-          },
-          { numero: 15, actor: "Empresa", texto: "La empresa recibe mensualmente un plan de MKT forestal." },
-          {
-            numero: 16,
-            actor: "Plantify",
-            texto:
-              "Asegura la adicionalidad del proyecto y la no duplicación de impactos reales, siendo solo uno el VVB de cada modelo.",
-          },
-          {
-            numero: 17,
-            actor: "Los Tualdos",
-            texto: "Registro de datos de mediciones. Realiza informes mensuales de la reserva.",
-          },
-          {
-            numero: 18,
-            actor: "Certificador",
-            texto: "Controlan y aseguran que no exista duplicación de impactos.",
-          },
-          {
-            numero: 19,
-            actor: "Certificador",
-            texto:
-              "Mediante la verificación presencial, comprueban la plantación, su estado y el avance de su desarrollo.",
-          },
-        ],
-      },
-      {
-        fase: "Trazabilidad",
-        pasos: [
-          {
-            numero: 25,
-            actor: "Aportante",
-            texto:
-              "El aportante recibe un certificado nominal por su aporte y posee acceso a su dashboard para controlar el impacto positivo del mismo.",
-          },
-          {
-            numero: 23,
-            actor: "Empresa",
-            texto: "La empresa recibe mensualmente de Plantify informes técnicos del proyecto.",
-          },
-          {
-            numero: 24,
-            actor: "Empresa",
-            texto:
-              "La empresa posee acceso a su dashboard donde controla on-line los aportes de su comunidad y el impacto real alcanzado.",
-          },
-          {
-            numero: 28,
-            actor: "Empresa",
-            texto: "La empresa puede realizar auditorías propias o de terceros para controlar el proyecto.",
-          },
-          {
-            numero: 22,
-            actor: "Plantify",
-            texto: "Plantify recibe mensualmente de Los Tualdos informes técnicos del proyecto.",
-          },
-          { numero: 21, actor: "Plantify", texto: "Plantify recibe un certificado de verificación de Control Union." },
-          { numero: 27, actor: "Plantify", texto: "Informes de auditoría administrativa/financiera." },
-          {
-            numero: 20,
-            actor: "Certificador",
-            texto: "Emiten certificados de verificación e informe técnico detallado.",
-          },
-          {
-            numero: 26,
-            actor: "Certificador",
-            texto:
-              "Auditores terceros de las empresas pueden auditar los procesos administrativos/financieros, asegurando la trazabilidad de los aportes.",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    slug: "gold-standard",
-    nombre: "Gold Standard",
-    fases: [
-      {
-        fase: "Proyecto",
-        pasos: [
-          { numero: 1, actor: "Aportante", texto: "Aporta voluntariamente al proyecto." },
-          {
-            numero: 2,
-            actor: "Empresa",
-            texto: "La empresa recibe el aporte, registra y transfiere a Plantify su proporcional acordado.",
-          },
-          {
-            numero: 3,
-            actor: "Empresa",
-            texto: "Realiza acciones con su red y difunde su reserva forestal y para seguir desarrollándola.",
-          },
-          {
-            numero: 4,
-            actor: "Plantify",
-            texto: "Recibe y administra el aporte. Lo destina a plantar, cuidar y mantener árboles por 30 años.",
-          },
-          {
-            numero: 5,
-            actor: "Plantify",
-            texto:
-              "Gestiona, gerencia, desarrolla, comercializa, proporciona reportes, controla trazabilidad y recibe certificación.",
-          },
-          {
-            numero: 6,
-            actor: "Los Tualdos",
-            texto: "Recibe de Plantify la mayor cantidad de recursos para la reserva forestal.",
-          },
-          {
-            numero: 7,
-            actor: "Los Tualdos",
-            texto: "Planta, mantiene, conserva y cuida la reserva forestal por 30 años.",
-          },
-          {
-            numero: 8,
-            actor: "Certificador",
-            texto:
-              "El proyecto es auditado por una tercera parte independiente, un organismo validador aceptado por Gold Standard, siendo éste quien certifica y emite bonos de carbono.",
-          },
-        ],
-      },
-      {
-        fase: "CO₂ y metodología",
-        pasos: [
-          {
-            numero: 9,
-            actor: "Empresa",
-            texto:
-              "Las acciones y el aporte de la empresa apuntalan su reserva propia donde se genera la fijación de carbono, teniendo dos opciones: reclamar bonos de carbono o claims de carbono.",
-          },
-          {
-            numero: 10,
-            actor: "Los Tualdos",
-            texto:
-              "Realizan los cálculos del CO₂ a campo, anualmente, relevando el total de árboles, dimensiones, variedades y biomasa (metodología ARR).",
-          },
-          {
-            numero: 11,
-            actor: "Certificador",
-            texto: "Auditan anualmente los registros, resultados y cálculos de cada medición.",
-          },
-        ],
-      },
-      {
-        fase: "Impacto real",
-        pasos: [
-          {
-            numero: 12,
-            actor: "Empresa",
-            texto: "Compensación real, a través del carbono secuestrado por su reserva propia.",
-          },
-          { numero: 13, actor: "Empresa", texto: "La empresa recibe mensualmente un plan de MKT forestal." },
-          {
-            numero: 14,
-            actor: "Plantify",
-            texto:
-              "Asegura la adicionalidad del proyecto y la no duplicación de impactos reales, siendo solo uno el VVB de cada modelo.",
-          },
-          {
-            numero: 15,
-            actor: "Los Tualdos",
-            texto: "Registro de datos de mediciones. Realiza informes mensuales de la reserva.",
-          },
-          {
-            numero: 16,
-            actor: "Certificador",
-            texto:
-              "Los créditos certificados son registrados en la plataforma de Gold Standard. Los mismos atraviesan una prueba de no duplicación de impacto.",
-          },
-          {
-            numero: 17,
-            actor: "Certificador",
-            texto:
-              "Mediante la verificación presencial, comprueban la plantación, su estado y el avance de su desarrollo.",
-          },
-        ],
-      },
-      {
-        fase: "Trazabilidad",
-        pasos: [
-          {
-            numero: 23,
-            actor: "Aportante",
-            texto:
-              "El aportante recibe un certificado nominal por su aporte y posee acceso a su dashboard para controlar el impacto positivo del mismo.",
-          },
-          {
-            numero: 21,
-            actor: "Empresa",
-            texto: "La empresa recibe mensualmente de Plantify informes técnicos del proyecto.",
-          },
-          {
-            numero: 22,
-            actor: "Empresa",
-            texto:
-              "La empresa posee acceso a su dashboard donde controla on-line los aportes, el impacto real alcanzado, teniendo dos opciones: reclamar bonos de carbono o claims de carbono.",
-          },
-          {
-            numero: 26,
-            actor: "Empresa",
-            texto: "La empresa puede realizar auditorías propias o de terceros para controlar el proyecto.",
-          },
-          {
-            numero: 20,
-            actor: "Plantify",
-            texto: "Plantify recibe mensualmente de Los Tualdos informes técnicos del proyecto.",
-          },
-          { numero: 19, actor: "Plantify", texto: "Plantify recibe bonos de carbono certificados de Gold Standard." },
-          { numero: 25, actor: "Plantify", texto: "Informes de auditoría administrativa/financiera." },
-          {
-            numero: 18,
-            actor: "Certificador",
-            texto: "Emiten bonos de secuestro de carbono verificado y certificado.",
-          },
-          {
-            numero: 24,
-            actor: "Certificador",
-            texto:
-              "Auditores terceros de las empresas pueden auditar los procesos administrativos/financieros, asegurando la trazabilidad de los aportes.",
-          },
-        ],
-      },
-    ],
-  },
-];
 
 export type ItemCapa = {
   titulo: string;
@@ -1009,12 +705,9 @@ export const acuerdoModelos = {
   bajada: "Abrimos el abanico: cada alianza se arma a medida sobre uno o varios de estos modelos.",
   controlUnion: {
     titulo: "Modelo Control Union",
-    bullets: [
-      "Acuerdo sobre 1% de la facturación",
-      "Abonos fijos mensuales",
-      "QR comunidad · aportes voluntarios",
-      "Venta de hectáreas / hectáreas nominales",
-    ],
+    subtitulo: "Sector forestal certificado",
+    texto:
+      "Financiás y sostenés tu propio sector forestal en Los Tualdos, auditado y certificado por Control Union, con distintas formas de aportar según el tamaño de tu empresa.",
   },
   goldStandard: {
     titulo: "Modelo Gold Standard",
