@@ -35,7 +35,7 @@ export default function Hero() {
               href="/contacto"
               className="rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
             >
-              Pedir una propuesta
+              Sumá tu empresa hoy
             </Link>
             <Link href="#como-trabajamos" className="text-sm font-semibold text-white/85 underline underline-offset-4 hover:text-white">
               o mirá cómo funciona
