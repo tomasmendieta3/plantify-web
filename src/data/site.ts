@@ -202,15 +202,34 @@ export const pasos: Paso[] = [
 export type Entregable = {
   icono: string; // nombre de ícono de lucide-react
   texto: string;
+  categoria: "institucional" | "marketing";
 };
 
 export const entregables: Entregable[] = [
-  { icono: "MapPin", texto: "Sector delimitado a tu nombre" },
-  { icono: "Camera", texto: "Fotos georreferenciadas cada temporada" },
-  { icono: "FileCheck2", texto: "Informe anual auditado por Control Union" },
-  { icono: "BadgeCheck", texto: "Certificado digital" },
-  { icono: "Share2", texto: "Material listo para tus redes y tu reporte" },
-  { icono: "Footprints", texto: "Visita guiada a la reserva" },
+  { icono: "MapPin", texto: "Sector delimitado a tu nombre", categoria: "institucional" },
+  { icono: "Camera", texto: "Fotos georreferenciadas cada temporada", categoria: "institucional" },
+  {
+    icono: "FileCheck2",
+    texto: "Informe anual auditado por Control Union",
+    categoria: "institucional",
+  },
+  { icono: "BadgeCheck", texto: "Certificado digital", categoria: "institucional" },
+  { icono: "Footprints", texto: "Visita guiada a la reserva", categoria: "institucional" },
+  {
+    icono: "Share2",
+    texto: "Material listo para tus redes y tu reporte",
+    categoria: "marketing",
+  },
+  {
+    icono: "Megaphone",
+    texto: "Banners, QRs físicos y soporte de comunicación para diferenciarte de tu competencia",
+    categoria: "marketing",
+  },
+  {
+    icono: "FileText",
+    texto: "Documento y proceso de onboarding",
+    categoria: "marketing",
+  },
 ];
 
 export type FotoSector = {

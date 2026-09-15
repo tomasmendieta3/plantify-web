@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import FormularioContacto from "@/components/FormularioContacto";
-import ParaEmpresas from "@/components/ParaEmpresas";
+import ClientesMarquee from "@/components/ClientesMarquee";
 import { organizacion } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -18,30 +18,32 @@ export default async function ContactoPage({ searchParams }: PageProps<"/contact
   const esVisita = primero(params?.motivo) === "visita";
 
   return (
-    <div>
-      {!esVisita && <ParaEmpresas />}
+    <div className="flex min-h-screen flex-col bg-verde-profundo">
+      <div className="flex flex-1 items-center justify-center px-5 py-16 sm:px-8">
+        <div className="w-full max-w-xl rounded-3xl bg-crema p-8 sm:p-12">
+          {esVisita ? (
+            <h1 className="font-black text-3xl text-verde-profundo sm:text-4xl">Coordinar tu visita</h1>
+          ) : (
+            <h1 className="font-black text-3xl text-verde-profundo sm:text-4xl">Pedir una propuesta</h1>
+          )}
+          <p className="mt-4 text-verde-profundo/75">
+            {esVisita
+              ? "Contanos cuándo te gustaría venir y con cuántos son, y te confirmamos el día."
+              : "Contanos de tu empresa y te armamos una propuesta con el sector y los tiempos."}
+          </p>
 
-      <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
-        {esVisita ? (
-          <h1 className="text-4xl text-verde-profundo">Coordinar tu visita</h1>
-        ) : (
-          <h2 className="font-bold text-2xl text-verde-profundo sm:text-3xl">Pedir una propuesta</h2>
-        )}
-        <p className="mt-4 text-verde-profundo/75">
-          {esVisita
-            ? "Contanos cuándo te gustaría venir y con cuántos son, y te confirmamos el día."
-            : "Contanos de tu empresa y te armamos una propuesta con el sector y los tiempos."}
-        </p>
+          <div className="mt-10">
+            <FormularioContacto mensajeInicial={mensajeInicial} esVisita={esVisita} />
+          </div>
 
-        <div className="mt-10">
-          <FormularioContacto mensajeInicial={mensajeInicial} esVisita={esVisita} />
+          <p className="mt-10 text-sm text-verde-profundo/50">
+            También podés escribirnos directo a {organizacion.email} o por WhatsApp al{" "}
+            {organizacion.telefono}.
+          </p>
         </div>
-
-        <p className="mt-10 text-sm text-verde-profundo/50">
-          También podés escribirnos directo a {organizacion.email} o por WhatsApp al{" "}
-          {organizacion.telefono}.
-        </p>
       </div>
+
+      <ClientesMarquee />
     </div>
   );
 }

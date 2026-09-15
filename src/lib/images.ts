@@ -86,6 +86,16 @@ export const images = {
     src: "/empresas/marketing-cartel.jpg",
     alt: "Cartel de la Reserva Forestal Plantify x Los Tualdos con las especies nativas plantadas",
   },
+  // Foto real: cartel de especies nativas con espacio "Tu empresa acá".
+  cartelNativas: {
+    src: "/empresas/cartel-nativas.png",
+    alt: "Cartel de la Reserva Forestal Plantify x Los Tualdos con las especies nativas y el espacio para el logo de la empresa",
+  },
+  // Foto real: cartel de escritorio con QR, de ejemplo para una empresa aliada.
+  qrEscritorio: {
+    src: "/empresas/qr-escritorio.png",
+    alt: "Cartel de escritorio con QR para conocer el aporte ambiental de la empresa, en la recepción de una oficina",
+  },
   acuerdoModelos: {
     src: "/empresas/acuerdo-modelos.jpg",
     alt: "Logos de Control Union y Gold Standard",

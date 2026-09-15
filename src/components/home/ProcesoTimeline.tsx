@@ -18,7 +18,9 @@ export default function ProcesoTimeline() {
               Cómo trabajamos
             </h2>
             <p className="mt-4 max-w-md text-crema/70">
-              Catorce años, de punta a punta. Elegí una etapa para ver qué hacemos y qué recibís.
+              Con Plantify, las empresas pueden destinar parte de su inversión ambiental a un
+              proyecto concreto, seguir su evolución durante 14 años y contar con información
+              verificable para comunicar y reportar lo que están haciendo.
             </p>
 
             <div className="mt-10 border-b border-dorado/60">
@@ -90,12 +92,6 @@ export default function ProcesoTimeline() {
           </div>
         </div>
       </div>
-
-      <p className="mx-auto mt-10 max-w-3xl text-center text-verde-profundo/70">
-        Plantify convierte la inversión ambiental de las empresas en proyectos concretos, medibles
-        y documentados: un sector forestal definido, 14 años de seguimiento y datos que la empresa
-        puede incorporar a sus reportes y comunicación.
-      </p>
     </section>
   );
 }

@@ -4,15 +4,17 @@ import { presentacion } from "@/data/site";
 import { images } from "@/lib/images";
 
 const IMAGENES: Record<string, { src: string; alt: string }> = {
-  Aportá: images.aportar,
-  Visitas: images.visitaFamilia,
-  Empresas: images.empresas,
+  Aportá: images.plantacion,
+  Visitas: images.reserva,
+  Empresas: images.teamBuilding,
 };
 
 export default function Presentacion() {
   return (
     <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-      <h3 className="font-bold text-xl text-verde-profundo">Cómo podés ser parte:</h3>
+      <h2 className="font-black text-3xl leading-tight text-verde-profundo sm:text-4xl">
+        Cómo podés ser parte
+      </h2>
       <div className="mt-6 grid gap-6 sm:grid-cols-3">
         {presentacion.caminos.map((camino) => {
           const imagen = IMAGENES[camino.titulo];
@@ -22,13 +24,13 @@ export default function Presentacion() {
               className="flex flex-col overflow-hidden rounded-2xl border border-verde-profundo/10 bg-card/40 transition-colors hover:border-esmeralda/40"
             >
               {imagen && (
-                <div className="relative aspect-[4/3]">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={imagen.src}
                     alt={imagen.alt}
                     fill
                     sizes="(min-width: 640px) 33vw, 100vw"
-                    className="object-cover"
+                    className={`object-cover ${camino.titulo === "Visitas" ? "scale-150" : ""}`}
                   />
                 </div>
               )}
