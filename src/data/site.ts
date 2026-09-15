@@ -303,7 +303,6 @@ export type AreaDeSoporte = {
 };
 
 export const areasDeSoporte: AreaDeSoporte[] = [
-  { area: "Sistemas", nombre: "Talo" },
   { area: "IA", nombre: "Desumo" },
   { area: "Gestión", nombre: "Sergio" },
   { area: "Contable", nombre: "Francisco" },

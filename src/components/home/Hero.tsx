@@ -36,7 +36,7 @@ export default function Hero() {
 
       <div className="relative w-full px-4 pt-24 pb-10 sm:px-6 lg:px-8 lg:pb-12">
         <div className="max-w-5xl">
-          <div className="flex translate-x-20 -translate-y-20 flex-wrap gap-6">
+          <div className="flex flex-wrap gap-6 lg:translate-x-20 lg:-translate-y-20">
             {certificaciones.map((cert) => {
               const logo =
                 cert.nombre === "Control Union" ? images.logoControlUnion : images.logoGoldStandard;
@@ -61,7 +61,7 @@ export default function Hero() {
             })}
           </div>
 
-          <div className="translate-x-20 -translate-y-20">
+          <div className="lg:translate-x-20 lg:-translate-y-20">
             <h1 className="mt-8 text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
               Desarrollamos tu reserva forestal.
               <br />
