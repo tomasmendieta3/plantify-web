@@ -17,8 +17,8 @@ export default function ContadorImpacto() {
 
   return (
     <section className="border-y border-verde-profundo/10 bg-card/40">
-      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <div className="flex flex-wrap gap-x-16 gap-y-10">
+      <div className="mx-auto max-w-6xl px-5 py-14 text-center sm:px-8">
+        <div className="flex flex-wrap justify-center gap-x-16 gap-y-10">
           {stats.map((stat) => (
             <div key={stat.label}>
               <p className="text-6xl font-black tracking-tight text-verde-profundo sm:text-7xl">
@@ -30,7 +30,7 @@ export default function ContadorImpacto() {
         </div>
 
         {hayCo2 && (
-          <div className="mt-10 flex flex-wrap gap-8 border-t border-verde-profundo/10 pt-8">
+          <div className="mt-10 flex flex-wrap justify-center gap-8 border-t border-verde-profundo/10 pt-8">
             {!!co2.proyectadoTn && (
               <div>
                 <p className="text-2xl font-bold tracking-tight text-verde-profundo/50">

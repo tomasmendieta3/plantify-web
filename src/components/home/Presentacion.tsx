@@ -12,12 +12,7 @@ const IMAGENES: Record<string, { src: string; alt: string }> = {
 export default function Presentacion() {
   return (
     <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-      <h2 className="font-bold text-3xl text-verde-profundo sm:text-4xl">Qué es Plantify</h2>
-      <p className="mt-4 max-w-3xl text-lg leading-relaxed text-verde-profundo/85">
-        {presentacion.frase}
-      </p>
-
-      <h3 className="mt-14 font-bold text-xl text-verde-profundo">Cómo podés ser parte:</h3>
+      <h3 className="font-bold text-xl text-verde-profundo">Cómo podés ser parte:</h3>
       <div className="mt-6 grid gap-6 sm:grid-cols-3">
         {presentacion.caminos.map((camino) => {
           const imagen = IMAGENES[camino.titulo];

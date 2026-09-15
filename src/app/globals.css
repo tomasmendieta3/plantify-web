@@ -112,3 +112,29 @@ body {
 .marquee-track {
   animation: marquee-scroll 28s linear infinite;
 }
+
+@keyframes hero-slide {
+  0%,
+  18.75% {
+    transform: translateX(0%);
+  }
+  25%,
+  43.75% {
+    transform: translateX(-12.5%);
+  }
+  50%,
+  68.75% {
+    transform: translateX(-25%);
+  }
+  75%,
+  93.75% {
+    transform: translateX(-37.5%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.hero-slide-track {
+  animation: hero-slide 16s ease-in-out infinite;
+}

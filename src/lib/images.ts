@@ -14,10 +14,10 @@ export const images = {
     src: "/reserva/tualdos-aerea.jpg",
     alt: "Vista aérea de las filas de forestación en Los Tualdos",
   },
-  // REEMPLAZAR con foto real del bosque de Los Tualdos
+  // Foto real: collage de la reserva y el equipo de Los Tualdos.
   heroBosque: {
-    src: unsplash("1780488417515-5a1f3d7b9328", "q=80&w=2400&auto=format&fit=crop"),
-    alt: "Bosque de humedal con árboles reflejados en el agua",
+    src: "/reserva/tualdos-hero.jpg",
+    alt: "Collage de fotos de la reserva Los Tualdos: caballos, plantación y equipo",
   },
   // Foto real: el portón de acceso a Los Tualdos.
   reserva: {

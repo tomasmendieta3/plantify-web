@@ -14,8 +14,8 @@ export default function Home() {
     <>
       <Hero />
       <ContadorImpacto />
-      <Presentacion />
       <AliadosEmpresas />
+      <Presentacion />
       <ProcesoTimeline />
       <QueRecibis />
       <SectoresAsignados />
