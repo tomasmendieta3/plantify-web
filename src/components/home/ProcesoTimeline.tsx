@@ -90,6 +90,12 @@ export default function ProcesoTimeline() {
           </div>
         </div>
       </div>
+
+      <p className="mx-auto mt-10 max-w-3xl text-center text-verde-profundo/70">
+        Plantify convierte la inversión ambiental de las empresas en proyectos concretos, medibles
+        y documentados: un sector forestal definido, 14 años de seguimiento y datos que la empresa
+        puede incorporar a sus reportes y comunicación.
+      </p>
     </section>
   );
 }

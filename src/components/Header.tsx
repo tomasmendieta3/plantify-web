@@ -97,17 +97,9 @@ export default function Header() {
         <div className="hidden items-center gap-6 md:flex">
           <Link
             href="/aportar"
-            className={`text-sm transition-colors duration-500 ${
-              sobreHeroOscuro ? "text-white/90 hover:text-white" : "text-verde-profundo/80 hover:text-verde-profundo"
-            }`}
-          >
-            Aportar
-          </Link>
-          <Link
-            href="/contacto"
             className="rounded-full bg-esmeralda px-5 py-2.5 text-sm font-medium text-verde-profundo transition-colors hover:bg-esmeralda/90"
           >
-            Pedir una propuesta
+            Sumá tu aporte
           </Link>
         </div>
 
@@ -137,20 +129,13 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/aportar"
-              className="text-2xl text-verde-profundo"
-              onClick={() => setMenuAbierto(false)}
-            >
-              Aportar
-            </Link>
           </nav>
           <Link
-            href="/contacto"
+            href="/aportar"
             className="mt-auto rounded-full bg-esmeralda px-5 py-4 text-center text-base font-medium text-verde-profundo"
             onClick={() => setMenuAbierto(false)}
           >
-            Pedir una propuesta
+            Sumá tu aporte
           </Link>
         </div>
       )}
