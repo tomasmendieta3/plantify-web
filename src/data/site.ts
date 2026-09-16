@@ -26,101 +26,41 @@ export const reserva = {
   fechaDato: "Auditoría Control Union, campaña 2026",
 };
 
-export type Especie = {
-  nombre: string;
-  nombreCientifico: string;
-  descripcion: string;
-};
-
-export const especies: Especie[] = [
-  {
-    nombre: "Sauce criollo",
-    nombreCientifico: "Salix humboldtiana",
-    descripcion: "Nativo del Delta, resiste bien las crecientes y arraiga rápido en suelo húmedo.",
-  },
-  {
-    nombre: "Aliso de río",
-    nombreCientifico: "Tessaria integrifolia",
-    descripcion: "Coloniza las orillas y ayuda a fijar el suelo de las islas nuevas.",
-  },
-  {
-    nombre: "Curupí",
-    nombreCientifico: "Sapium haematospermum",
-    descripcion: "Crece bien en los sectores más altos, menos expuestos a la inundación.",
-  },
-];
-
-export const calendarioPlantacion = {
-  temporadas: "Otoño y primavera",
-  descripcion:
-    "Plantamos en otoño y en primavera, cuando el suelo está húmedo pero las islas no están bajo agua. El calendario exacto de cada campaña depende del nivel del río.",
-};
-
-export const comoVisitar = {
-  descripcion:
-    "Coordinamos la visita con anticipación. Te llevamos a caminar tu sector y te mostramos cómo medimos y auditamos.",
-  duracion: "Medio día, ida y vuelta desde Paranacito",
-};
-
-export type Fauna = {
-  nombre: string;
-  nombreCientifico: string;
-  descripcion: string;
-};
-
-export const fauna: Fauna[] = [
-  {
-    nombre: "Carpincho",
-    nombreCientifico: "Hydrochoerus hydrochaeris",
-    descripcion: "El roedor más grande del mundo. Vive en grupo, cerca del agua, y es el que más se deja ver.",
-  },
-  {
-    nombre: "Lobito de río",
-    nombreCientifico: "Lontra longicaudis",
-    descripcion: "Una nutria nativa del Delta. Es esquiva, pero a veces aparece nadando entre los canales.",
-  },
-  {
-    nombre: "Martín pescador",
-    nombreCientifico: "Megaceryle torquata",
-    descripcion: "Un ave que se lanza en picada al agua para pescar. Se escucha antes de verse.",
-  },
-  {
-    nombre: "Garza mora",
-    nombreCientifico: "Ardea cocoi",
-    descripcion: "La garza más grande de la región. Camina despacio por la orilla, buscando peces.",
-  },
-];
-
 export type ActividadVisita = {
   icono: string; // nombre de ícono de lucide-react
   titulo: string;
   texto: string;
+  imagen: "faunaDelta" | "plantarArbol" | "caminarReserva" | "diaEnFamilia";
 };
 
 export const comunidad = {
   titulo: "Comunidad",
   bajada:
-    "Los Tualdos no es solo para las empresas que tienen un sector. Los fines de semana abrimos la reserva para que vengas con tu familia, conozcas los animales que viven ahí y, si querés, plantes tu propio árbol.",
+    "Creemos que conocer la reserva de cerca cambia la forma en que te relacionás con ella. Por eso, los fines de semana abrimos Los Tualdos para que vengas con tu familia, conozcas a los animales que viven ahí y, si querés, plantes tu propio árbol.",
   actividades: [
     {
       icono: "PawPrint",
-      titulo: "Ver la fauna del Delta",
-      texto: "Carpinchos, aves y, con suerte, algún lobito de río, todo en su ambiente natural.",
+      titulo: "Ver los animales de la reserva",
+      texto: "Ñandúes, ciervos, llamas y otros animales que conviven en la reserva, en su ambiente natural.",
+      imagen: "faunaDelta",
     },
     {
       icono: "Sprout",
       titulo: "Plantar tu árbol",
       texto: "Si querés, plantás uno con tus propias manos y después le seguís el rastro en las fotos de temporada.",
+      imagen: "plantarArbol",
     },
     {
       icono: "Footprints",
       titulo: "Caminar la reserva",
       texto: "Recorremos los senderos y te contamos cómo cuidamos cada sector, paso a paso.",
+      imagen: "caminarReserva",
     },
     {
       icono: "Users",
       titulo: "Pasar el día en familia",
       texto: "Traé a los chicos. Hay tiempo para caminar, para mirar el río y para no hacer nada.",
+      imagen: "diaEnFamilia",
     },
   ] satisfies ActividadVisita[],
   duracion: "Un día completo. Si querés quedarte el fin de semana, lo coordinamos con anticipación.",
@@ -130,7 +70,7 @@ export const comunidad = {
     "Traslado desde Paranacito",
     "Recorrida guiada por la reserva",
     "La posibilidad de plantar tu propio árbol",
-    "Avistaje de fauna nativa",
+    "Avistaje de los animales de la reserva",
   ],
 };
 
@@ -273,9 +213,6 @@ export const sectores: Sector[] = [
   },
 ];
 
-// Hectáreas que ya estamos plantando esta temporada, todavía sin empresa asignada.
-export const celdasEnPlantacion: string[] = ["c30", "c31"];
-
 export type MiembroEquipo = {
   nombre: string;
   rol: string;
@@ -371,32 +308,80 @@ export const faqs: Faq[] = [
   },
 ];
 
-export type ObjetivoParticular = {
+export type PilarProyecto = {
   titulo: string;
   texto: string;
+  imagen: "heroFondo" | "plantacion" | "teamBuilding" | "reserva";
 };
 
 export const mision = {
   frase:
-    "Creemos que las personas somos buenas por naturaleza, y que la mayoría quiere hacer algo por el mundo en el que vive. Plantify es un lugar concreto para hacerlo.",
-  objetivoGeneral: "Restaurar bosques nativos y, con ellos, las economías locales y el vínculo de la gente con la naturaleza.",
-  objetivosParticulares: [
-    {
-      titulo: "Restauración de bosques nativos",
-      texto:
-        "Recolectamos semillas, criamos los plantines en vivero, plantamos árboles nativos en sitios degradados y hacemos jornadas de control de especies invasoras.",
-    },
-    {
-      titulo: "Encuentro y conciencia",
-      texto:
-        "Organizamos talleres, charlas y jornadas de plantación grupal. Cuando alguien planta un árbol con sus propias manos, cambia la forma en que se relaciona con lo que lo rodea.",
-    },
-    {
-      titulo: "Economías locales",
-      texto:
-        "Impulsamos oficios ligados a la restauración de bosques para que las comunidades cercanas a nuestros sitios tengan trabajo genuino, conectado al cuidado del territorio.",
-    },
-  ] satisfies ObjetivoParticular[],
+    "En Plantify creemos que plantar árboles puede ser mucho más que una acción simbólica: puede ser el motor de un cambio real.",
+  vision:
+    "Nuestra visión es transformar el mundo en un lugar más verde, sano y sostenible, facilitando que personas y organizaciones se involucren activamente en la regeneración del planeta. Para lograrlo, desarrollamos sistemas forestales de alto impacto, combinando ciencia, tecnología, trazabilidad y compromiso social.",
+  pilares: {
+    titulo: "Pilares del proyecto",
+    subtitulo: "Modelo replicable, responsable y con impacto real",
+    items: [
+      {
+        titulo: "Trazabilidad asegurada",
+        texto:
+          "Cada hectárea es monitoreada y reportada, permitiendo a cada empresa visualizar su contribución concreta.",
+        imagen: "heroFondo",
+      },
+      {
+        titulo: "Estándares preestablecidos",
+        texto:
+          "Todas las plantaciones se realizan bajo protocolos silvícolas, ambientales y sociales alineados a normativas nacionales e internacionales.",
+        imagen: "plantacion",
+      },
+      {
+        titulo: "Certificación y seguimiento",
+        texto:
+          "El modelo contempla validación ambiental, métricas de carbono y conservación de biodiversidad como parte de un sistema transparente y auditable.",
+        imagen: "teamBuilding",
+      },
+      {
+        titulo: "Escalable y adaptable",
+        texto:
+          "Diseñado para que otras unidades o proveedores de la empresa sponsor puedan incorporarse con facilidad, multiplicando el impacto.",
+        imagen: "reserva",
+      },
+    ] satisfies PilarProyecto[],
+  },
+};
+
+export type CaracteristicaReserva = {
+  icono: "TreePine" | "Droplet" | "Zap";
+  titulo: string;
+  texto: string;
+};
+
+export const caracteristicasReserva: CaracteristicaReserva[] = [
+  {
+    icono: "TreePine",
+    titulo: "Corredor biológico y refugio natural",
+    texto:
+      "El 10–15% de la reserva está destinado a especies nativas que promueven biodiversidad y funcionan como refugio para aves, insectos y otras especies clave.",
+  },
+  {
+    icono: "Droplet",
+    titulo: "Producción sostenible con impacto climático",
+    texto:
+      "Se emplean especies como Sauce y Álamos, adaptadas al suelo y humedad del Delta, maximizando la captura de CO₂ y la resiliencia ecológica.",
+  },
+  {
+    icono: "Zap",
+    titulo: "Infraestructura sostenible",
+    texto:
+      "Toda el área está protegida por diques vegetados y cuenta con caminos, galpones y paneles solares. El proyecto tiene acceso a rutas fluviales y se desarrolla con energía renovable.",
+  },
+];
+
+export const datosReserva = {
+  ubicacion: "Ibicuy, Entre Ríos, Argentina – en el Delta del Paraná.",
+  superficie:
+    "Superficie total: 340 hectáreas. Clasificación ambiental: Bosque y humedal deltaico; parte del ecosistema del Bajo Delta.",
 };
 
 export type Camino = {
@@ -418,7 +403,7 @@ export const presentacion = {
     },
     {
       titulo: "Visitas",
-      texto: "Vení a Los Tualdos, conocé la fauna del Delta y plantá tu propio árbol.",
+      texto: "Vení a Los Tualdos, conocé a los animales de la reserva y plantá tu propio árbol.",
       href: "/comunidad",
       cta: "Coordinar visita",
     },

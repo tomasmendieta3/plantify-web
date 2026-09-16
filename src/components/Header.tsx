@@ -8,7 +8,6 @@ import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "/empresas", label: "Empresas" },
-  { href: "/reserva", label: "Los Tualdos" },
   { href: "/comunidad", label: "Visitas" },
   { href: "/nosotros", label: "Nosotros" },
   { href: "/contacto", label: "Contacto" },

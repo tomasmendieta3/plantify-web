@@ -18,7 +18,6 @@ export default function Footer() {
           <div>
             <p className="text-sm font-medium text-crema">Navegación</p>
             <ul className="mt-3 space-y-2 text-sm">
-              <li><Link href="/reserva" className="hover:text-crema">Los Tualdos</Link></li>
               <li><Link href="/comunidad" className="hover:text-crema">Visitas</Link></li>
               <li><Link href="/nosotros" className="hover:text-crema">Nosotros</Link></li>
               <li><Link href="/aportar" className="hover:text-crema">Aportar</Link></li>

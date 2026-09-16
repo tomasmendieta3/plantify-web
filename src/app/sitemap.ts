@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
-import { organizacion, sectores } from "@/data/site";
+import { organizacion } from "@/data/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paginasEstaticas = [
     "",
-    "/reserva",
     "/comunidad",
     "/aportar",
     "/nosotros",
@@ -14,10 +13,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
-  const paginasSector = sectores.map((sector) => ({
-    url: `${organizacion.sitio}/sector/${sector.slug}`,
-    lastModified: new Date(),
-  }));
-
-  return [...paginasEstaticas, ...paginasSector];
+  return paginasEstaticas;
 }

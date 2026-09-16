@@ -39,11 +39,6 @@ export const images = {
     src: unsplash("1598335624134-5bceb5de202d", "q=80&w=1600&auto=format&fit=crop"),
     alt: "Una mujer y una niña plantando un árbol juntas",
   },
-  // REEMPLAZAR con foto real de una familia visitando Los Tualdos
-  visitaFamilia: {
-    src: unsplash("1758962036781-c0dc907aea7b", "q=80&w=2000&auto=format&fit=crop"),
-    alt: "Una familia caminando junta por un sendero natural",
-  },
   // REEMPLAZAR con foto real de la fauna de Los Tualdos
   fauna: {
     src: unsplash("1748958754305-50945ac48be2", "q=80&w=1600&auto=format&fit=crop"),
@@ -112,5 +107,25 @@ export const images = {
   qrMockup: {
     src: "/empresas/qr-mockup.webp",
     alt: "Cartel de mesa con QR para escanear y conocer el aporte",
+  },
+  // Foto real: ñandú en Los Tualdos.
+  faunaDelta: {
+    src: "/comunidad/qva-fauna.jpg",
+    alt: "Ñandú caminando en Los Tualdos",
+  },
+  // Foto real: plantines en el vivero de Los Tualdos.
+  plantarArbol: {
+    src: "/comunidad/qva-plantar.jpg",
+    alt: "Plantines jóvenes en cajones de madera en el vivero de Los Tualdos",
+  },
+  // Foto real: filas de forestación en Los Tualdos.
+  caminarReserva: {
+    src: "/comunidad/qva-caminar.jpg",
+    alt: "Filas de árboles jóvenes en Los Tualdos, con cielo nublado de fondo",
+  },
+  // Foto real: yegua y potrillo en Los Tualdos.
+  diaEnFamilia: {
+    src: "/comunidad/qva-familia.jpg",
+    alt: "Yegua y potrillo pastando juntos en Los Tualdos",
   },
 } as const;

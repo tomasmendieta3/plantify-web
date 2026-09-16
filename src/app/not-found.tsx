@@ -12,9 +12,6 @@ export default function NotFound() {
         <Link href="/" className="rounded-full bg-esmeralda px-5 py-2.5 text-sm font-medium text-verde-profundo hover:bg-esmeralda/90">
           Ir al inicio
         </Link>
-        <Link href="/reserva" className="rounded-full border border-verde-profundo/15 px-5 py-2.5 text-sm text-verde-profundo hover:border-esmeralda/50">
-          Conocer Los Tualdos
-        </Link>
         <Link href="/contacto" className="rounded-full border border-verde-profundo/15 px-5 py-2.5 text-sm text-verde-profundo hover:border-esmeralda/50">
           Contactarnos
         </Link>

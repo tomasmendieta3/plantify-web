@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Droplet, Leaf, MapPin, TreePine, Zap, type LucideIcon } from "lucide-react";
 import Equipo from "@/components/home/Equipo";
-import { certificaciones, co2, mision, reserva } from "@/data/site";
+import { caracteristicasReserva, certificaciones, co2, datosReserva, mision, reserva } from "@/data/site";
 import { images } from "@/lib/images";
+
+const ICONOS_CARACTERISTICA: Record<string, LucideIcon> = { TreePine, Droplet, Zap };
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -12,40 +15,54 @@ export const metadata: Metadata = {
 
 export default function NosotrosPage() {
   return (
-    <div>
+    <div className="text-center">
       <section className="mx-auto max-w-6xl px-5 pt-14 pb-10 sm:px-8">
         <h1 className="text-4xl text-verde-profundo sm:text-5xl">Nosotros</h1>
-        <p className="mt-4 max-w-2xl text-lg text-verde-profundo/75">
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-verde-profundo/75">
           Somos el equipo que planta, cuida y audita Los Tualdos, en {reserva.localidad}.
         </p>
       </section>
 
-      <div className="relative h-72 w-full sm:h-96">
-        <Image
-          src={images.comunidad.src}
-          alt={images.comunidad.alt}
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
-
       <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
         <p className="text-xl leading-relaxed text-verde-profundo/85">{mision.frase}</p>
+        <p className="mt-6 text-verde-profundo/75 leading-relaxed">{mision.vision}</p>
       </section>
 
-      <section className="bg-card/40">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-          <h2 className="font-bold text-2xl text-verde-profundo">Objetivo general</h2>
-          <p className="mt-3 max-w-2xl text-verde-profundo/75">{mision.objetivoGeneral}</p>
+      <section className="mx-auto max-w-5xl px-5 pb-16 sm:px-8">
+        <div className="relative aspect-video w-full overflow-hidden rounded-2xl shadow-xl">
+          <video
+            src="/reserva/tualdos-nosotros-hero.mp4"
+            poster="/reserva/tualdos-nosotros-hero-poster.jpg"
+            controls
+            playsInline
+            className="h-full w-full object-cover"
+          />
+        </div>
+      </section>
 
-          <div className="mt-10 grid gap-8 sm:grid-cols-3">
-            {mision.objetivosParticulares.map((objetivo) => (
-              <div key={objetivo.titulo}>
-                <p className="font-medium text-verde-profundo">{objetivo.titulo}</p>
-                <p className="mt-2 text-sm leading-relaxed text-verde-profundo/70">{objetivo.texto}</p>
-              </div>
-            ))}
+      <section className="bg-verde-profundo">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+          <h2 className="text-center font-bold text-3xl text-crema sm:text-4xl">{mision.pilares.titulo}</h2>
+          <p className="mt-4 text-center text-lg text-crema/80">{mision.pilares.subtitulo}</p>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {mision.pilares.items.map((pilar) => {
+              const imagen = images[pilar.imagen];
+              return (
+                <div
+                  key={pilar.titulo}
+                  className="overflow-hidden rounded-2xl border border-crema/10 bg-crema/5"
+                >
+                  <div className="relative h-40 w-full">
+                    <Image src={imagen.src} alt={imagen.alt} fill className="object-cover" />
+                  </div>
+                  <div className="p-5">
+                    <p className="font-medium text-crema">{pilar.titulo}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-crema/70">{pilar.texto}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -58,6 +75,45 @@ export default function NosotrosPage() {
           Tualdos para que cada empresa tenga un sector propio, con seguimiento real durante
           catorce años, no una promesa de árboles que nadie vuelve a ver.
         </p>
+      </section>
+
+      <section className="bg-card/40">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {caracteristicasReserva.map((item) => {
+              const Icono = ICONOS_CARACTERISTICA[item.icono];
+              return (
+                <div
+                  key={item.titulo}
+                  className="rounded-2xl bg-crema p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <Icono className="shrink-0 text-verde-profundo" size={32} strokeWidth={1.75} />
+                  <p className="mt-4 font-medium text-verde-profundo">{item.titulo}</p>
+                  <p className="mt-1 text-sm text-verde-profundo/70">{item.texto}</p>
+                </div>
+              );
+            })}
+
+            <div className="rounded-2xl bg-crema p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-bold tracking-wide text-esmeralda uppercase">
+                    <MapPin size={16} />
+                    Ubicación
+                  </div>
+                  <p className="mt-2 text-sm text-verde-profundo/70">{datosReserva.ubicacion}</p>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-bold tracking-wide text-dorado uppercase">
+                    <Leaf size={16} />
+                    Superficie
+                  </div>
+                  <p className="mt-2 text-sm text-verde-profundo/70">{datosReserva.superficie}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <Equipo />

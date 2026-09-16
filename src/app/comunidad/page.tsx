@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { PawPrint, Sprout, Footprints, Users, type LucideIcon } from "lucide-react";
-import { comunidad, fauna, organizacion } from "@/data/site";
+import { PawPrint, Sprout, Footprints, Users, Clock, Navigation, ListChecks, type LucideIcon } from "lucide-react";
+import { comunidad, organizacion } from "@/data/site";
 import { images } from "@/lib/images";
+import HeroVideo from "@/components/empresas/HeroVideo";
 
 export const metadata: Metadata = {
   title: "Visitas a la reserva",
   description:
-    "Visitá Los Tualdos con tu familia: conocé la fauna del Delta y, si querés, plantá tu propio árbol. Una experiencia para pasar el día o el fin de semana.",
+    "Visitá Los Tualdos con tu familia: conocé a los animales de la reserva y, si querés, plantá tu propio árbol. Una experiencia para pasar el día o el fin de semana.",
 };
 
 const ICONOS: Record<string, LucideIcon> = {
@@ -32,26 +33,28 @@ export default function ComunidadPage() {
             <p className="mt-5 max-w-md text-lg text-verde-profundo/75">
               {comunidad.bajada}
             </p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href={`/contacto?motivo=visita&mensaje=${encodeURIComponent(mensajeVisita)}`}
                 className="inline-block rounded-full bg-esmeralda px-7 py-3.5 text-base font-medium text-verde-profundo transition-colors hover:bg-esmeralda/90"
               >
                 Coordinar tu visita
               </Link>
+              <a
+                href="https://tualdos-qr.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-full border border-verde-profundo/20 px-7 py-3.5 text-base font-medium text-verde-profundo transition-colors hover:border-esmeralda/50"
+              >
+                Recorrido virtual
+              </a>
             </div>
           </div>
 
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-            <Image
-              src={images.visitaFamilia.src}
-              alt={images.visitaFamilia.alt}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-              priority
-            />
-          </div>
+          <HeroVideo
+            src="/comunidad/visita-familia-hero.mp4"
+            poster="/comunidad/visita-familia-hero-poster.jpg"
+          />
         </div>
       </section>
 
@@ -61,15 +64,30 @@ export default function ComunidadPage() {
             Qué vas a hacer
           </h2>
 
-          <div className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {comunidad.actividades.map((actividad) => {
               const Icono = ICONOS[actividad.icono];
+              const imagen = images[actividad.imagen];
               return (
-                <div key={actividad.titulo} className="flex items-start gap-4">
-                  {Icono && <Icono className="mt-1 shrink-0 text-esmeralda" size={26} />}
-                  <div>
-                    <p className="font-medium text-verde-profundo">{actividad.titulo}</p>
-                    <p className="mt-1 text-sm text-verde-profundo/70">{actividad.texto}</p>
+                <div
+                  key={actividad.titulo}
+                  className="overflow-hidden rounded-2xl border border-verde-profundo/10 bg-crema transition-colors hover:border-esmeralda/40"
+                >
+                  <div className="relative aspect-[4/3] w-full">
+                    <Image
+                      src={imagen.src}
+                      alt={imagen.alt}
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex items-start gap-2 p-4">
+                    {Icono && <Icono className="mt-0.5 shrink-0 text-esmeralda" size={18} />}
+                    <div>
+                      <p className="text-sm font-bold text-verde-profundo">{actividad.titulo}</p>
+                      <p className="mt-1 text-xs text-verde-profundo/70">{actividad.texto}</p>
+                    </div>
                   </div>
                 </div>
               );
@@ -78,58 +96,42 @@ export default function ComunidadPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl order-2 lg:order-1">
-            <Image
-              src={images.fauna.src}
-              alt={images.fauna.alt}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="order-1 lg:order-2">
-            <h2 className="font-bold text-2xl text-verde-profundo sm:text-3xl">
-              La fauna que vas a encontrar
-            </h2>
-            <p className="mt-3 text-sm text-verde-profundo/70">
-              Los Tualdos está en el Delta, así que la fauna es la del humedal. No hay garantías
-              de avistaje, pero es raro no ver alguno de estos.
-            </p>
-            <div className="mt-6 space-y-4">
-              {fauna.map((animal) => (
-                <div key={animal.nombre}>
-                  <p className="font-medium text-verde-profundo">
-                    {animal.nombre} <span className="text-sm italic text-verde-profundo/50">{animal.nombreCientifico}</span>
-                  </p>
-                  <p className="text-sm text-verde-profundo/70">{animal.descripcion}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="bg-verde-profundo text-crema">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-          <h2 className="font-bold text-2xl sm:text-3xl">Cómo es la visita</h2>
-          <div className="mt-8 grid gap-8 sm:grid-cols-2">
-            <div>
-              <p className="text-sm font-medium text-esmeralda">Duración</p>
-              <p className="mt-1 text-sm text-crema/80">{comunidad.duracion}</p>
-              <p className="mt-4 text-sm font-medium text-esmeralda">Cómo llegamos</p>
-              <p className="mt-1 text-sm text-crema/80">{comunidad.comoLlegar}</p>
+          <h2 className="font-black text-2xl sm:text-3xl">Cómo es la visita</h2>
+          <div className="mt-8 grid gap-5 sm:grid-cols-3">
+            <div className="rounded-2xl border border-crema/10 bg-crema/5 p-6">
+              <Clock className="text-esmeralda" size={24} strokeWidth={1.75} />
+              <p className="mt-3 text-sm font-bold text-crema">Duración</p>
+              <p className="mt-1 text-sm text-crema/70">{comunidad.duracion}</p>
             </div>
-            <div>
-              <p className="text-sm font-medium text-esmeralda">Qué incluye</p>
-              <ul className="mt-1 space-y-1.5 text-sm text-crema/80">
+            <div className="rounded-2xl border border-crema/10 bg-crema/5 p-6">
+              <Navigation className="text-esmeralda" size={24} strokeWidth={1.75} />
+              <p className="mt-3 text-sm font-bold text-crema">Cómo llegamos</p>
+              <p className="mt-1 text-sm text-crema/70">{comunidad.comoLlegar}</p>
+            </div>
+            <div className="rounded-2xl border border-crema/10 bg-crema/5 p-6">
+              <ListChecks className="text-esmeralda" size={24} strokeWidth={1.75} />
+              <p className="mt-3 text-sm font-bold text-crema">Qué incluye</p>
+              <ul className="mt-2 space-y-1.5 text-sm text-crema/70">
                 {comunidad.incluye.map((item) => (
                   <li key={item}>· {item}</li>
                 ))}
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+        <h2 className="font-bold text-2xl text-verde-profundo sm:text-3xl">Cómo llegar</h2>
+        <div className="mt-6 aspect-video w-full overflow-hidden rounded-2xl">
+          <iframe
+            src="https://www.google.com/maps?q=-33.864833,-58.842111&z=13&t=k&output=embed"
+            className="h-full w-full border-0"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Ubicación de Los Tualdos en el mapa"
+          />
         </div>
       </section>
 
