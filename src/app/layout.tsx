@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import WhatsappFloat from "@/components/WhatsappFloat";
+import SiteChrome from "@/components/SiteChrome";
 import { organizacion } from "@/data/site";
 
 const nunito = Nunito({
@@ -67,10 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsappFloat />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

@@ -8,9 +8,17 @@ import { formatNumero } from "@/lib/format";
 
 const { montosSugeridosArs, montoMinimoArs, montoMaximoArs } = estimacionAporte;
 
-export default function FormularioAporte({ sectorSlug, sectorNombre }: { sectorSlug: string; sectorNombre: string }) {
+export default function FormularioAporte({
+  sectorSlug,
+  sectorNombre,
+  minimal = false,
+}: {
+  sectorSlug: string;
+  sectorNombre: string;
+  minimal?: boolean;
+}) {
   const [arbolElegido, setArbolElegido] = useState<string | null>(null);
-  const [montoElegido, setMontoElegido] = useState<number | null>(montosSugeridosArs[1]);
+  const [montoElegido, setMontoElegido] = useState<number | null>(montosSugeridosArs[0]);
   const [montoLibre, setMontoLibre] = useState("");
   const [estado, setEstado] = useState<"idle" | "enviando" | "ok" | "error">("idle");
   const [errores, setErrores] = useState<Record<string, string>>({});
@@ -32,9 +40,8 @@ export default function FormularioAporte({ sectorSlug, sectorNombre }: { sectorS
     const honeypot = String(form.get("empresa_web") || "");
 
     const nuevosErrores: Record<string, string> = {};
-    if (!arbolElegido) nuevosErrores.arbol = "Elegí a qué árbol va tu aporte.";
-    if (!nombre) nuevosErrores.nombre = "Nos falta tu nombre.";
-    if (!email || !email.includes("@")) nuevosErrores.email = "Ese email no nos cierra, revisalo.";
+    if (!minimal && !arbolElegido) nuevosErrores.arbol = "Elegí a qué árbol va tu aporte.";
+    if (email && !email.includes("@")) nuevosErrores.email = "Ese email no nos cierra, revisalo.";
     if (!montoFinal || montoFinal < montoMinimoArs || montoFinal > montoMaximoArs) {
       nuevosErrores.monto = `Elegí un monto entre $${formatNumero(montoMinimoArs)} y $${formatNumero(montoMaximoArs)}.`;
     }
@@ -78,41 +85,43 @@ export default function FormularioAporte({ sectorSlug, sectorNombre }: { sectorS
 
   return (
     <div>
-      <div>
-        <p className="text-sm text-verde-profundo/70">Elegí tu árbol</p>
-        <div className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {catalogoArboles.map((a) => {
-            const img = images[a.imagen as keyof typeof images];
-            const activo = arbolElegido === a.slug;
-            return (
-              <button
-                key={a.slug}
-                type="button"
-                onClick={() => setArbolElegido(a.slug)}
-                aria-pressed={activo}
-                className={`overflow-hidden rounded-xl border bg-card/40 text-left transition-colors ${
-                  activo ? "border-esmeralda" : "border-verde-profundo/15 hover:border-esmeralda/50"
-                }`}
-              >
-                <div className="relative aspect-square">
-                  <Image src={img.src} alt={img.alt} fill sizes="150px" className="object-cover" />
-                </div>
-                <p
-                  className={`px-2 py-1.5 text-center text-sm ${
-                    activo ? "font-medium text-verde-profundo" : "text-verde-profundo/70"
+      {!minimal && (
+        <div>
+          <p className="text-sm text-verde-profundo/70">Elegí tu árbol</p>
+          <div className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {catalogoArboles.map((a) => {
+              const img = images[a.imagen as keyof typeof images];
+              const activo = arbolElegido === a.slug;
+              return (
+                <button
+                  key={a.slug}
+                  type="button"
+                  onClick={() => setArbolElegido(a.slug)}
+                  aria-pressed={activo}
+                  className={`overflow-hidden rounded-xl border bg-card/40 text-left transition-colors ${
+                    activo ? "border-esmeralda" : "border-verde-profundo/15 hover:border-esmeralda/50"
                   }`}
                 >
-                  {a.nombre}
-                </p>
-              </button>
-            );
-          })}
+                  <div className="relative aspect-square">
+                    <Image src={img.src} alt={img.alt} fill sizes="150px" className="object-cover" />
+                  </div>
+                  <p
+                    className={`px-2 py-1.5 text-center text-sm ${
+                      activo ? "font-medium text-verde-profundo" : "text-verde-profundo/70"
+                    }`}
+                  >
+                    {a.nombre}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+          {errores.arbol && <p className="mt-1 text-sm text-red-700">{errores.arbol}</p>}
         </div>
-        {errores.arbol && <p className="mt-1 text-sm text-red-700">{errores.arbol}</p>}
-      </div>
+      )}
 
       <div className="mx-auto mt-6 max-w-md overflow-hidden rounded-3xl border border-verde-profundo/10 bg-card/40">
-        {arbol && arbolImg && (
+        {!minimal && arbol && arbolImg && (
           <div className="relative m-2 h-44 overflow-hidden rounded-2xl sm:h-56">
             <Image src={arbolImg.src} alt={arbolImg.alt} fill sizes="448px" className="object-cover" />
             <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-verde-profundo/85 via-verde-profundo/30 to-transparent p-4">
@@ -140,7 +149,7 @@ export default function FormularioAporte({ sectorSlug, sectorNombre }: { sectorS
             aria-hidden="true"
           />
 
-          <div>
+          <div id="monto-aporte">
             <p className="text-sm text-verde-profundo/70">Monto del aporte</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {montosSugeridosArs.map((monto) => (
@@ -183,18 +192,17 @@ export default function FormularioAporte({ sectorSlug, sectorNombre }: { sectorS
         </div>
 
         <div>
-          <label htmlFor="nombre" className="text-sm text-verde-profundo/70">Nombre</label>
+          <label htmlFor="nombre" className="text-sm text-verde-profundo/70">Nombre (opcional)</label>
           <input
             id="nombre"
             name="nombre"
             type="text"
             className="mt-1 w-full rounded-lg border border-verde-profundo/15 bg-crema px-4 py-2.5 text-verde-profundo outline-none focus:border-esmeralda"
           />
-          {errores.nombre && <p className="mt-1 text-sm text-red-700">{errores.nombre}</p>}
         </div>
 
         <div>
-          <label htmlFor="email" className="text-sm text-verde-profundo/70">Email</label>
+          <label htmlFor="email" className="text-sm text-verde-profundo/70">Email (opcional)</label>
           <input
             id="email"
             name="email"
@@ -243,7 +251,7 @@ export default function FormularioAporte({ sectorSlug, sectorNombre }: { sectorS
         <button
           type="submit"
           disabled={estado === "enviando"}
-          className="w-full rounded-full bg-esmeralda px-7 py-3 text-sm font-medium text-verde-profundo transition-colors hover:bg-esmeralda/90 disabled:opacity-60"
+          className="w-full rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90 disabled:opacity-60"
         >
           {estado === "enviando"
             ? "Procesando..."

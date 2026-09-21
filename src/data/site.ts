@@ -423,7 +423,8 @@ export type PasoAporte = {
 
 export const aportarStorytelling = {
   porQue:
-    "Cada aporte se convierte en algo concreto: un árbol nativo, plantado y cuidado durante catorce años. No sumás a un fondo genérico — sumás hectáreas a un sector real, que después vas a poder ver crecer en fotos, temporada tras temporada.",
+    "Sumando tu aporte, podemos hacer realidad el cambio del planeta un paso a la vez, del cual vos sos parte.",
+  porQueDestacado: "Cada aporte lo utilizamos para expandir, cuidar y preservar la reserva.",
   pasos: [
     {
       titulo: "Recolectamos la semilla",
@@ -446,24 +447,23 @@ export const aportarStorytelling = {
 
 export const aportarHistoria: Faq[] = [
   {
-    pregunta: "¿Por qué un árbol y no otra cosa?",
-    respuesta:
-      "Porque un árbol no se gasta. Lo plantás una vez y sigue ahí, creciendo, mucho después de que te olvidaste cuánto aportaste. En catorce años va a ser un árbol grande — y para entonces, alguien más va a estar plantando el siguiente.",
+    pregunta: "Registramos el aporte",
+    respuesta: "Una vez hecho, te vamos a estar enviando un mail de confirmación.",
   },
   {
-    pregunta: "¿Y si aporto poco, cambia algo?",
+    pregunta: "Designamos recursos",
     respuesta:
-      "Sí. Ningún aporte financia un árbol entero solo, pero todos juntos sí. Los Tualdos crece de a poco, con gente que decidió sumar lo que podía, cuando podía.",
+      "Gracias a tu aporte, podemos sumar el mismo para el circuito de materiales e insumos necesarios para hacer crecer la reserva.",
   },
   {
-    pregunta: "¿Voy a poder ver en qué se convirtió mi aporte?",
+    pregunta: "Tu aporte hizo el cambio",
     respuesta:
-      "Sí. Te mandamos fotos georreferenciadas de cada temporada. No es una promesa linda: es parte de cómo trabajamos, con auditoría de Control Union incluida.",
+      "Una vez comprados los materiales e insumos, nuestro equipo se encarga de plantar un árbol o cuidar uno existente gracias al aporte.",
   },
   {
-    pregunta: "¿Por qué el Delta del Paraná?",
+    pregunta: "Te mantenemos al tanto",
     respuesta:
-      "Porque es nuestra casa. Ahí está la reserva, ahí vive la fauna que estamos devolviendo, y ahí es donde un árbol nativo realmente hace la diferencia.",
+      "Luego de realizadas las tareas y uso de tu aporte, te notificamos qué pasa con la reserva, una vez al mes. Y también podés visitarla si así lo deseás.",
   },
 ];
 
@@ -488,10 +488,36 @@ export const estimacionAporte = {
   // costoPorArbolArs toma como referencia el plantín del catálogo (plantify.bio/catalog).
   costoPorArbolArs: 4900,
   co2KgPorArbolEstimado: 10,
-  montoMinimoArs: 2500,
+  montoMinimoArs: 1000,
   montoMaximoArs: 10000,
-  montosSugeridosArs: [2500, 5000, 7500, 10000],
+  montosSugeridosArs: [1000, 2500, 5000, 7500, 10000],
 };
+
+export type EmpresaLanding = {
+  slug: string;
+  empresa: string;
+  logo: string; // path en /public
+  logoAncho: number;
+  logoAlto: number;
+  frase: string;
+  explicacion: string;
+  video: string; // path en /public
+};
+
+// Landing enfocada por empresa (para QR / links directos de campaña). Una sola
+// acción posible: aportar. Sin navegación ni contenido institucional alrededor.
+export const empresasLanding: EmpresaLanding[] = [
+  {
+    slug: "aeropuertos-argentina-2000",
+    empresa: "Aeropuertos Argentina 2000",
+    logo: "/logos-empresas/aeropuertos-argentina-2000.svg",
+    logoAncho: 220,
+    logoAlto: 84,
+    frase: "Ayudá a plantar un árbol",
+    explicacion: "Este aporte va directo a la plantación en Los Tualdos.",
+    video: "/reserva/tualdos-hero.mp4",
+  },
+];
 
 /**
  * Contenido institucional para empresas, tomado tal cual de

@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
 type CuerpoAporte = {
-  nombre: string;
-  email: string;
+  nombre?: string;
+  email?: string;
   monto: number;
   sector: string;
   arbol?: string;
@@ -16,9 +16,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  if (!body.nombre || !body.email || !body.monto || body.monto <= 0) {
+  if (!body.monto || body.monto <= 0) {
     return NextResponse.json(
-      { ok: false, error: "Revisá tu nombre, tu email y el monto del aporte." },
+      { ok: false, error: "Revisá el monto del aporte." },
       { status: 400 }
     );
   }
