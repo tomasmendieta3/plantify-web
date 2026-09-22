@@ -32,7 +32,7 @@ export default function JuntosMasFuertes() {
             </p>
             <p className="text-verde-profundo/70">
               Impulsá tu impacto ambiental y fortalecé tu credibilidad con seguimiento satelital,
-              auditorías y certificaciones de Control Union y Gold Standard.{" "}
+              auditorías y certificación de Control Union.{" "}
               <span className="font-bold text-verde-profundo">
                 Hablemos de cómo la alianza puede beneficiarte a vos y a Los Tualdos.
               </span>

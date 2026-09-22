@@ -8,9 +8,6 @@ import {
   BadgeCheck,
   ShieldCheck,
   CheckCircle2,
-  Award,
-  Globe,
-  Repeat,
   Signpost,
   QrCode,
   Share2,
@@ -33,7 +30,6 @@ import {
   empresasMision,
   experienciasEmpresa,
   marketingForestal,
-  modeloGoldStandard,
   organizacion,
   pasosReserva,
   recorridoAportante,
@@ -43,11 +39,10 @@ import { images } from "@/lib/images";
 export const metadata: Metadata = {
   title: "Empresas",
   description:
-    "Desarrollamos reservas forestales a medida para empresas: reserva, marketing forestal, experiencias y un acuerdo certificado por Control Union o Gold Standard.",
+    "Desarrollamos reservas forestales a medida para empresas: reserva, marketing forestal, experiencias y un acuerdo certificado por Control Union.",
 };
 
 const ICONOS_PASO_RESERVA: LucideIcon[] = [Sprout, Leaf, FileCheck2, BadgeCheck];
-const ICONOS_GOLD_STANDARD: LucideIcon[] = [Award, Globe, Repeat];
 const ICONOS_MARKETING: LucideIcon[] = [Signpost, QrCode, BadgeCheck, Share2, ImageIcon, BarChart3];
 const ICONOS_EXPERIENCIAS: LucideIcon[] = [Sprout, GraduationCap, Users];
 const ICONOS_RECORRIDO: LucideIcon[] = [QrCode, Sprout, Leaf, FileCheck2, BadgeCheck, Share2];
@@ -117,13 +112,21 @@ export default function EmpresasPage() {
                 i === 0 ? "bg-verde-profundo text-crema" : "bg-card/50 text-verde-profundo"
               }`}
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <div
+                className={`relative aspect-[4/3] w-full overflow-hidden ${
+                  capa.imagen === "logoControlUnion" ? "bg-crema p-10" : ""
+                }`}
+              >
                 <Image
                   src={images[capa.imagen].src}
                   alt={images[capa.imagen].alt}
                   fill
                   sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className={
+                    capa.imagen === "logoControlUnion"
+                      ? "object-contain"
+                      : "object-cover transition-transform duration-500 group-hover:scale-110"
+                  }
                 />
               </div>
               <div className="p-6">
@@ -218,44 +221,6 @@ export default function EmpresasPage() {
               <p className="font-medium text-verde-profundo">{item}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Modelo Gold Standard */}
-      <section className="bg-card/40">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-          <div className="text-center">
-            <div className="relative mx-auto h-32 w-32 sm:h-40 sm:w-40">
-              <Image
-                src={images.logoGoldStandard.src}
-                alt={images.logoGoldStandard.alt}
-                fill
-                className="object-contain"
-              />
-            </div>
-            <p className="mt-4 text-sm font-bold tracking-wide text-esmeralda uppercase">
-              Capa 01 · La reserva — certificación Gold Standard
-            </p>
-            <h2 className="mx-auto mt-3 max-w-3xl font-black text-3xl leading-tight text-verde-profundo sm:text-4xl lg:text-5xl">
-              {modeloGoldStandard.titulo}
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-verde-profundo/70">{modeloGoldStandard.bajada}</p>
-          </div>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {modeloGoldStandard.items.map((item, i) => {
-              const Icono = ICONOS_GOLD_STANDARD[i];
-              return (
-                <div key={item.titulo} className="rounded-2xl bg-crema p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-verde-profundo">
-                    <Icono className="text-esmeralda" size={22} strokeWidth={1.75} />
-                  </div>
-                  <p className="mt-4 font-medium text-verde-profundo">{item.titulo}</p>
-                  <p className="mt-1 text-sm text-verde-profundo/70">{item.texto}</p>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </section>
 
@@ -385,7 +350,7 @@ export default function EmpresasPage() {
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-verde-profundo/70">{acuerdoModelos.bajada}</p>
 
-          <div className="mt-10 grid gap-6 text-left sm:grid-cols-2">
+          <div className="mx-auto mt-10 max-w-md text-left">
             <div className="rounded-2xl bg-crema p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-10">
               <div className="relative h-16 w-40">
                 <Image
@@ -398,20 +363,6 @@ export default function EmpresasPage() {
               <p className="mt-6 font-black text-2xl text-verde-profundo">{acuerdoModelos.controlUnion.titulo}</p>
               <p className="mt-1 font-bold text-esmeralda">{acuerdoModelos.controlUnion.subtitulo}</p>
               <p className="mt-3 text-verde-profundo/75">{acuerdoModelos.controlUnion.texto}</p>
-            </div>
-
-            <div className="rounded-2xl bg-crema p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-10">
-              <div className="relative h-16 w-40">
-                <Image
-                  src={images.logoGoldStandard.src}
-                  alt={images.logoGoldStandard.alt}
-                  fill
-                  className="object-contain object-left"
-                />
-              </div>
-              <p className="mt-6 font-black text-2xl text-verde-profundo">{acuerdoModelos.goldStandard.titulo}</p>
-              <p className="mt-1 font-bold text-esmeralda">{acuerdoModelos.goldStandard.subtitulo}</p>
-              <p className="mt-3 text-verde-profundo/75">{acuerdoModelos.goldStandard.texto}</p>
             </div>
           </div>
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Droplet, Leaf, MapPin, TreePine, Zap, type LucideIcon } from "lucide-react";
 import Equipo from "@/components/home/Equipo";
-import { caracteristicasReserva, certificaciones, co2, datosReserva, mision, reserva } from "@/data/site";
+import { caracteristicasReserva, certificaciones, datosReserva, mision, reserva } from "@/data/site";
 import { images } from "@/lib/images";
 
 const ICONOS_CARACTERISTICA: Record<string, LucideIcon> = { TreePine, Droplet, Zap };
@@ -10,7 +10,7 @@ const ICONOS_CARACTERISTICA: Record<string, LucideIcon> = { TreePine, Droplet, Z
 export const metadata: Metadata = {
   title: "Nosotros",
   description:
-    "Quiénes somos en Plantify, cómo certificamos Los Tualdos con Control Union y Gold Standard, y cómo medimos el CO₂ con metodología alométrica IPCC.",
+    "Quiénes somos en Plantify, cómo certificamos Los Tualdos con Control Union y cómo medimos el CO₂ con metodología alométrica IPCC.",
 };
 
 export default function NosotrosPage() {
@@ -119,31 +119,29 @@ export default function NosotrosPage() {
       <Equipo />
 
       <section id="certificaciones" className="scroll-mt-24 bg-card/40">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-8">
           <h2 className="font-bold text-2xl text-verde-profundo">Certificaciones</h2>
-          <div className="mt-8 grid gap-8 sm:grid-cols-2">
+          <div className="mt-8 space-y-8">
             {certificaciones.map((cert) => (
-              <div key={cert.nombre}>
-                <p className="text-lg font-medium text-dorado">{cert.nombre}</p>
-                <p className="mt-1 text-sm text-verde-profundo/60">{cert.descripcion}</p>
-                <p className="mt-3 text-sm leading-relaxed text-verde-profundo/75">{cert.detalle}</p>
+              <div key={cert.nombre} className="rounded-2xl bg-verde-profundo p-8 sm:p-10">
+                <div className="relative mx-auto h-14 w-14">
+                  <Image
+                    src={images.logoControlUnion.src}
+                    alt={images.logoControlUnion.alt}
+                    fill
+                    className="object-contain brightness-0 invert"
+                  />
+                </div>
+                <p className="mt-4 text-2xl font-bold text-esmeralda">{cert.nombre}</p>
+                <p className="mt-1 font-medium text-white/70">{cert.descripcion}</p>
+                <p className="mt-4 leading-relaxed text-white/85">{cert.detalle}</p>
+                <p className="mt-4 text-sm text-white/60">
+                  Usamos este proceso únicamente para auditar y verificar la plantación, nada más.
+                </p>
               </div>
             ))}
           </div>
         </div>
-      </section>
-
-      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
-        <h2 className="font-bold text-2xl text-verde-profundo">
-          Cómo medimos el CO₂
-        </h2>
-        <p className="mt-4 text-verde-profundo/75 leading-relaxed">{co2.metodologia}.</p>
-        <p className="mt-3 text-verde-profundo/75 leading-relaxed">
-          Siempre distinguimos entre CO₂ <span className="text-verde-profundo/50">proyectado</span> —
-          una estimación sobre el crecimiento esperado— y CO₂{" "}
-          <span className="text-dorado">verificado</span> — lo que ya pasó por la auditoría anual
-          de Control Union. No presentamos una proyección como si fuera un dato verificado.
-        </p>
       </section>
     </div>
   );

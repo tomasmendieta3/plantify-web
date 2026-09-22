@@ -72,10 +72,6 @@ export const images = {
     src: "/certificaciones/control-union.webp",
     alt: "Logo de Control Union",
   },
-  logoGoldStandard: {
-    src: "/certificaciones/gold-standard.webp",
-    alt: "Logo de Gold Standard for the Global Goals",
-  },
   // Foto real: cartel de la Reserva Forestal Plantify x Los Tualdos.
   marketingCartel: {
     src: "/empresas/marketing-cartel.jpg",
@@ -90,10 +86,6 @@ export const images = {
   qrEscritorio: {
     src: "/empresas/qr-escritorio.png",
     alt: "Cartel de escritorio con QR para conocer el aporte ambiental de la empresa, en la recepción de una oficina",
-  },
-  acuerdoModelos: {
-    src: "/empresas/acuerdo-modelos.jpg",
-    alt: "Logos de Control Union y Gold Standard",
   },
   // Foto real: jornada de team building del equipo en Los Tualdos.
   teamBuilding: {

@@ -92,13 +92,7 @@ export const certificaciones: Certificacion[] = [
     nombre: "Control Union",
     descripcion: "Auditor certificador",
     detalle:
-      "Audita Los Tualdos una vez por año y da trazabilidad por hectárea con coordenadas GPS. No es trazabilidad por árbol individual ni satelital en tiempo real: es una auditoría anual, en el terreno — la misma seriedad que necesitás para tu reporte de sostenibilidad.",
-  },
-  {
-    nombre: "Gold Standard",
-    descripcion: "Bonos de carbono",
-    detalle:
-      "El estándar más reconocido para bonos de carbono en el mercado voluntario. Convierte el CO₂ verificado de tu sector en algo que podés reportar y mostrar, no solo una intención.",
+      "Audita Los Tualdos una vez por año, en el terreno, con trazabilidad por hectárea y coordenadas GPS — la misma seriedad que necesitás para tu reporte de sostenibilidad.",
   },
 ];
 
@@ -538,7 +532,7 @@ export type CapaEmpresa = {
   titulo: string;
   bajada: string;
   texto: string;
-  imagen: "plantacion" | "marketingCartel" | "teamBuilding" | "acuerdoModelos";
+  imagen: "plantacion" | "marketingCartel" | "teamBuilding" | "logoControlUnion";
 };
 
 export const empresasMision = {
@@ -554,7 +548,7 @@ export const capasEmpresa: CapaEmpresa[] = [
     titulo: "Reserva forestal",
     bajada: "El ancla del proyecto",
     texto:
-      "Diseño, plantación y custodia de tu propio sector forestal. Auditado bajo el estándar de Control Union o Gold Standard (dos modelos).",
+      "Diseño, plantación y custodia de tu propio sector forestal. Auditado bajo el estándar de Control Union.",
     imagen: "plantacion",
   },
   {
@@ -578,8 +572,8 @@ export const capasEmpresa: CapaEmpresa[] = [
     titulo: "Acuerdo",
     bajada: "A tu medida",
     texto:
-      "Dos modelos posibles, Control Union o Gold Standard, con un abanico amplio de herramientas para convocar a tu comunidad sin que te demande presupuesto propio.",
-    imagen: "acuerdoModelos",
+      "Certificado por Control Union, con un abanico amplio de herramientas para convocar a tu comunidad sin que te demande presupuesto propio.",
+    imagen: "logoControlUnion",
   },
 ];
 
@@ -609,7 +603,7 @@ export const pasosReserva: PasoReserva[] = [
   {
     numero: "04",
     titulo: "Custodia y certificación",
-    texto: "Mantenimiento bajo dos estándares.",
+    texto: "Mantenimiento y auditoría anual con Control Union.",
   },
 ];
 
@@ -627,31 +621,6 @@ export const auditoriaControlUnion = {
   ],
 };
 
-export type ItemGoldStandard = {
-  titulo: string;
-  texto: string;
-};
-
-export const modeloGoldStandard = {
-  titulo: "Modelo Gold Standard",
-  bajada:
-    "Gold Standard certifica por 30 años y emite bonos de carbono: un crédito de carbono certificado bajo un estándar internacional reconocido.",
-  items: [
-    {
-      titulo: "Crédito certificado",
-      texto: "Gold Standard certifica y emite los bonos de carbono que representan una tonelada de CO₂ verificada.",
-    },
-    {
-      titulo: "Estándar internacional",
-      texto: "Reconocido por mercados voluntarios de carbono.",
-    },
-    {
-      titulo: "Tu bono / Claims",
-      texto: "Dos opciones: reclamar tus bonos de carbono o tus claims de carbono.",
-    },
-  ] satisfies ItemGoldStandard[],
-};
-
 export type PasoRecorrido = {
   titulo: string;
   texto: string;
@@ -660,7 +629,7 @@ export type PasoRecorrido = {
 // Cómo viaja un aporte, de punta a punta — versión simple para mostrar en la web.
 export const recorridoAportante = {
   titulo: "Así viajan los aportes en tu empresa.",
-  bajada: "El mismo recorrido para cualquiera de los dos modelos, de punta a punta.",
+  bajada: "El mismo recorrido, de punta a punta.",
   pasos: [
     {
       titulo: "Escanea el QR",
@@ -676,7 +645,7 @@ export const recorridoAportante = {
     },
     {
       titulo: "Auditan y certifican",
-      texto: "Control Union o Gold Standard auditan la plantación y certifican el carbono capturado.",
+      texto: "Control Union audita la plantación y certifica el carbono capturado.",
     },
     {
       titulo: "Certificado y dashboard",
@@ -731,20 +700,14 @@ export const experienciasEmpresa = {
 // Capa 04 · Acuerdo — modelos de negocio.
 export const acuerdoModelos = {
   titulo: "¿Cómo trabajamos?",
-  bajada: "Abrimos el abanico: cada alianza se arma a medida sobre uno o varios de estos modelos.",
+  bajada: "Certificamos y auditamos tu sector forestal con Control Union, y armamos la alianza a medida de tu empresa.",
   controlUnion: {
     titulo: "Modelo Control Union",
     subtitulo: "Sector forestal certificado",
     texto:
       "Financiás y sostenés tu propio sector forestal en Los Tualdos, auditado y certificado por Control Union, con distintas formas de aportar según el tamaño de tu empresa.",
   },
-  goldStandard: {
-    titulo: "Modelo Gold Standard",
-    subtitulo: "Emisión de bonos de carbono",
-    texto:
-      "Créditos de carbono certificados, comercializables o retirables a nombre de la empresa en el mercado voluntario.",
-  },
-  flexibilidad: "Flexibilidad total · armamos cada alianza a medida, combinando los modelos según la empresa.",
+  flexibilidad: "Flexibilidad total · armamos cada alianza a medida según las necesidades de tu empresa.",
 };
 
 // Capa 04 · Acuerdo — la alianza en concreto.
@@ -754,7 +717,7 @@ export const alianzaCompleta = {
   bullets: [
     "Sector exclusivo en Los Tualdos con cartel de tu marca.",
     "Custodia y mantenimiento.",
-    "Certificación Control Union o Gold Standard.",
+    "Certificación Control Union.",
     "Documentación auditada lista para tu reporte de carbono.",
     "QR único que conecta tu producto con tu bosque.",
     "Material gráfico y audiovisual desde el día uno.",
@@ -764,7 +727,6 @@ export const alianzaCompleta = {
   stats: [
     { valor: "A medida", label: "Proyecto único" },
     { valor: "14 años", label: "Control Union" },
-    { valor: "30 años", label: "Gold Standard" },
     { valor: "Llave en mano", label: "Operado por Plantify" },
   ],
 };

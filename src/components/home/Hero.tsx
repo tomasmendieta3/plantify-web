@@ -38,8 +38,7 @@ export default function Hero() {
         <div className="max-w-5xl">
           <div className="flex flex-wrap gap-6 lg:translate-x-20 lg:-translate-y-20">
             {certificaciones.map((cert) => {
-              const logo =
-                cert.nombre === "Control Union" ? images.logoControlUnion : images.logoGoldStandard;
+              const logo = images.logoControlUnion;
               return (
                 <div key={cert.nombre} className="flex max-w-[260px] items-center gap-3">
                   <div className="relative h-20 w-20 shrink-0">

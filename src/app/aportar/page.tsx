@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Heart } from "lucide-react";
 import FormularioAporte from "@/components/FormularioAporte";
 import CaminoAporte from "@/components/CaminoAporte";
 import { aportarHistoria, aportarStorytelling, sectores } from "@/data/site";
@@ -23,7 +24,7 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
     <div className="relative isolate">
       <CaminoAporte />
 
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden bg-crema">
         <div className="mx-auto max-w-6xl px-5 pt-14 pb-10 sm:px-8">
           <div id="hero-aportar" className="relative aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-[16/9]">
             <video
@@ -127,9 +128,11 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
       </section>
 
       <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
-        <div className="rounded-xl border border-verde-profundo/10 bg-card/40 p-5 text-sm text-verde-profundo/70">
-          <p className="font-medium text-verde-profundo">Qué recibís</p>
-          <p className="mt-1">
+        <div className="relative mx-auto flex aspect-square w-full max-w-md flex-col items-center justify-center rounded-2xl bg-verde-profundo p-10 text-center">
+          <div className="pointer-events-none absolute inset-5 rounded-xl border border-white/50" />
+          <Heart className="h-12 w-12 text-esmeralda" fill="currentColor" />
+          <p className="mt-5 font-bold text-3xl text-white">Qué recibís</p>
+          <p className="mt-3 text-white/85">
             Un comprobante de tu aporte y acceso a las fotos y novedades del sector al que sumaste.
           </p>
         </div>

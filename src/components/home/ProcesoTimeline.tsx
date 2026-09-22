@@ -76,14 +76,6 @@ export default function ProcesoTimeline() {
                   className="object-contain brightness-0 invert"
                 />
               </div>
-              <div className="relative h-14 w-14">
-                <Image
-                  src={images.logoGoldStandard.src}
-                  alt={images.logoGoldStandard.alt}
-                  fill
-                  className="object-contain brightness-0 invert"
-                />
-              </div>
             </div>
           </div>
 
