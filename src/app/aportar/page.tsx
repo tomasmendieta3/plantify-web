@@ -25,8 +25,11 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
       <CaminoAporte />
 
       <section className="relative overflow-hidden bg-crema">
-        <div className="mx-auto max-w-6xl px-5 pt-14 pb-10 sm:px-8">
-          <div id="hero-aportar" className="relative aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-[16/9]">
+        <div className="mx-auto max-w-6xl px-5 py-5 sm:px-8 sm:pt-14 sm:pb-10">
+          <div
+            id="hero-aportar"
+            className="relative h-[calc(100dvh-114px)] w-full overflow-hidden rounded-2xl sm:aspect-[16/9] sm:h-auto"
+          >
             <video
               src="/reserva/aportar-hero.mp4"
               autoPlay
@@ -116,11 +119,12 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
                 className="object-cover"
               />
             </div>
-            <div className="order-1 lg:order-2">
-              <h2 className="font-bold text-2xl text-verde-profundo">Qué hacemos con tu aporte</h2>
-              <p className="mt-6 text-lg leading-relaxed text-verde-profundo/80">
-                Hacemos que Los Tualdos crezca poco a poco, haciendo que seas parte del cambio para el
-                mundo, un mundo más verde.
+            <div className="order-1 flex items-center justify-center text-center lg:order-2">
+              <p className="text-2xl leading-loose font-bold">
+                <span className="box-decoration-clone bg-verde-profundo px-2 py-1 text-white">
+                  Con tu aporte, podemos dar un paso fundamental para poder impulsar el
+                  crecimiento de la reserva. Vas a ser parte del cambio, con muy poquito.
+                </span>
               </p>
             </div>
           </div>

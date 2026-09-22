@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Droplet, Leaf, MapPin, TreePine, Zap, type LucideIcon } from "lucide-react";
+import { Droplet, Leaf, MapPin, TreePine, Users, Zap, type LucideIcon } from "lucide-react";
 import Equipo from "@/components/home/Equipo";
 import { caracteristicasReserva, certificaciones, datosReserva, mision, reserva } from "@/data/site";
 import { images } from "@/lib/images";
@@ -17,18 +17,16 @@ export default function NosotrosPage() {
   return (
     <div className="text-center">
       <section className="mx-auto max-w-6xl px-5 pt-14 pb-10 sm:px-8">
-        <h1 className="text-4xl text-verde-profundo sm:text-5xl">Nosotros</h1>
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-esmeralda/15">
+          <Users className="text-verde-profundo" size={30} strokeWidth={1.75} />
+        </div>
+        <h1 className="mt-5 font-black text-5xl text-verde-profundo sm:text-6xl">Nosotros</h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-verde-profundo/75">
           Somos el equipo que planta, cuida y audita Los Tualdos, en {reserva.localidad}.
         </p>
       </section>
 
-      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
-        <p className="text-xl leading-relaxed text-verde-profundo/85">{mision.frase}</p>
-        <p className="mt-6 text-verde-profundo/75 leading-relaxed">{mision.vision}</p>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-5 pb-16 sm:px-8">
+      <section className="mx-auto max-w-5xl px-5 pt-6 pb-16 sm:px-8">
         <div className="relative aspect-video w-full overflow-hidden rounded-2xl shadow-xl">
           <video
             src="/reserva/tualdos-nosotros-hero.mp4"
@@ -67,14 +65,21 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
-        <h2 className="font-bold text-2xl text-verde-profundo">Cómo empezamos</h2>
-        <p className="mt-4 text-verde-profundo/75 leading-relaxed">
-          Plantify nació para resolver un problema concreto: las empresas quieren compensar y
-          reforestar, pero no tienen dónde hacerlo con seriedad ni cómo mostrarlo. Armamos Los
-          Tualdos para que cada empresa tenga un sector propio, con seguimiento real durante
-          catorce años, no una promesa de árboles que nadie vuelve a ver.
-        </p>
+      <section className="relative overflow-hidden py-24">
+        <Image
+          src={images.heroFondo.src}
+          alt={images.heroFondo.alt}
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-verde-profundo/70" />
+        <div className="relative mx-auto max-w-4xl px-5 sm:px-8">
+          <h2 className="font-bold text-2xl text-crema sm:text-4xl lg:text-5xl">
+            Nos mueve el objetivo de que todas las personas y empresas puedan aportar al cambio
+            para un futuro más próspero para todos, a través de Plantify.
+          </h2>
+        </div>
       </section>
 
       <section className="bg-card/40">

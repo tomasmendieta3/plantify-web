@@ -114,20 +114,28 @@ export default function EmpresasPage() {
             >
               <div
                 className={`relative aspect-[4/3] w-full overflow-hidden ${
-                  capa.imagen === "logoControlUnion" ? "bg-crema p-10" : ""
+                  capa.imagen === "logoControlUnion" ? "bg-crema" : ""
                 }`}
               >
-                <Image
-                  src={images[capa.imagen].src}
-                  alt={images[capa.imagen].alt}
-                  fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  className={
-                    capa.imagen === "logoControlUnion"
-                      ? "object-contain"
-                      : "object-cover transition-transform duration-500 group-hover:scale-110"
-                  }
-                />
+                {capa.imagen === "logoControlUnion" ? (
+                  <div className="absolute inset-16 sm:inset-10">
+                    <Image
+                      src={images[capa.imagen].src}
+                      alt={images[capa.imagen].alt}
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-contain"
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    src={images[capa.imagen].src}
+                    alt={images[capa.imagen].alt}
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
               </div>
               <div className="p-6">
                 <p className="text-xs font-bold text-esmeralda italic">{capa.numero}</p>

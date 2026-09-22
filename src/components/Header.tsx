@@ -116,13 +116,13 @@ export default function Header() {
       </div>
 
       {menuAbierto && (
-        <div className="fixed top-[65px] right-0 bottom-0 left-0 z-40 flex flex-col bg-crema p-6 md:hidden">
-          <nav className="flex flex-col gap-6" aria-label="Navegación mobile">
+        <div className="fixed top-[65px] right-0 bottom-0 left-0 z-40 flex flex-col justify-center gap-10 bg-crema px-5 py-6 md:hidden">
+          <nav className="flex flex-col gap-4" aria-label="Navegación mobile">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-2xl text-verde-profundo"
+                className="block rounded-full border border-verde-profundo/10 bg-card/40 px-7 py-3 text-center text-lg text-verde-profundo transition-colors hover:border-esmeralda/40"
                 onClick={() => setMenuAbierto(false)}
               >
                 {link.label}
@@ -131,7 +131,7 @@ export default function Header() {
           </nav>
           <Link
             href="/aportar"
-            className="mt-auto rounded-full bg-esmeralda px-5 py-4 text-center text-base font-medium text-verde-profundo"
+            className="block rounded-full bg-esmeralda px-7 py-3.5 text-center text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
             onClick={() => setMenuAbierto(false)}
           >
             Sumá tu aporte
