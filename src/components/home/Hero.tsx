@@ -32,27 +32,14 @@ export default function Hero() {
       <div className="relative w-full px-4 pt-24 pb-10 sm:px-6 lg:px-8 lg:pb-12">
         <div className="max-w-5xl">
           <div className="flex flex-wrap gap-6 lg:translate-x-20 lg:-translate-y-20">
-            {certificaciones.map((cert) => {
-              const logo = images.logoControlUnion;
-              return (
-                <div key={cert.nombre} className="flex max-w-[260px] items-center gap-3">
-                  <div className="relative h-20 w-20 shrink-0">
-                    <Image
-                      src={logo.src}
-                      alt={logo.alt}
-                      fill
-                      className="object-contain brightness-0 invert"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-white">{cert.nombre}</p>
-                    <p className="mt-0.5 text-xs font-medium leading-relaxed text-white/75">
-                      {cert.descripcion}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+            {certificaciones.map((cert) => (
+              <div key={cert.nombre} className="max-w-[260px]">
+                <p className="text-sm font-bold text-white">{cert.nombre}</p>
+                <p className="mt-0.5 text-xs font-medium leading-relaxed text-white/75">
+                  {cert.descripcion}
+                </p>
+              </div>
+            ))}
           </div>
 
           <div className="lg:translate-x-20 lg:-translate-y-20">
