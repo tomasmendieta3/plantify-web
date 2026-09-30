@@ -3,12 +3,7 @@ import Link from "next/link";
 import { certificaciones } from "@/data/site";
 import { images } from "@/lib/images";
 
-const carrusel = [
-  images.heroBosque,
-  images.plantacion,
-  images.reserva,
-  images.heroFondo,
-];
+const carrusel = [images.heroFondo, images.reserva];
 
 export default function Hero() {
   const tira = [...carrusel, ...carrusel];

@@ -115,20 +115,12 @@ body {
 
 @keyframes hero-slide {
   0%,
-  18.75% {
+  37.5% {
     transform: translateX(0%);
   }
-  25%,
-  43.75% {
-    transform: translateX(-12.5%);
-  }
   50%,
-  68.75% {
+  87.5% {
     transform: translateX(-25%);
-  }
-  75%,
-  93.75% {
-    transform: translateX(-37.5%);
   }
   100% {
     transform: translateX(-50%);
@@ -136,5 +128,17 @@ body {
 }
 
 .hero-slide-track {
-  animation: hero-slide 16s ease-in-out infinite;
+  animation: hero-slide 8s ease-in-out infinite;
+}
+
+.resaltado {
+  background-color: var(--verde-profundo);
+  padding: 0.05em 0.3em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.resaltado-fino {
+  background: linear-gradient(var(--verde-profundo), var(--verde-profundo)) center / 100% 80% no-repeat;
+  padding-block: 0;
 }

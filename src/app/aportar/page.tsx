@@ -42,23 +42,31 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
 
             <div className="absolute inset-0 flex items-center justify-center p-6 text-center sm:p-10">
               <div className="max-w-xl">
-                <h1 className="text-5xl font-extrabold text-white sm:text-6xl">¿Plantamos tu árbol?</h1>
+                <h1 className="text-5xl font-extrabold text-white leading-[1.7] sm:text-6xl sm:leading-[1.7]">
+                  <span className="resaltado resaltado-fino">¿Plantamos tu árbol?</span>
+                </h1>
 
                 {sector ? (
-                  <p className="mt-4 text-lg text-white/85">
-                    Tu aporte suma directo al sector de{" "}
-                    <strong className="text-white">{sector.empresa}</strong>, {sector.hectareas}{" "}
-                    hectáreas en Los Tualdos.
+                  <p className="mt-4 text-lg leading-[1.75] text-white/90">
+                    <span className="resaltado">
+                      Tu aporte suma directo al sector de{" "}
+                      <strong className="text-white">{sector.empresa}</strong>, {sector.hectareas}{" "}
+                      hectáreas en Los Tualdos.
+                    </span>
                   </p>
                 ) : linkRoto ? (
-                  <p className="mt-4 text-lg text-white/85">
-                    No encontramos ese sector. Probá con el link que te compartieron o escribinos y te
-                    ayudamos a encontrarlo.
+                  <p className="mt-4 text-lg leading-[1.75] text-white/90">
+                    <span className="resaltado">
+                      No encontramos ese sector. Probá con el link que te compartieron o escribinos y te
+                      ayudamos a encontrarlo.
+                    </span>
                   </p>
                 ) : (
-                  <p className="mt-4 text-lg text-white/85">
-                    {aportarStorytelling.porQue}{" "}
-                    <strong className="font-bold text-white">{aportarStorytelling.porQueDestacado}</strong>
+                  <p className="mt-4 text-lg leading-[1.75] text-white/90">
+                    <span className="resaltado">
+                      {aportarStorytelling.porQue}{" "}
+                      <strong className="font-bold text-white">{aportarStorytelling.porQueDestacado}</strong>
+                    </span>
                   </p>
                 )}
               </div>

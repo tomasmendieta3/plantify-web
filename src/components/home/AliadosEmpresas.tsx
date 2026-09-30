@@ -26,7 +26,7 @@ export default function AliadosEmpresas() {
         </div>
 
         <div className="flex flex-col">
-          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+          <div className="mb-12 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
             {empresasAliadas.map((empresa) => (
               <div key={empresa.nombre} className="relative h-16">
                 <Image
