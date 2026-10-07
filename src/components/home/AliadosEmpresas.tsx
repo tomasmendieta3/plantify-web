@@ -16,7 +16,7 @@ export default function AliadosEmpresas() {
           </p>
           <p className="mt-4 text-verde-profundo/70">
             Financiamos junto a ellas sectores de forestación y conservación en Los Tualdos
-            durante 14 años, con seguimiento satelital, auditorías y reportes sobre su evolución,
+            con seguimiento satelital, auditorías y reportes sobre su evolución,
             superficie y captura de carbono.
           </p>
           <p className="mt-4 font-bold text-verde-profundo">

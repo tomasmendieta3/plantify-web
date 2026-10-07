@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     template: "%s · Plantify",
   },
   description:
-    "Plantify desarrolla y opera reservas forestales certificadas en el Delta del Paraná. Tu empresa recibe un sector propio en Los Tualdos, con catorce años de cuidado, monitoreo y auditoría de Control Union.",
+    "Plantify desarrolla y opera reservas forestales certificadas en el Delta del Paraná. Tu empresa recibe un sector propio en Los Tualdos, con cuidado, monitoreo y auditoría de Control Union.",
   alternates: {
     canonical: organizacion.sitio,
   },
   openGraph: {
     title: "Plantify — Reservas forestales certificadas para empresas",
     description:
-      "Reforestación corporativa auditada en el Delta del Paraná. Compensación de carbono con trazabilidad por hectárea y catorce años de custodia.",
+      "Reforestación corporativa auditada en el Delta del Paraná. Compensación de carbono con trazabilidad por hectárea y custodia a largo plazo.",
     locale: "es_AR",
     siteName: "Plantify",
     url: organizacion.sitio,

@@ -1,36 +1,34 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import Image from "next/image";
-import { catalogoArboles, estimacionAporte } from "@/data/site";
-import { images } from "@/lib/images";
+import { estimacionAporte } from "@/data/site";
 import { formatNumero } from "@/lib/format";
 
 const { montosSugeridosArs, montoMinimoArs, montoMaximoArs } = estimacionAporte;
 
+// t CO₂ por cada peso aportado: (t por árbol por año × años de captura) / (USD por árbol × tipo de cambio).
+const co2TnPorArs =
+  (estimacionAporte.co2TnPorArbolPorAnio * estimacionAporte.aniosCaptura) /
+  (estimacionAporte.costoPorArbolUsd * estimacionAporte.tipoCambioArsPorUsd);
+
 export default function FormularioAporte({
   sectorSlug,
   sectorNombre,
-  minimal = false,
 }: {
   sectorSlug: string;
   sectorNombre: string;
-  minimal?: boolean;
 }) {
-  const [arbolElegido, setArbolElegido] = useState<string | null>(null);
   const [montoElegido, setMontoElegido] = useState<number | null>(montosSugeridosArs[0]);
   const [montoLibre, setMontoLibre] = useState("");
   const [estado, setEstado] = useState<"idle" | "enviando" | "ok" | "error">("idle");
   const [errores, setErrores] = useState<Record<string, string>>({});
 
   const montoFinal = montoLibre ? Number(montoLibre) : montoElegido ?? 0;
-  const arbol = catalogoArboles.find((a) => a.slug === arbolElegido);
-  const arbolImg = arbol ? images[arbol.imagen as keyof typeof images] : null;
-
-  const cantidadArboles = montoFinal > 0
-    ? Math.max(1, Math.round(montoFinal / estimacionAporte.costoPorArbolArs))
-    : 0;
-  const co2EstimadoKg = cantidadArboles * estimacionAporte.co2KgPorArbolEstimado;
+  const co2EstimadoKg = Math.round(montoFinal * co2TnPorArs * 1000);
+  const co2Texto =
+    co2EstimadoKg >= 1000
+      ? { valor: (co2EstimadoKg / 1000).toLocaleString("es-AR", { maximumFractionDigits: 1 }), unidad: "t" }
+      : { valor: formatNumero(co2EstimadoKg), unidad: "kg" };
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -40,7 +38,6 @@ export default function FormularioAporte({
     const honeypot = String(form.get("empresa_web") || "");
 
     const nuevosErrores: Record<string, string> = {};
-    if (!minimal && !arbolElegido) nuevosErrores.arbol = "Elegí a qué árbol va tu aporte.";
     if (email && !email.includes("@")) nuevosErrores.email = "Ese email no nos cierra, revisalo.";
     if (!montoFinal || montoFinal < montoMinimoArs || montoFinal > montoMaximoArs) {
       nuevosErrores.monto = `Elegí un monto entre $${formatNumero(montoMinimoArs)} y $${formatNumero(montoMaximoArs)}.`;
@@ -59,7 +56,6 @@ export default function FormularioAporte({
           email,
           monto: montoFinal,
           sector: sectorSlug,
-          arbol: arbolElegido,
           honeypot,
         }),
       });
@@ -76,8 +72,7 @@ export default function FormularioAporte({
       <div className="rounded-xl border border-esmeralda/30 bg-esmeralda/10 p-6 text-verde-profundo">
         <p className="font-medium">Gracias por tu aporte a {sectorNombre}.</p>
         <p className="mt-1 text-sm text-verde-profundo/70">
-          Te mandamos un mail con el comprobante{arbol ? ` de tu ${arbol.nombre}` : ""} y con las
-          próximas fotos del sector.
+          Te mandamos un mail con el comprobante y con las novedades de la reserva.
         </p>
       </div>
     );
@@ -85,60 +80,7 @@ export default function FormularioAporte({
 
   return (
     <div>
-      {!minimal && (
-        <div>
-          <p className="text-sm text-verde-profundo/70">Elegí tu árbol</p>
-          <div className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {catalogoArboles.map((a) => {
-              const img = images[a.imagen as keyof typeof images];
-              const activo = arbolElegido === a.slug;
-              return (
-                <button
-                  key={a.slug}
-                  type="button"
-                  onClick={() => setArbolElegido(a.slug)}
-                  aria-pressed={activo}
-                  className={`overflow-hidden rounded-xl border bg-card/40 text-left transition-colors ${
-                    activo ? "border-esmeralda" : "border-verde-profundo/15 hover:border-esmeralda/50"
-                  }`}
-                >
-                  <div className="relative aspect-square">
-                    <Image src={img.src} alt={img.alt} fill sizes="150px" className="object-cover" />
-                  </div>
-                  <p
-                    className={`px-2 py-1.5 text-center text-sm ${
-                      activo ? "font-medium text-verde-profundo" : "text-verde-profundo/70"
-                    }`}
-                  >
-                    {a.nombre}
-                  </p>
-                </button>
-              );
-            })}
-          </div>
-          {errores.arbol && <p className="mt-1 text-sm text-red-700">{errores.arbol}</p>}
-        </div>
-      )}
-
       <div className="mx-auto mt-6 max-w-md overflow-hidden rounded-3xl border border-verde-profundo/10 bg-card/40">
-        {!minimal && arbol && arbolImg && (
-          <div className="relative m-2 h-44 overflow-hidden rounded-2xl sm:h-56">
-            <Image src={arbolImg.src} alt={arbolImg.alt} fill sizes="448px" className="object-cover" />
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-verde-profundo/85 via-verde-profundo/30 to-transparent p-4">
-              <div>
-                <p className="text-xs text-crema/75">Tu árbol</p>
-                <p className="font-bold text-xl text-crema">{arbol.nombre}</p>
-              </div>
-              {co2EstimadoKg > 0 && (
-                <div className="text-right">
-                  <p className="font-bold text-esmeralda">~{formatNumero(co2EstimadoKg)} kg</p>
-                  <p className="text-xs text-crema/75">CO₂ estimado</p>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
         <form onSubmit={onSubmit} noValidate className="space-y-5 p-6 sm:p-7">
           <input
             type="text"
@@ -150,7 +92,7 @@ export default function FormularioAporte({
           />
 
           <div id="monto-aporte">
-            <p className="text-sm text-verde-profundo/70">Monto del aporte</p>
+            <p className="text-lg font-bold text-verde-profundo">Monto del aporte</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {montosSugeridosArs.map((monto) => (
               <button
@@ -160,7 +102,7 @@ export default function FormularioAporte({
                   setMontoElegido(monto);
                   setMontoLibre("");
                 }}
-                className={`rounded-full border px-4 py-2 text-sm transition-colors ${
+                className={`rounded-full border px-5 py-2.5 text-lg font-bold transition-colors ${
                   montoElegido === monto && !montoLibre
                     ? "border-esmeralda bg-esmeralda text-verde-profundo"
                     : "border-verde-profundo/15 text-verde-profundo/70 hover:border-esmeralda/50"
@@ -171,7 +113,7 @@ export default function FormularioAporte({
             ))}
           </div>
           <div className="mt-3">
-            <label htmlFor="montoLibre" className="text-sm text-verde-profundo/70">
+            <label htmlFor="montoLibre" className="text-base font-semibold text-verde-profundo/80">
               O escribí tu monto (entre ${formatNumero(montoMinimoArs)} y ${formatNumero(montoMaximoArs)})
             </label>
             <input
@@ -185,7 +127,7 @@ export default function FormularioAporte({
                 setMontoLibre(e.target.value);
                 setMontoElegido(null);
               }}
-              className="mt-1 w-full rounded-lg border border-verde-profundo/15 bg-crema px-4 py-2.5 text-verde-profundo outline-none focus:border-esmeralda"
+              className="mt-1 w-full rounded-lg border border-verde-profundo/15 bg-crema px-4 py-3 text-lg font-bold text-verde-profundo outline-none focus:border-esmeralda"
             />
           </div>
           {errores.monto && <p className="mt-1 text-sm text-red-700">{errores.monto}</p>}
@@ -226,17 +168,17 @@ export default function FormularioAporte({
               {co2EstimadoKg > 0 && (
                 <div className="border-l border-white/30 pl-3">
                   <span className="inline-block rounded-full bg-white px-2.5 py-1 text-xs font-bold text-verde-profundo">
-                    CO₂ que compensás
+                    CO₂ estimado
                   </span>
                   <p className="mt-2 font-black text-4xl leading-none tracking-tight text-white">
-                    ~{formatNumero(co2EstimadoKg)}<span className="text-xl"> kg</span>
+                    ~{co2Texto.valor}<span className="text-xl"> {co2Texto.unidad}</span>
                   </p>
                 </div>
               )}
             </div>
             <p className="mt-4 text-xs font-medium text-white/85">
-              Estimación alométrica, no verificada. La cifra auditada llega con el informe de tu
-              sector.
+              Estimación no verificada: ~{formatNumero(estimacionAporte.co2TnPorArbolPorAnio * 1000)} kg
+              de CO₂ por árbol por año.
             </p>
           </div>
         )}
@@ -255,7 +197,7 @@ export default function FormularioAporte({
         >
           {estado === "enviando"
             ? "Procesando..."
-            : `Aportar${arbol ? ` para tu ${arbol.nombre}` : ""}${montoFinal ? ` — $${formatNumero(montoFinal)}` : ""}`}
+            : `Aportar${montoFinal ? ` — $${formatNumero(montoFinal)}` : ""}`}
         </button>
         </form>
       </div>

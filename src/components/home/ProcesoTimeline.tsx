@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { pasos } from "@/data/site";
-import { images } from "@/lib/images";
 import HeroVideo from "@/components/empresas/HeroVideo";
 
 export default function ProcesoTimeline() {
@@ -19,7 +17,7 @@ export default function ProcesoTimeline() {
             </h2>
             <p className="mt-4 max-w-md text-crema/70">
               Con Plantify, las empresas pueden destinar parte de su inversión ambiental a un
-              proyecto concreto, seguir su evolución durante 14 años y contar con información
+              proyecto concreto, seguir su evolución y contar con información
               verificable para comunicar y reportar lo que están haciendo.
             </p>
 
@@ -67,16 +65,7 @@ export default function ProcesoTimeline() {
               })}
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-8">
-              <div className="relative h-14 w-14">
-                <Image
-                  src={images.logoControlUnion.src}
-                  alt={images.logoControlUnion.alt}
-                  fill
-                  className="object-contain brightness-0 invert"
-                />
-              </div>
-            </div>
+            <p className="mt-10 text-sm font-bold text-crema/85">Auditado por Control Union</p>
           </div>
 
           <div className="hidden items-center justify-center lg:flex">

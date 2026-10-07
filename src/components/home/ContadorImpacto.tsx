@@ -8,7 +8,6 @@ export default function ContadorImpacto() {
     { label: "Árboles plantados", valor: reserva.arboles, prefijo: "+" },
     { label: "Hectáreas bajo custodia", valor: reserva.hectareas },
     { label: "Hectáreas asignadas a empresas", valor: reserva.hectareasAsignadas },
-    { label: "Años de custodia comprometidos", valor: reserva.aniosCustodia },
   ].filter((s) => !!s.valor);
 
   const hayCo2 = !!co2.proyectadoTn || !!co2.verificadoTn;

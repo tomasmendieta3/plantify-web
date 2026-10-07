@@ -55,7 +55,7 @@ export default async function EmpresaLandingPage({ params }: PageProps<"/e/[slug
       </div>
 
       <div className="mt-8 w-full text-left">
-        <FormularioAporte sectorSlug={empresaLanding.slug} sectorNombre={empresaLanding.empresa} minimal />
+        <FormularioAporte sectorSlug={empresaLanding.slug} sectorNombre={empresaLanding.empresa} />
       </div>
     </div>
   );

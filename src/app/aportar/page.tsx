@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Heart } from "lucide-react";
+import { Camera, Heart, Leaf, ShieldCheck, Sprout } from "lucide-react";
 import FormularioAporte from "@/components/FormularioAporte";
 import CaminoAporte from "@/components/CaminoAporte";
 import { aportarHistoria, aportarStorytelling, sectores } from "@/data/site";
 import { images } from "@/lib/images";
 
+const LOGROS_APORTE = [
+  { icono: Sprout, titulo: "Más bosque nativo", texto: "Suma a la plantación de nuevos árboles en Los Tualdos." },
+  { icono: ShieldCheck, titulo: "Cuidado de la reserva", texto: "Financia el mantenimiento y la custodia de la reserva." },
+  { icono: Leaf, titulo: "Captura de CO₂", texto: "Cada árbol captura cerca de 0,9 t de CO₂ por año." },
+  { icono: Camera, titulo: "Seguimiento real", texto: "Monitoreo, auditoría de Control Union y novedades de la reserva." },
+];
+
 const IMAGENES_HISTORIA = [images.reserva, images.comunidad, images.fauna, images.heroFondo];
 
 export const metadata: Metadata = {
   title: "Aportar",
-  description: "Sumá un aporte a Los Tualdos: cada aporte se convierte en un árbol nativo, plantado y cuidado durante catorce años.",
+  description: "Sumá un aporte a Los Tualdos: tu aporte desarrolla la reserva, con plantación, cuidado y monitoreo.",
 };
 
 export default async function AportarPage({ searchParams }: PageProps<"/aportar">) {
@@ -145,8 +152,29 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
           <Heart className="h-12 w-12 text-esmeralda" fill="currentColor" />
           <p className="mt-5 font-bold text-3xl text-white">Qué recibís</p>
           <p className="mt-3 text-white/85">
-            Un comprobante de tu aporte y acceso a las fotos y novedades del sector al que sumaste.
+            Un comprobante de tu aporte y acceso a las fotos y novedades de la reserva.
           </p>
+        </div>
+
+        <div className="mt-12 rounded-2xl border border-verde-profundo/10 bg-card/40 p-8 text-center sm:p-10">
+          <p className="font-bold text-2xl text-verde-profundo">Lo que logra tu aporte</p>
+          <ul className="mt-8 grid gap-6 text-left sm:grid-cols-2">
+            {LOGROS_APORTE.map(({ icono: Icono, titulo, texto }) => (
+              <li key={titulo} className="flex items-start gap-3">
+                <Icono className="mt-0.5 shrink-0 text-esmeralda" size={24} strokeWidth={1.75} />
+                <div>
+                  <p className="font-medium text-verde-profundo">{titulo}</p>
+                  <p className="mt-1 text-sm text-verde-profundo/70">{texto}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <a
+            href="#monto-aporte"
+            className="mt-8 inline-block rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
+          >
+            Quiero aportar
+          </a>
         </div>
 
         <div className="mt-10">

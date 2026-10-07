@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Droplet, Leaf, MapPin, TreePine, Users, Zap, type LucideIcon } from "lucide-react";
-import Equipo from "@/components/home/Equipo";
-import { caracteristicasReserva, certificaciones, datosReserva, mision, reserva } from "@/data/site";
+import { caracteristicasReserva, datosReserva, mision, misionVisionValores, reserva, valores } from "@/data/site";
 import { images } from "@/lib/images";
 
 const ICONOS_CARACTERISTICA: Record<string, LucideIcon> = { TreePine, Droplet, Zap };
@@ -22,7 +21,7 @@ export default function NosotrosPage() {
         </div>
         <h1 className="mt-5 font-black text-5xl text-verde-profundo sm:text-6xl">Nosotros</h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-verde-profundo/75">
-          Somos el equipo que planta, cuida y audita Los Tualdos, en {reserva.localidad}.
+          Desarrollamos y cuidamos Los Tualdos, en {reserva.localidad}, para que personas y empresas sean parte de la regeneración del planeta.
         </p>
       </section>
 
@@ -121,31 +120,28 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      <Equipo />
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+        <h2 className="font-bold text-3xl text-verde-profundo sm:text-4xl">Misión, visión y valores</h2>
 
-      <section id="certificaciones" className="scroll-mt-24 bg-card/40">
-        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-8">
-          <h2 className="font-bold text-2xl text-verde-profundo">Certificaciones</h2>
-          <div className="mt-8 space-y-8">
-            {certificaciones.map((cert) => (
-              <div key={cert.nombre} className="rounded-2xl bg-verde-profundo p-8 sm:p-10">
-                <div className="relative mx-auto h-14 w-14">
-                  <Image
-                    src={images.logoControlUnion.src}
-                    alt={images.logoControlUnion.alt}
-                    fill
-                    className="object-contain brightness-0 invert"
-                  />
-                </div>
-                <p className="mt-4 text-2xl font-bold text-esmeralda">{cert.nombre}</p>
-                <p className="mt-1 font-medium text-white/70">{cert.descripcion}</p>
-                <p className="mt-4 leading-relaxed text-white/85">{cert.detalle}</p>
-                <p className="mt-4 text-sm text-white/60">
-                  Usamos este proceso únicamente para auditar y verificar la plantación, nada más.
-                </p>
-              </div>
-            ))}
+        <div className="mt-10 grid gap-6 text-left md:grid-cols-2">
+          <div className="rounded-2xl bg-verde-profundo p-8">
+            <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Misión</p>
+            <p className="mt-3 text-lg leading-relaxed text-crema">{misionVisionValores.mision}</p>
           </div>
+          <div className="rounded-2xl bg-verde-profundo p-8">
+            <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Visión</p>
+            <p className="mt-3 text-lg leading-relaxed text-crema">{misionVisionValores.vision}</p>
+          </div>
+        </div>
+
+        <p className="mt-12 text-sm font-bold tracking-wide text-esmeralda uppercase">Valores</p>
+        <div className="mt-4 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-4">
+          {valores.map((valor) => (
+            <div key={valor.titulo} className="rounded-2xl border border-verde-profundo/10 bg-card/40 p-6">
+              <p className="font-bold text-verde-profundo">{valor.titulo}</p>
+              <p className="mt-2 text-sm leading-relaxed text-verde-profundo/70">{valor.texto}</p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

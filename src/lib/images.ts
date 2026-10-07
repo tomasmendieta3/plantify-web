@@ -68,10 +68,6 @@ export const images = {
     src: unsplash("1746466405013-3248c8688c34", "q=80&w=600&auto=format&fit=crop"),
     alt: "Ramas cubiertas de flores rojas de ceibo",
   },
-  logoControlUnion: {
-    src: "/certificaciones/control-union.webp",
-    alt: "Logo de Control Union",
-  },
   // Foto real: cartel de la Reserva Forestal Plantify x Los Tualdos.
   marketingCartel: {
     src: "/empresas/marketing-cartel.jpg",

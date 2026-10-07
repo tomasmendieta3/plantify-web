@@ -5,7 +5,6 @@ type CuerpoAporte = {
   email?: string;
   monto: number;
   sector: string;
-  arbol?: string;
   honeypot?: string;
 };
 
@@ -30,7 +29,6 @@ export async function POST(request: Request) {
     email: body.email,
     monto: body.monto,
     sector: body.sector,
-    arbol: body.arbol,
   });
 
   return NextResponse.json({ ok: true });

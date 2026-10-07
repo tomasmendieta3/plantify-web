@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { PawPrint, Sprout, Footprints, Users, Clock, Navigation, ListChecks, type LucideIcon } from "lucide-react";
-import { comunidad, organizacion } from "@/data/site";
+import { comunidad } from "@/data/site";
 import { images } from "@/lib/images";
 import HeroVideo from "@/components/empresas/HeroVideo";
 
@@ -20,7 +19,6 @@ const ICONOS: Record<string, LucideIcon> = {
 };
 
 export default function ComunidadPage() {
-  const mensajeVisita = "Quiero coordinar una visita a Los Tualdos con mi familia.";
 
   return (
     <div>
@@ -33,13 +31,10 @@ export default function ComunidadPage() {
             <p className="mt-5 max-w-md text-lg text-verde-profundo/75">
               {comunidad.bajada}
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href={`/contacto?motivo=visita&mensaje=${encodeURIComponent(mensajeVisita)}`}
-                className="inline-block rounded-full bg-esmeralda px-7 py-3.5 text-base font-medium text-verde-profundo transition-colors hover:bg-esmeralda/90"
-              >
-                Coordinar tu visita
-              </Link>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <span className="inline-block rounded-full bg-dorado/15 px-7 py-3.5 text-base font-bold text-verde-profundo">
+                Próximamente
+              </span>
               <a
                 href="https://tualdos-qr.vercel.app/"
                 target="_blank"
@@ -140,18 +135,11 @@ export default function ComunidadPage() {
           Traé a tu familia a plantar un árbol.
         </p>
         <p className="mt-4 text-verde-profundo/75">
-          Coordinamos el día que te quede mejor. Solo necesitamos que nos avises con
-          anticipación para organizar el traslado.
+          Estamos armando el plan de visitas, con fechas y cupos. Muy pronto lo vas a ver acá.
         </p>
-        <Link
-          href={`/contacto?motivo=visita&mensaje=${encodeURIComponent(mensajeVisita)}`}
-          className="mt-8 inline-block rounded-full bg-esmeralda px-7 py-3.5 text-base font-medium text-verde-profundo transition-colors hover:bg-esmeralda/90"
-        >
-          Coordinar tu visita
-        </Link>
-        <p className="mt-4 text-xs text-verde-profundo/50">
-          También podés escribirnos por WhatsApp al {organizacion.telefono}.
-        </p>
+        <span className="mt-8 inline-block rounded-full bg-dorado/15 px-7 py-3.5 text-base font-bold text-verde-profundo">
+          Próximamente
+        </span>
       </section>
     </div>
   );

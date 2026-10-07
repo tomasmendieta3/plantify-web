@@ -20,6 +20,8 @@ import {
 import FormularioContacto from "@/components/FormularioContacto";
 import ContadorImpacto from "@/components/home/ContadorImpacto";
 import HeroVideo from "@/components/empresas/HeroVideo";
+import RecorridoPasos from "@/components/empresas/RecorridoPasos";
+import CucardaGoldStandard from "@/components/CucardaGoldStandard";
 import {
   acuerdoModelos,
   alianzaCompleta,
@@ -45,7 +47,6 @@ export const metadata: Metadata = {
 const ICONOS_PASO_RESERVA: LucideIcon[] = [Sprout, Leaf, FileCheck2, BadgeCheck];
 const ICONOS_MARKETING: LucideIcon[] = [Signpost, QrCode, BadgeCheck, Share2, ImageIcon, BarChart3];
 const ICONOS_EXPERIENCIAS: LucideIcon[] = [Sprout, GraduationCap, Users];
-const ICONOS_RECORRIDO: LucideIcon[] = [QrCode, Sprout, Leaf, FileCheck2, BadgeCheck, Share2];
 // En el mismo orden que alianzaCompleta.bullets.
 const ICONOS_ALIANZA: LucideIcon[] = [
   Signpost,
@@ -112,30 +113,14 @@ export default function EmpresasPage() {
                 i === 0 ? "bg-verde-profundo text-crema" : "bg-card/50 text-verde-profundo"
               }`}
             >
-              <div
-                className={`relative aspect-[4/3] w-full overflow-hidden ${
-                  capa.imagen === "logoControlUnion" ? "bg-crema" : ""
-                }`}
-              >
-                {capa.imagen === "logoControlUnion" ? (
-                  <div className="absolute inset-16 sm:inset-10">
-                    <Image
-                      src={images[capa.imagen].src}
-                      alt={images[capa.imagen].alt}
-                      fill
-                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-contain"
-                    />
-                  </div>
-                ) : (
-                  <Image
-                    src={images[capa.imagen].src}
-                    alt={images[capa.imagen].alt}
-                    fill
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                )}
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <Image
+                  src={images[capa.imagen].src}
+                  alt={images[capa.imagen].alt}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
               </div>
               <div className="p-6">
                 <p className="text-xs font-bold text-esmeralda italic">{capa.numero}</p>
@@ -170,11 +155,10 @@ export default function EmpresasPage() {
                     className="rounded-2xl bg-crema p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                   >
                     <div className="flex items-center gap-3">
-                      <Icono className="shrink-0 text-verde-profundo" size={32} strokeWidth={1.75} />
-                      <span className="text-3xl font-black text-esmeralda">{paso.numero}</span>
+                      <Icono className="shrink-0 text-verde-profundo" size={56} strokeWidth={1.5} />
+                      <span className="text-6xl font-black text-esmeralda">{paso.numero}</span>
                     </div>
-                    <p className="mt-4 font-medium text-verde-profundo">{paso.titulo}</p>
-                    <p className="mt-1 text-sm text-verde-profundo/70">{paso.texto}</p>
+                    <p className="mt-6 text-xl font-bold text-verde-profundo">{paso.titulo}</p>
                   </div>
                 );
               })}
@@ -207,10 +191,7 @@ export default function EmpresasPage() {
       {/* Modelo Control Union */}
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
         <div className="text-center">
-          <div className="relative mx-auto h-20 w-20 sm:h-24 sm:w-24">
-            <Image src={images.logoControlUnion.src} alt={images.logoControlUnion.alt} fill className="object-contain" />
-          </div>
-          <p className="mt-4 text-sm font-bold tracking-wide text-esmeralda uppercase">
+          <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">
             Capa 01 · La reserva — certificación Control Union
           </p>
           <h2 className="mx-auto mt-3 max-w-3xl font-black text-3xl leading-tight text-verde-profundo sm:text-4xl lg:text-5xl">
@@ -232,6 +213,10 @@ export default function EmpresasPage() {
         </div>
       </section>
 
+      <div className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
+        <CucardaGoldStandard />
+      </div>
+
       {/* Así viaja tu aporte */}
       <section className="bg-card/40">
         <div className="mx-auto max-w-6xl px-5 py-16 text-center sm:px-8">
@@ -240,24 +225,7 @@ export default function EmpresasPage() {
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-verde-profundo/70">{recorridoAportante.bajada}</p>
 
-          <div className="mt-10 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-3">
-            {recorridoAportante.pasos.map((paso, i) => {
-              const Icono = ICONOS_RECORRIDO[i];
-              return (
-                <div
-                  key={paso.titulo}
-                  className="rounded-2xl bg-crema p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div className="flex items-center gap-3">
-                    <Icono className="shrink-0 text-verde-profundo" size={28} strokeWidth={1.75} />
-                    <span className="text-2xl font-black text-esmeralda">{String(i + 1).padStart(2, "0")}</span>
-                  </div>
-                  <p className="mt-4 font-medium text-verde-profundo">{paso.titulo}</p>
-                  <p className="mt-1 text-sm text-verde-profundo/70">{paso.texto}</p>
-                </div>
-              );
-            })}
-          </div>
+          <RecorridoPasos pasos={recorridoAportante.pasos} />
         </div>
       </section>
 
@@ -360,15 +328,7 @@ export default function EmpresasPage() {
 
           <div className="mx-auto mt-10 max-w-md text-left">
             <div className="rounded-2xl bg-crema p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-10">
-              <div className="relative h-16 w-40">
-                <Image
-                  src={images.logoControlUnion.src}
-                  alt={images.logoControlUnion.alt}
-                  fill
-                  className="object-contain object-left"
-                />
-              </div>
-              <p className="mt-6 font-black text-2xl text-verde-profundo">{acuerdoModelos.controlUnion.titulo}</p>
+              <p className="font-black text-2xl text-verde-profundo">{acuerdoModelos.controlUnion.titulo}</p>
               <p className="mt-1 font-bold text-esmeralda">{acuerdoModelos.controlUnion.subtitulo}</p>
               <p className="mt-3 text-verde-profundo/75">{acuerdoModelos.controlUnion.texto}</p>
             </div>
@@ -442,7 +402,7 @@ export default function EmpresasPage() {
                 Armemos tu sector en Los Tualdos.
               </h2>
               <p className="mt-4 text-crema/80">
-                Te mandamos una propuesta con el sector, el precio y los tiempos. Sin vueltas.
+                Contanos de tu empresa y armamos juntos una propuesta a medida.
               </p>
               <p className="mt-10 text-sm text-crema/60">
                 También podés escribirnos directo a {organizacion.email} o por WhatsApp al{" "}

@@ -41,7 +41,7 @@ export default function BuenoParaNegocios() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-verde-profundo via-verde-profundo/10 to-transparent" />
             <p className="absolute inset-x-0 bottom-0 p-8 text-lg font-bold leading-snug text-crema">
-              Catorce años de seguimiento, trazabilidad y reportes verificables para cada sector
+              Seguimiento, trazabilidad y reportes verificables para cada sector
               forestal.
             </p>
           </div>

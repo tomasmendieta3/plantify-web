@@ -8,7 +8,7 @@ export default function CierreCta() {
           Armemos tu sector en Los Tualdos.
         </p>
         <p className="mt-4 text-crema/70">
-          Te mandamos una propuesta con el sector, el precio y los tiempos. Sin vueltas.
+          Contanos de tu empresa y armamos juntos una propuesta a medida.
         </p>
         <Link
           href="/contacto"

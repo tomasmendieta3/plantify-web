@@ -21,7 +21,6 @@ export const reserva = {
   arboles: 80000, // se muestra como "+80.000"
   hectareas: 340,
   hectareasAsignadas: 0, // TODO: completar con el dato real antes de publicar
-  aniosCustodia: 14,
   coordenadas: { lat: -33.7, lng: -58.65 }, // aproximadas — TODO: ajustar con coordenadas exactas
   fechaDato: "Auditoría Control Union, campaña 2026",
 };
@@ -96,6 +95,15 @@ export const certificaciones: Certificacion[] = [
   },
 ];
 
+// Gold Standard va separado de Control Union: solo como "cucarda" de validación,
+// con los datos del listado. Sin valor por tonelada ni modelo comercial.
+// Mientras falten numeroListado o periodo, la cucarda solo se ve en desarrollo.
+export const goldStandard = {
+  numeroListado: "", // TODO: completar con el número de listado real
+  hectareasElegibles: 172,
+  periodo: "", // TODO: completar con el período del listado
+};
+
 export type Paso = {
   anio: string;
   titulo: string;
@@ -119,16 +127,16 @@ export const pasos: Paso[] = [
     recibis: "Fotos georreferenciadas cada temporada y un informe de estado.",
   },
   {
-    anio: "Años 4-13",
+    anio: "Años 4 en adelante",
     titulo: "Monitoreamos y auditamos",
     hacemos:
       "Medimos el crecimiento, estimamos la captura de carbono con metodología alométrica IPCC y pasamos por la auditoría anual de Control Union.",
     recibis: "El informe auditado de cada campaña y el certificado digital actualizado.",
   },
   {
-    anio: "Año 14",
+    anio: "Cierre",
     titulo: "Cerramos el ciclo",
-    hacemos: "Hacemos la medición final y consolidamos los catorce años de datos de tu sector.",
+    hacemos: "Hacemos la medición final y consolidamos todos los datos de tu sector.",
     recibis: "El informe final, con el detalle completo de lo plantado, cuidado y verificado.",
   },
 ];
@@ -207,36 +215,30 @@ export const sectores: Sector[] = [
   },
 ];
 
-export type MiembroEquipo = {
-  nombre: string;
-  rol: string;
-  foto: string;
+export type Valor = {
+  titulo: string;
+  texto: string;
 };
 
-export const equipo: MiembroEquipo[] = [
-  { nombre: "Ariel", rol: "Gerencia General", foto: "/equipo/ariel.jpg" },
-  { nombre: "Eduardo", rol: "Rel. Institucionales y sustentabilidad", foto: "/equipo/eduardo.jpg" },
-  { nombre: "Tomás", rol: "Comercial - Ingeniero Agrónomo", foto: "/equipo/tomas.jpg" },
+// Quiénes somos, sin nombres ni fotos.
+// TODO: PROPUESTA — validar con Polito que reflejen sus valores.
+export const valores: Valor[] = [
   {
-    nombre: "Natalia",
-    rol: "Comercial - Licenciada en medio ambiente y biodiversidad",
-    foto: "/equipo/natalia.jpg",
+    titulo: "Compromiso de largo plazo",
+    texto: "Un bosque no se levanta en quince días. Cuidamos cada sector a largo plazo.",
   },
-  { nombre: "Alejandro", rol: "Marketing", foto: "/equipo/alejandro.jpg" },
-  { nombre: "Gastón", rol: "Legales experto en industrias y biodiversidad", foto: "/equipo/gaston.jpg" },
-  { nombre: "Sebastián", rol: "Certificaciones Internacionales", foto: "/equipo/sebastian.jpg" },
-  { nombre: "Verónica", rol: "Administración", foto: "/equipo/veronica.jpg" },
-];
-
-export type AreaDeSoporte = {
-  area: string;
-  nombre: string;
-};
-
-export const areasDeSoporte: AreaDeSoporte[] = [
-  { area: "IA", nombre: "Desumo" },
-  { area: "Gestión", nombre: "Sergio" },
-  { area: "Contable", nombre: "Francisco" },
+  {
+    titulo: "Transparencia",
+    texto: "Mostramos lo que hacemos tal cual es, con auditoría externa y sin inflar números.",
+  },
+  {
+    titulo: "Ciencia y trabajo de campo",
+    texto: "Ingeniería forestal, monitoreo y medición, con los pies en el Delta todos los días.",
+  },
+  {
+    titulo: "Impacto compartido",
+    texto: "Creemos que personas y empresas pueden ser parte real de la regeneración del planeta.",
+  },
 ];
 
 export type EmpresaAliada = {
@@ -279,7 +281,7 @@ export const faqs: Faq[] = [
   {
     pregunta: "¿Me entregan los árboles?",
     respuesta:
-      "No. Los árboles quedan en la reserva, bajo nuestro cuidado, durante los catorce años de custodia. Lo que recibís es la titularidad de tu sector, el seguimiento y la documentación.",
+      "No. Los árboles quedan en la reserva, bajo nuestro cuidado. Lo que recibís es la titularidad de tu sector, el seguimiento y la documentación.",
   },
   {
     pregunta: "¿Cómo calculan el CO₂?",
@@ -288,10 +290,11 @@ export const faqs: Faq[] = [
   },
   {
     pregunta: "¿Puedo visitar la reserva?",
-    respuesta: "Sí. Coordinamos una visita guiada a Los Tualdos, en Paranacito, Entre Ríos.",
+    respuesta:
+      "Estamos armando el plan de visitas a Los Tualdos, con fechas y cupos. Próximamente lo vas a ver publicado en esta web.",
   },
   {
-    pregunta: "¿Qué pasa si dejo de pagar antes de los 14 años?",
+    pregunta: "¿Qué pasa si dejo de pagar antes de terminar el proyecto?",
     respuesta:
       "Lo conversamos caso por caso al armar la propuesta: lo que ya plantamos y auditamos queda documentado, y ajustamos el alcance del sector al tiempo efectivamente cubierto.",
   },
@@ -306,6 +309,15 @@ export type PilarProyecto = {
   titulo: string;
   texto: string;
   imagen: "heroFondo" | "plantacion" | "teamBuilding" | "reserva";
+};
+
+// Misión, visión y valores de /nosotros.
+// TODO: textos provisorios — Ale arma la versión final (validada con Polito).
+export const misionVisionValores = {
+  mision:
+    "Facilitar y masificar la plantación de árboles, para que personas y empresas puedan ser parte real de la regeneración del planeta.",
+  vision:
+    "Transformar el mundo en un lugar más verde, sano y sostenible, desarrollando sistemas forestales de alto impacto que combinen ciencia, tecnología, trazabilidad y compromiso social.",
 };
 
 export const mision = {
@@ -387,25 +399,25 @@ export type Camino = {
 
 export const presentacion = {
   frase:
-    "Plantify es una empresa argentina de desarrollo de sistemas forestales: financiamos, junto con empresas y personas, proyectos de conservación, forestación y captura de carbono. Nuestro proyecto principal es Los Tualdos, una reserva de 340 hectáreas de bosque y humedal deltaico en el Delta del Paraná, Entre Ríos. No somos simplemente \"una empresa que planta árboles\": combinamos forestación y conservación, captura de CO₂, cuidado de la biodiversidad nativa, trazabilidad con seguimiento satelital, certificación ambiental y reportería, para que cada empresa sponsor pueda mostrar su impacto de forma concreta. Tu aporte no compra jurídicamente un árbol ni una parte de la reserva: financia la plantación y el cuidado de tu sector durante catorce años, con auditoría real. En una frase: convertimos la inversión ambiental de las empresas en proyectos forestales medibles, trazables y comunicables.",
+    "Plantify es una empresa argentina de desarrollo de sistemas forestales: financiamos, junto con empresas y personas, proyectos de conservación, forestación y captura de carbono. Nuestro proyecto principal es Los Tualdos, una reserva de 340 hectáreas de bosque y humedal deltaico en el Delta del Paraná, Entre Ríos. No somos simplemente \"una empresa que planta árboles\": combinamos forestación y conservación, captura de CO₂, cuidado de la biodiversidad nativa, trazabilidad con seguimiento satelital, certificación ambiental y reportería, para que cada empresa sponsor pueda mostrar su impacto de forma concreta. Tu aporte no compra jurídicamente un árbol ni una parte de la reserva: financia la plantación y el cuidado de tu sector, con auditoría real. En una frase: convertimos la inversión ambiental de las empresas en proyectos forestales medibles, trazables y comunicables.",
   caminos: [
     {
       titulo: "Aportá",
-      texto: "Cada aporte se convierte en un árbol nativo en Los Tualdos, desde $1.000.",
+      texto: "Tu aporte suma al desarrollo de Los Tualdos: plantación, cuidado y monitoreo de la reserva.",
       href: "/aportar",
       cta: "Aportar ahora",
     },
     {
       titulo: "Visitas",
-      texto: "Vení a Los Tualdos, conocé a los animales de la reserva y plantá tu propio árbol.",
+      texto: "Próximamente vas a poder conocer Los Tualdos y a los animales que viven en la reserva.",
       href: "/comunidad",
-      cta: "Coordinar visita",
+      cta: "Ver más",
     },
     {
       titulo: "Empresas",
       texto: "Convertí tu compromiso ambiental en un sector real, auditado y a tu nombre.",
       href: "/contacto",
-      cta: "Pedir una propuesta",
+      cta: "Hablemos",
     },
   ] satisfies Camino[],
 };
@@ -430,10 +442,10 @@ export const aportarStorytelling = {
     },
     {
       titulo: "La plantamos en Los Tualdos",
-      texto: "Directo en el sector al que aportaste, en la temporada que corresponde.",
+      texto: "En la reserva, en la temporada que corresponde.",
     },
     {
-      titulo: "La cuidamos catorce años",
+      titulo: "La cuidamos en el tiempo",
       texto: "Medimos, auditamos y te mandamos fotos de cada temporada.",
     },
   ] satisfies PasoAporte[],
@@ -452,7 +464,7 @@ export const aportarHistoria: Faq[] = [
   {
     pregunta: "Tu aporte hizo el cambio",
     respuesta:
-      "Una vez comprados los materiales e insumos, nuestro equipo se encarga de plantar un árbol o cuidar uno existente gracias al aporte.",
+      "Con esos materiales e insumos, nuestro equipo planta y cuida la reserva. Tu aporte desarrolla Los Tualdos en su conjunto, no un árbol puntual.",
   },
   {
     pregunta: "Te mantenemos al tanto",
@@ -461,27 +473,15 @@ export const aportarHistoria: Faq[] = [
   },
 ];
 
-export type ArbolCatalogo = {
-  slug: string;
-  nombre: string;
-  imagen: string; // clave de src/lib/images.ts
-};
-
-// Mismas especies del catálogo de plantify.bio/catalog, sin precios: acá solo
-// sirven para elegir a qué árbol va tu aporte.
-export const catalogoArboles: ArbolCatalogo[] = [
-  { slug: "eucalipto", nombre: "Eucalipto", imagen: "arbolEucalipto" },
-  { slug: "sauce", nombre: "Sauce", imagen: "arbolSauce" },
-  { slug: "alamo", nombre: "Álamo", imagen: "arbolAlamo" },
-  { slug: "ceibo", nombre: "Ceibo", imagen: "arbolCeibo" },
-];
-
 export const estimacionAporte = {
-  // Estimaciones para mostrar en el box de cierre del aporte, no auditadas.
-  // TODO: ajustar con el costo real por árbol y la estimación alométrica IPCC real.
-  // costoPorArbolArs toma como referencia el plantín del catálogo (plantify.bio/catalog).
-  costoPorArbolArs: 4900,
-  co2KgPorArbolEstimado: 10,
+  // Estimación para la calculadora, no auditada. Nunca se muestra el precio:
+  // solo se usa para pasar del monto a toneladas de CO₂.
+  // ~0,90 t CO₂ por árbol por año × años de captura (dato de Polito).
+  // A USD 100 por árbol → ~USD 7,9 por tonelada.
+  co2TnPorArbolPorAnio: 0.9,
+  aniosCaptura: 14,
+  costoPorArbolUsd: 100,
+  tipoCambioArsPorUsd: 1450, // TODO: confirmar el tipo de cambio a usar
   montoMinimoArs: 1000,
   montoMaximoArs: 10000,
   montosSugeridosArs: [1000, 2500, 5000, 7500, 10000],
@@ -532,7 +532,7 @@ export type CapaEmpresa = {
   titulo: string;
   bajada: string;
   texto: string;
-  imagen: "plantacion" | "marketingCartel" | "teamBuilding" | "logoControlUnion";
+  imagen: "plantacion" | "marketingCartel" | "teamBuilding" | "reserva";
 };
 
 export const empresasMision = {
@@ -573,7 +573,7 @@ export const capasEmpresa: CapaEmpresa[] = [
     bajada: "A tu medida",
     texto:
       "Certificado por Control Union, con un abanico amplio de herramientas para convocar a tu comunidad sin que te demande presupuesto propio.",
-    imagen: "logoControlUnion",
+    imagen: "reserva",
   },
 ];
 
@@ -608,7 +608,7 @@ export const pasosReserva: PasoReserva[] = [
 ];
 
 export const auditoriaControlUnion = {
-  titulo: "Modelo Control Union",
+  titulo: "Auditoría Control Union",
   bajada: "Certificado de verificación de la plantación, con secuestro de carbono verificado.",
   eyebrow: "Lo que auditamos cada año",
   items: [
@@ -616,7 +616,7 @@ export const auditoriaControlUnion = {
     "Gestión forestal de la reserva",
     "Estado y supervivencia",
     "Secuestro de carbono verificado",
-    "Certificado de verificación por 14 años.",
+    "Certificado de verificación.",
     "Trazabilidad de cada hectárea",
   ],
 };
@@ -632,27 +632,27 @@ export const recorridoAportante = {
   bajada: "El mismo recorrido, de punta a punta.",
   pasos: [
     {
-      titulo: "Escanea el QR",
+      titulo: "Escanea\nel QR",
       texto: "La persona escanea el QR en el punto hecho para tu empresa.",
     },
     {
-      titulo: "Elige cómo sumarse",
+      titulo: "Elige cómo\nsumarse",
       texto: "Su aporte queda destinado a tu sector en Los Tualdos.",
     },
     {
-      titulo: "Plantamos y cuidamos",
+      titulo: "Plantamos\ny cuidamos",
       texto: "Los Tualdos planta, mantiene y mide el árbol durante todo el proyecto.",
     },
     {
-      titulo: "Auditan y certifican",
+      titulo: "Auditan\ny certifican",
       texto: "Control Union audita la plantación y certifica el carbono capturado.",
     },
     {
-      titulo: "Certificado y dashboard",
+      titulo: "Certificado\ny dashboard",
       texto: "La persona recibe su certificado y accede a un dashboard para seguir el impacto.",
     },
     {
-      titulo: "Reportes para tu marca",
+      titulo: "Reportes\npara tu marca",
       texto: "Tu empresa recibe informes y material con fotos y métricas de tu sector.",
     },
   ] satisfies PasoRecorrido[],
@@ -702,10 +702,10 @@ export const acuerdoModelos = {
   titulo: "¿Cómo trabajamos?",
   bajada: "Certificamos y auditamos tu sector forestal con Control Union, y armamos la alianza a medida de tu empresa.",
   controlUnion: {
-    titulo: "Modelo Control Union",
+    titulo: "Control Union",
     subtitulo: "Sector forestal certificado",
     texto:
-      "Financiás y sostenés tu propio sector forestal en Los Tualdos, auditado y certificado por Control Union, con distintas formas de aportar según el tamaño de tu empresa.",
+      "Tu sector forestal en Los Tualdos, auditado y certificado por Control Union, con una alianza pensada para tu empresa.",
   },
   flexibilidad: "Flexibilidad total · armamos cada alianza a medida según las necesidades de tu empresa.",
 };
@@ -713,7 +713,7 @@ export const acuerdoModelos = {
 // Capa 04 · Acuerdo — la alianza en concreto.
 export const alianzaCompleta = {
   titulo: "Una alianza completa, lo que tu marca gana.",
-  bajada: "Tu bosque desde el día uno, un bosque de 14 años no se levanta en 15 días.",
+  bajada: "Tu bosque desde el día uno. Un bosque no se levanta en 15 días.",
   bullets: [
     "Sector exclusivo en Los Tualdos con cartel de tu marca.",
     "Custodia y mantenimiento.",
@@ -726,7 +726,7 @@ export const alianzaCompleta = {
   ],
   stats: [
     { valor: "A medida", label: "Proyecto único" },
-    { valor: "14 años", label: "Control Union" },
+    { valor: "Certificado", label: "Control Union" },
     { valor: "Llave en mano", label: "Operado por Plantify" },
   ],
 };

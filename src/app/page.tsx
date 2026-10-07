@@ -6,7 +6,6 @@ import ProcesoTimeline from "@/components/home/ProcesoTimeline";
 import QueRecibis from "@/components/home/QueRecibis";
 import BuenoParaNegocios from "@/components/home/BuenoParaNegocios";
 import JuntosMasFuertes from "@/components/home/JuntosMasFuertes";
-import Equipo from "@/components/home/Equipo";
 import Faq from "@/components/Faq";
 import CierreCta from "@/components/home/CierreCta";
 
@@ -21,7 +20,6 @@ export default function Home() {
       <BuenoParaNegocios />
       <JuntosMasFuertes />
       <QueRecibis />
-      <Equipo />
       <Faq />
       <CierreCta />
     </>
