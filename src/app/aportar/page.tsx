@@ -50,7 +50,7 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
             <div className="absolute inset-0 flex items-center justify-center p-6 text-center sm:p-10">
               <div className="max-w-xl">
                 <h1 className="text-5xl font-extrabold text-white leading-[1.7] sm:text-6xl sm:leading-[1.7]">
-                  <span className="resaltado resaltado-fino">¿Plantamos tu árbol?</span>
+                  <span className="resaltado resaltado-fino">Plantá tu árbol</span>
                 </h1>
 
                 {sector ? (
@@ -80,6 +80,13 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-5 pb-16 sm:px-8">
+        <FormularioAporte
+          sectorSlug={sector?.slug ?? "general"}
+          sectorNombre={sector?.empresa ?? "Los Tualdos"}
+        />
       </section>
 
       <section className="mx-auto max-w-5xl px-5 pb-16 sm:px-8">
@@ -175,13 +182,6 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
           >
             Quiero aportar
           </a>
-        </div>
-
-        <div className="mt-10">
-          <FormularioAporte
-            sectorSlug={sector?.slug ?? "general"}
-            sectorNombre={sector?.empresa ?? "Los Tualdos"}
-          />
         </div>
       </section>
     </div>
