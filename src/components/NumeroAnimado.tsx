@@ -7,9 +7,18 @@ type Props = {
   valor: number;
   prefijo?: string;
   sufijo?: string;
+  /** arranca translúcido y se vuelve sólido a medida que llega al valor final */
+  solidificar?: boolean;
 };
 
-export default function NumeroAnimado({ valor, prefijo = "", sufijo = "" }: Props) {
+const OPACIDAD_INICIAL = 0.12;
+
+export default function NumeroAnimado({
+  valor,
+  prefijo = "",
+  sufijo = "",
+  solidificar = false,
+}: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   const [display, setDisplay] = useState(valor);
   const yaAnimo = useRef(false);
@@ -22,6 +31,11 @@ export default function NumeroAnimado({ valor, prefijo = "", sufijo = "" }: Prop
       "(prefers-reduced-motion: reduce)"
     ).matches;
     if (prefiereMenosMovimiento) return;
+
+    const opacar = (p: number) => {
+      if (solidificar) el.style.opacity = String(OPACIDAD_INICIAL + (1 - OPACIDAD_INICIAL) * p);
+    };
+    opacar(0);
 
     const obs = new IntersectionObserver(
       (entries) => {
@@ -36,8 +50,12 @@ export default function NumeroAnimado({ valor, prefijo = "", sufijo = "" }: Prop
           const progreso = Math.min((ahora - inicio) / duracion, 1);
           const suavizado = 1 - Math.pow(1 - progreso, 3);
           setDisplay(Math.round(valor * suavizado));
+          opacar(suavizado);
           if (progreso < 1) requestAnimationFrame(paso);
-          else setDisplay(valor);
+          else {
+            setDisplay(valor);
+            el.style.opacity = "";
+          }
         };
 
         setDisplay(0);
@@ -49,7 +67,7 @@ export default function NumeroAnimado({ valor, prefijo = "", sufijo = "" }: Prop
 
     obs.observe(el);
     return () => obs.disconnect();
-  }, [valor]);
+  }, [valor, solidificar]);
 
   return (
     <span ref={ref}>

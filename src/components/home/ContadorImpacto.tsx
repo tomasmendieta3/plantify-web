@@ -20,8 +20,8 @@ export default function ContadorImpacto() {
         <div className="flex flex-wrap justify-center gap-x-16 gap-y-10">
           {stats.map((stat) => (
             <div key={stat.label}>
-              <p className="text-6xl font-black tracking-tight text-verde-profundo sm:text-7xl">
-                <NumeroAnimado valor={stat.valor} prefijo={stat.prefijo} />
+              <p className="text-7xl font-black tracking-tight tabular-nums text-verde-profundo sm:text-8xl lg:text-9xl">
+                <NumeroAnimado valor={stat.valor} prefijo={stat.prefijo} solidificar />
               </p>
               <p className="mt-2 text-base text-verde-profundo/70">{stat.label}</p>
             </div>

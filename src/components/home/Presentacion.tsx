@@ -16,22 +16,25 @@ export default function Presentacion() {
         Cómo podés ser parte
       </h2>
       <div className="mt-6 grid gap-6 sm:grid-cols-3">
-        {presentacion.caminos.map((camino) => {
+        {presentacion.caminos.map((camino, i) => {
           const imagen = IMAGENES[camino.titulo];
           return (
             <div
               key={camino.titulo}
-              className="flex flex-col overflow-hidden rounded-2xl border border-verde-profundo/10 bg-card/40 transition-colors hover:border-esmeralda/40"
+              style={{ "--brillo-delay": `${i * 0.6}s` } as React.CSSProperties}
+              className="card-brillo group flex flex-col overflow-hidden rounded-2xl border border-verde-profundo/10 bg-card/40 hover:border-esmeralda/40"
             >
               {imagen && (
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={imagen.src}
-                    alt={imagen.alt}
-                    fill
-                    sizes="(min-width: 640px) 33vw, 100vw"
-                    className={`object-cover ${camino.titulo === "Visitas" ? "scale-150" : ""}`}
-                  />
+                  <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105">
+                    <Image
+                      src={imagen.src}
+                      alt={imagen.alt}
+                      fill
+                      sizes="(min-width: 640px) 33vw, 100vw"
+                      className={`object-cover ${camino.titulo === "Visitas" ? "scale-150" : ""}`}
+                    />
+                  </div>
                 </div>
               )}
               <div className="flex flex-1 flex-col p-6">
