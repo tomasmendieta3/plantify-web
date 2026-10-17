@@ -1,9 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Camera, Heart, Leaf, ShieldCheck, Sprout } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Camera, Heart, Leaf, ShieldCheck, Sprout } from "lucide-react";
 import FormularioAporte from "@/components/FormularioAporte";
 import CaminoAporte from "@/components/CaminoAporte";
-import { aportarHistoria, aportarStorytelling, sectores } from "@/data/site";
+import GestionCalidad from "@/components/GestionCalidad";
+import {
+  aportarHistoria,
+  aportarStorytelling,
+  caminoDinero,
+  capturaEspecies,
+  primeraReserva,
+  queEsPlantify,
+  sectores,
+} from "@/data/site";
+import { formatNumero } from "@/lib/format";
 import { images } from "@/lib/images";
 
 const LOGROS_APORTE = [
@@ -17,7 +28,7 @@ const IMAGENES_HISTORIA = [images.reserva, images.comunidad, images.fauna, image
 
 export const metadata: Metadata = {
   title: "Aportar",
-  description: "Sumá un aporte a Los Tualdos: tu aporte desarrolla la reserva, con plantación, cuidado y monitoreo.",
+  description: "Plantá un árbol y compensá tu huella. Tu aporte desarrolla nuestra reserva de especies nativas.",
 };
 
 export default async function AportarPage({ searchParams }: PageProps<"/aportar">) {
@@ -89,6 +100,120 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
         />
       </section>
 
+      <section className="bg-card/40">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+          <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl order-2 lg:order-1">
+              <Image
+                src={images.plantacion.src}
+                alt={images.plantacion.alt}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="order-1 flex items-center justify-center text-center lg:order-2">
+              <div>
+                <h2 className="text-3xl font-bold text-verde-profundo sm:text-4xl">{queEsPlantify.titulo}</h2>
+                <p className="mt-5 text-2xl leading-loose font-bold">
+                  <span className="box-decoration-clone bg-verde-profundo px-2 py-1 text-white">
+                    {queEsPlantify.texto}
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
+          <div>
+            <h2 className="text-3xl font-bold text-verde-profundo sm:text-4xl">{primeraReserva.titulo}</h2>
+            <p className="mt-4 leading-relaxed text-verde-profundo/75">{primeraReserva.texto}</p>
+            <a
+              href={primeraReserva.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-block rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
+            >
+              Conocé Los Tualdos
+            </a>
+          </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+            <Image
+              src={images.heroFondo.src}
+              alt={images.heroFondo.alt}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-verde-profundo text-crema">
+        <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-8">
+          <p className="font-bold text-3xl sm:text-4xl">Empresas</p>
+          <p className="mt-4 text-crema/75">
+            Ayudamos a las empresas y a sus comunidades a plantar árboles y compensar sus actividades.
+          </p>
+          <Link
+            href="/empresas"
+            className="mt-8 inline-block rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
+          >
+            Conocé los planes para empresas
+          </Link>
+        </div>
+      </section>
+
+      <GestionCalidad />
+
+      <section className="bg-card/40">
+        <div className="mx-auto max-w-5xl px-5 py-16 text-center sm:px-8">
+          <h2 className="text-3xl font-bold text-verde-profundo sm:text-4xl">Cuánto carbono captura cada especie</h2>
+          <p className="mt-4 text-verde-profundo/70">CO₂ que captura un árbol en toda su vida.</p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {capturaEspecies.map((item) => (
+              <div key={item.especie} className="rounded-2xl bg-crema p-6">
+                <Leaf className="mx-auto text-esmeralda" size={28} strokeWidth={1.75} />
+                <p className="mt-3 font-bold text-verde-profundo">{item.especie}</p>
+                <p className="mt-2 font-black text-3xl text-verde-profundo">
+                  {item.capturaVidaTn ? `${formatNumero(item.capturaVidaTn)} t` : "A confirmar"}
+                </p>
+                <p className="mt-1 text-xs text-verde-profundo/60">de CO₂ en su vida</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-16 text-center sm:px-8">
+        <h2 className="text-3xl font-bold text-verde-profundo sm:text-4xl">{caminoDinero.titulo}</h2>
+        <p className="mt-4 text-verde-profundo/70">{caminoDinero.bajada}</p>
+        <ol className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          {caminoDinero.pasos.map((paso, i) => (
+            <li key={paso} className="flex flex-col items-center gap-3 sm:flex-row">
+              <span className="rounded-full bg-verde-profundo px-6 py-3 font-bold text-crema">{paso}</span>
+              {i < caminoDinero.pasos.length - 1 && (
+                <ArrowRight className="rotate-90 text-esmeralda sm:rotate-0" size={24} />
+              )}
+            </li>
+          ))}
+        </ol>
+        <ArrowRight className="mx-auto mt-3 rotate-90 text-esmeralda" size={24} />
+        <div className="mt-3 grid gap-4 text-left sm:grid-cols-2">
+          <div className="rounded-2xl border border-verde-profundo/10 bg-card/40 p-6">
+            <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Plantación</p>
+            <p className="mt-2 text-verde-profundo/80">{caminoDinero.destinoPlantacion.join(" · ")}</p>
+          </div>
+          <div className="rounded-2xl border border-verde-profundo/10 bg-card/40 p-6">
+            <p className="text-sm font-bold tracking-wide text-dorado uppercase">Operación</p>
+            <p className="mt-2 text-verde-profundo/80">{caminoDinero.destinoOperacion.join(" · ")}</p>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-5xl px-5 pb-16 sm:px-8">
         <h2 className="text-center text-3xl font-bold text-verde-profundo sm:text-4xl">
           Este es el recorrido de <span className="text-esmeralda">TU</span> aporte
@@ -125,30 +250,6 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-card/40">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl order-2 lg:order-1">
-              <Image
-                src={images.plantacion.src}
-                alt={images.plantacion.alt}
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="order-1 flex items-center justify-center text-center lg:order-2">
-              <p className="text-2xl leading-loose font-bold">
-                <span className="box-decoration-clone bg-verde-profundo px-2 py-1 text-white">
-                  Con tu aporte, podemos dar un paso fundamental para poder impulsar el
-                  crecimiento de la reserva. Vas a ser parte del cambio, con muy poquito.
-                </span>
-              </p>
-            </div>
           </div>
         </div>
       </section>

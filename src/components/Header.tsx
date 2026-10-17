@@ -9,7 +9,8 @@ import { Menu, X } from "lucide-react";
 const NAV_LINKS = [
   { href: "/nosotros", label: "Nosotros" },
   { href: "/empresas", label: "Empresas" },
-  { href: "/comunidad", label: "Visitas" },
+  { href: "/comunidad", label: "Los Tualdos" },
+  { href: "/e/aeropuertos-argentina-2000", label: "Aeropuertos modelo" },
   { href: "/contacto", label: "Contacto" },
 ];
 

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Droplet, Leaf, MapPin, TreePine, Users, Zap, type LucideIcon } from "lucide-react";
-import { caracteristicasReserva, datosReserva, mision, misionVisionValores, reserva, valores } from "@/data/site";
+import GestionCalidad from "@/components/GestionCalidad";
+import { caracteristicasReserva, datosReserva, mision, misionVisionValores, primeraReserva, valores } from "@/data/site";
 import { images } from "@/lib/images";
 
 const ICONOS_CARACTERISTICA: Record<string, LucideIcon> = { TreePine, Droplet, Zap };
@@ -9,7 +10,7 @@ const ICONOS_CARACTERISTICA: Record<string, LucideIcon> = { TreePine, Droplet, Z
 export const metadata: Metadata = {
   title: "Nosotros",
   description:
-    "Quiénes somos en Plantify, cómo certificamos Los Tualdos con Control Union y cómo medimos el CO₂ con metodología alométrica IPCC.",
+    "Quiénes somos en Plantify: desarrollamos reservas forestales, ayudamos a empresas y comunidades a plantar árboles y capacitamos.",
 };
 
 export default function NosotrosPage() {
@@ -21,7 +22,7 @@ export default function NosotrosPage() {
         </div>
         <h1 className="mt-5 font-black text-5xl text-verde-profundo sm:text-6xl">Nosotros</h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-verde-profundo/75">
-          Desarrollamos y cuidamos Los Tualdos, en {reserva.localidad}, para que personas y empresas sean parte de la regeneración del planeta.
+          Plantify desarrolla reservas forestales. Plantá un árbol y compensá tu huella.
         </p>
       </section>
 
@@ -40,7 +41,9 @@ export default function NosotrosPage() {
       <section className="bg-verde-profundo">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
           <h2 className="text-center font-bold text-3xl text-crema sm:text-4xl">{mision.pilares.titulo}</h2>
-          <p className="mt-4 text-center text-lg text-crema/80">{mision.pilares.subtitulo}</p>
+          {mision.pilares.subtitulo && (
+            <p className="mt-4 text-center text-lg text-crema/80">{mision.pilares.subtitulo}</p>
+          )}
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {mision.pilares.items.map((pilar) => {
@@ -56,6 +59,16 @@ export default function NosotrosPage() {
                   <div className="p-5">
                     <p className="font-medium text-crema">{pilar.titulo}</p>
                     <p className="mt-2 text-sm leading-relaxed text-crema/70">{pilar.texto}</p>
+                    {pilar.subitems && (
+                      <ul className="mt-4 space-y-3 border-t border-crema/10 pt-4">
+                        {pilar.subitems.map((sub) => (
+                          <li key={sub.titulo}>
+                            <p className="text-sm font-bold text-esmeralda">{sub.titulo}</p>
+                            <p className="mt-0.5 text-sm text-crema/70">{sub.texto}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </div>
               );
@@ -75,14 +88,24 @@ export default function NosotrosPage() {
         <div className="absolute inset-0 bg-verde-profundo/70" />
         <div className="relative mx-auto max-w-4xl px-5 sm:px-8">
           <h2 className="font-bold text-2xl text-crema sm:text-4xl lg:text-5xl">
-            Nos mueve el objetivo de que todas las personas y empresas puedan aportar al cambio
-            para un futuro más próspero para todos, a través de Plantify.
+            ¿Cómo mejoramos el clima? Plantemos árboles.
           </h2>
         </div>
       </section>
 
+      <GestionCalidad />
+
       <section className="bg-card/40">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+          <h2 className="font-bold text-3xl text-verde-profundo sm:text-4xl">Los Tualdos, nuestra primera reserva forestal</h2>
+          <a
+            href={primeraReserva.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 mb-10 inline-block rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
+          >
+            Conocé Los Tualdos
+          </a>
           <div className="grid gap-4 sm:grid-cols-2">
             {caracteristicasReserva.map((item) => {
               const Icono = ICONOS_CARACTERISTICA[item.icono];

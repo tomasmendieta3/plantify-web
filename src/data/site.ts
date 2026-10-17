@@ -25,52 +25,11 @@ export const reserva = {
   fechaDato: "Auditoría Control Union, campaña 2026",
 };
 
-export type ActividadVisita = {
-  icono: string; // nombre de ícono de lucide-react
-  titulo: string;
-  texto: string;
-  imagen: "faunaDelta" | "plantarArbol" | "caminarReserva" | "diaEnFamilia";
-};
-
+// /comunidad — página de Los Tualdos dentro de la web de Plantify: solo flora y fauna autóctona.
 export const comunidad = {
-  titulo: "Comunidad",
   bajada:
-    "Creemos que conocer la reserva de cerca cambia la forma en que te relacionás con ella. Por eso, los fines de semana abrimos Los Tualdos para que vengas con tu familia, conozcas a los animales que viven ahí y, si querés, plantes tu propio árbol.",
-  actividades: [
-    {
-      icono: "PawPrint",
-      titulo: "Ver los animales de la reserva",
-      texto: "Ñandúes, ciervos, llamas y otros animales que conviven en la reserva, en su ambiente natural.",
-      imagen: "faunaDelta",
-    },
-    {
-      icono: "Sprout",
-      titulo: "Plantar tu árbol",
-      texto: "Si querés, plantás uno con tus propias manos y después le seguís el rastro en las fotos de temporada.",
-      imagen: "plantarArbol",
-    },
-    {
-      icono: "Footprints",
-      titulo: "Caminar la reserva",
-      texto: "Recorremos los senderos y te contamos cómo cuidamos cada sector, paso a paso.",
-      imagen: "caminarReserva",
-    },
-    {
-      icono: "Users",
-      titulo: "Pasar el día en familia",
-      texto: "Traé a los chicos. Hay tiempo para caminar, para mirar el río y para no hacer nada.",
-      imagen: "diaEnFamilia",
-    },
-  ] satisfies ActividadVisita[],
-  duracion: "Un día completo. Si querés quedarte el fin de semana, lo coordinamos con anticipación.",
-  comoLlegar:
-    "Coordinamos el horario de salida con anticipación y volvemos el mismo día, salvo que te quedes el fin de semana.",
-  incluye: [
-    "Traslado desde Paranacito",
-    "Recorrida guiada por la reserva",
-    "La posibilidad de plantar tu propio árbol",
-    "Avistaje de los animales de la reserva",
-  ],
+    "Desarrollamos las reservas en base a la biodiversidad que el suelo y la geografía permiten. Plantamos especies nativas y adaptadas al Delta, y cuidamos la fauna autóctona que vive en ellas.",
+  galeria: ["caminarReserva", "plantarArbol", "faunaDelta"] as const,
 };
 
 export const co2 = {
@@ -308,50 +267,47 @@ export const faqs: Faq[] = [
 export type PilarProyecto = {
   titulo: string;
   texto: string;
-  imagen: "heroFondo" | "plantacion" | "teamBuilding" | "reserva";
+  subitems?: { titulo: string; texto: string }[];
+  imagen: "heroFondo" | "plantacion" | "teamBuilding" | "reserva" | "marketingCartel" | "plantarArbol";
 };
 
-// Misión, visión y valores de /nosotros.
-// TODO: textos provisorios — Ale arma la versión final (validada con Polito).
+// Misión y visión de /nosotros.
+// TODO: [CONFIRMAR] misión — frase muy corta. Visión: se revisa en la pasada de copy.
 export const misionVisionValores = {
-  mision:
-    "Facilitar y masificar la plantación de árboles, para que personas y empresas puedan ser parte real de la regeneración del planeta.",
+  mision: "Hacemos que el mundo plante.",
   vision:
     "Transformar el mundo en un lugar más verde, sano y sostenible, desarrollando sistemas forestales de alto impacto que combinen ciencia, tecnología, trazabilidad y compromiso social.",
 };
 
 export const mision = {
-  frase:
-    "En Plantify creemos que plantar árboles puede ser mucho más que una acción simbólica: puede ser el motor de un cambio real.",
-  vision:
-    "Nuestra visión es transformar el mundo en un lugar más verde, sano y sostenible, facilitando que personas y organizaciones se involucren activamente en la regeneración del planeta. Para lograrlo, desarrollamos sistemas forestales de alto impacto, combinando ciencia, tecnología, trazabilidad y compromiso social.",
   pilares: {
-    titulo: "Pilares del proyecto",
-    subtitulo: "Modelo replicable, responsable y con impacto real",
+    titulo: "Qué hacemos",
+    subtitulo: "",
     items: [
       {
-        titulo: "Trazabilidad asegurada",
-        texto:
-          "Cada hectárea es monitoreada y reportada, permitiendo a cada empresa visualizar su contribución concreta.",
+        titulo: "Desarrollo de reservas forestales",
+        texto: "Desarrollamos las reservas en base a la biodiversidad que el suelo y la geografía permiten.",
+        subitems: [
+          { titulo: "Nuevas reservas", texto: "Elegimos el campo, diseñamos y plantamos." },
+          { titulo: "Conservación", texto: "Cuidamos y mejoramos reservas que ya existen." },
+        ],
         imagen: "heroFondo",
       },
       {
-        titulo: "Estándares preestablecidos",
-        texto:
-          "Todas las plantaciones se realizan bajo protocolos silvícolas, ambientales y sociales alineados a normativas nacionales e internacionales.",
-        imagen: "plantacion",
+        titulo: "Marketing forestal",
+        texto: "Ayudamos a las empresas y a sus comunidades a plantar árboles y compensar sus actividades.",
+        imagen: "marketingCartel",
       },
       {
-        titulo: "Certificación y seguimiento",
-        texto:
-          "El modelo contempla validación ambiental, métricas de carbono y conservación de biodiversidad como parte de un sistema transparente y auditable.",
+        titulo: "Capacitación y concientización",
+        texto: "Talleres presenciales para personas y empresas.",
         imagen: "teamBuilding",
       },
       {
-        titulo: "Escalable y adaptable",
+        titulo: "Responsabilidad social",
         texto:
-          "Diseñado para que otras unidades o proveedores de la empresa sponsor puedan incorporarse con facilidad, multiplicando el impacto.",
-        imagen: "reserva",
+          "Familias que desarrollan viveros de nativas. Acuerdos con municipios, comunidades y escuelas para que chicos desarrollen plantines de nativas que después se plantan en las reservas.",
+        imagen: "plantarArbol",
       },
     ] satisfies PilarProyecto[],
   },
@@ -408,10 +364,10 @@ export const presentacion = {
       cta: "Aportar ahora",
     },
     {
-      titulo: "Visitas",
-      texto: "Próximamente vas a poder conocer Los Tualdos y a los animales que viven en la reserva.",
+      titulo: "Los Tualdos",
+      texto: "Conocé nuestra primera reserva forestal, en el Delta del Paraná.",
       href: "/comunidad",
-      cta: "Ver más",
+      cta: "Conocerla",
     },
     {
       titulo: "Empresas",
@@ -428,9 +384,8 @@ export type PasoAporte = {
 };
 
 export const aportarStorytelling = {
-  porQue:
-    "Sumando tu aporte, podemos hacer realidad el cambio del planeta un paso a la vez, del cual vos sos parte.",
-  porQueDestacado: "Cada aporte lo utilizamos para expandir, cuidar y preservar la reserva.",
+  porQue: "Compensá tu huella.",
+  porQueDestacado: "Tu aporte desarrolla nuestra reserva forestal.",
   pasos: [
     {
       titulo: "Recolectamos la semilla",
@@ -482,9 +437,76 @@ export const estimacionAporte = {
   aniosCaptura: 14,
   costoPorArbolUsd: 100,
   tipoCambioArsPorUsd: 1450, // TODO: confirmar el tipo de cambio a usar
-  montoMinimoArs: 1000,
-  montoMaximoArs: 10000,
-  montosSugeridosArs: [1000, 2500, 5000, 7500, 10000],
+  montoMinimoArs: 5000,
+  montoMaximoArs: 200000, // TODO: [CONFIRMAR] tope del monto libre
+};
+
+export type OpcionAporte = {
+  montoArs: number;
+  descripcion: string;
+  gracias: string; // "Plantaste…" — texto del mensaje de confirmación
+  recomendado?: boolean;
+};
+
+// Cuadro de aportes. El recomendado es el que viene elegido por defecto.
+// TODO: [CONFIRMAR] falta la 6ª opción y el monto exacto del árbol por 14 años (150.000–200.000).
+export const opcionesAporte: OpcionAporte[] = [
+  { montoArs: 5000, descripcion: "Plantamos una semilla", gracias: "Plantaste una semilla" },
+  { montoArs: 10000, descripcion: "Plantamos un plantín", gracias: "Plantaste un plantín" },
+  { montoArs: 20000, descripcion: "Lo trasplantamos", gracias: "Trasplantaste un plantín" },
+  {
+    montoArs: 50000,
+    descripcion: "Un árbol completo por un año",
+    gracias: "Plantaste un árbol por un año",
+    recomendado: true,
+  },
+  { montoArs: 150000, descripcion: "Un árbol por 14 años", gracias: "Plantaste un árbol por 14 años" },
+];
+
+export const queEsPlantify = {
+  titulo: "Qué es Plantify",
+  texto:
+    "Desarrollamos reservas forestales con especies nativas y adaptadas a cada suelo. Plantamos, cuidamos y medimos cada árbol, con auditoría externa.",
+};
+
+export const primeraReserva = {
+  titulo: "Conocé nuestra primera reserva: Los Tualdos",
+  texto: "340 hectáreas en el Delta del Paraná. Desarrollamos las reservas en base a la biodiversidad que el suelo y la geografía permiten.",
+  link: "https://tualdos-qr.vercel.app/", // TODO: [CONFIRMAR] link a la página de Los Tualdos
+};
+
+export type CapturaEspecie = {
+  especie: string;
+  capturaVidaTn: number; // t CO₂ en toda su vida — 0 = sin dato
+};
+
+// TODO: [CONFIRMAR] especies y captura de carbono de cada una en su vida.
+export const capturaEspecies: CapturaEspecie[] = [
+  { especie: "Sauce criollo", capturaVidaTn: 0 },
+  { especie: "Aliso de río", capturaVidaTn: 0 },
+  { especie: "Álamo", capturaVidaTn: 0 },
+];
+
+// TODO: texto provisorio — reemplazar con el borrador de Ariel.
+export const caminoDinero = {
+  titulo: "El camino de tu aporte",
+  bajada: "Así se usa cada peso, de punta a punta.",
+  pasos: ["$5.000", "Plantify", "Fideicomiso Los Tualdos"],
+  destinoPlantacion: ["Semilla", "Plantín", "Maceta", "Tierra", "Cuidado", "Riego"],
+  destinoOperacion: ["Marketing", "Estructura", "Alquiler del campo"],
+};
+
+export const gestionCalidad = {
+  titulo: "Nuestra gestión de calidad",
+  // TODO: [CONFIRMAR] texto de certificación y auditoría.
+  texto:
+    "Todo lo que plantamos lo certifican compañías internacionales de primer nivel. La trazabilidad del dinero está auditada por Control Union.",
+  goldStandard: {
+    titulo: "Certificados de carbono",
+    texto: "Desarrollamos proyectos a medida bajo Gold Standard.",
+    cta: "¿Te interesan los certificados de carbono? Contactanos",
+    href: "/contacto?motivo=gold-standard",
+  },
 };
 
 export type EmpresaLanding = {
@@ -496,6 +518,7 @@ export type EmpresaLanding = {
   frase: string;
   explicacion: string;
   video: string; // path en /public
+  videoCartel?: string; // video del cartel de la empresa en el campo — reemplaza a `video` cuando esté
 };
 
 // Landing enfocada por empresa (para QR / links directos de campaña). Una sola
@@ -507,9 +530,10 @@ export const empresasLanding: EmpresaLanding[] = [
     logo: "/logos-empresas/aeropuertos-argentina-2000.svg",
     logoAncho: 220,
     logoAlto: 84,
-    frase: "Ayudá a plantar un árbol",
-    explicacion: "Este aporte va directo a la plantación en Los Tualdos.",
+    frase: "Estamos construyendo un bosque juntos",
+    explicacion: "Tu aporte suma al desarrollo de la reserva forestal de Aeropuertos Argentina 2000.",
     video: "/reserva/tualdos-hero.mp4",
+    videoCartel: "", // TODO: video del cartel de la empresa en el campo
   },
 ];
 

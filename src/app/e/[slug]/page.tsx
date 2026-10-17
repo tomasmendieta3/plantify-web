@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: PageProps<"/e/[slug]">): Prom
   const empresaLanding = empresasLanding.find((e) => e.slug === slug);
   if (!empresaLanding) return { title: "Aportar" };
   return {
-    title: `Aportar — ${empresaLanding.empresa}`,
+    title: `Plantify + ${empresaLanding.empresa}`,
     description: empresaLanding.frase,
     robots: { index: false, follow: false },
   };
@@ -38,11 +38,14 @@ export default async function EmpresaLandingPage({ params }: PageProps<"/e/[slug
       </div>
       <p className="mt-3 text-xs text-verde-profundo/60">Reserva de {empresaLanding.empresa}</p>
 
-      <h1 className="mt-5 text-3xl font-bold text-verde-profundo sm:text-4xl">{empresaLanding.frase}</h1>
+      <h1 className="mt-5 text-3xl font-bold text-verde-profundo sm:text-4xl">
+        Plantify + {empresaLanding.empresa}
+      </h1>
+      <p className="mt-2 text-lg font-medium text-verde-profundo/80">{empresaLanding.frase}</p>
 
       <div className="relative mt-6 w-full overflow-hidden rounded-2xl">
         <video
-          src={empresaLanding.video}
+          src={empresaLanding.videoCartel || empresaLanding.video}
           autoPlay
           loop
           muted

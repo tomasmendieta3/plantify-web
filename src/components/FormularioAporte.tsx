@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { estimacionAporte } from "@/data/site";
+import { estimacionAporte, opcionesAporte } from "@/data/site";
 import { formatNumero } from "@/lib/format";
 
-const { montosSugeridosArs, montoMinimoArs, montoMaximoArs } = estimacionAporte;
+const { montoMinimoArs, montoMaximoArs } = estimacionAporte;
+const montoPorDefecto = (opcionesAporte.find((o) => o.recomendado) ?? opcionesAporte[0]).montoArs;
 
 // t CO₂ por cada peso aportado: (t por árbol por año × años de captura) / (USD por árbol × tipo de cambio).
 const co2TnPorArs =
@@ -18,7 +19,7 @@ export default function FormularioAporte({
   sectorSlug: string;
   sectorNombre: string;
 }) {
-  const [montoElegido, setMontoElegido] = useState<number | null>(montosSugeridosArs[0]);
+  const [montoElegido, setMontoElegido] = useState<number | null>(montoPorDefecto);
   const [montoLibre, setMontoLibre] = useState("");
   const [estado, setEstado] = useState<"idle" | "enviando" | "ok" | "error">("idle");
   const [errores, setErrores] = useState<Record<string, string>>({});
@@ -68,9 +69,12 @@ export default function FormularioAporte({
   }
 
   if (estado === "ok") {
+    const opcion = montoLibre ? undefined : opcionesAporte.find((o) => o.montoArs === montoElegido);
     return (
       <div className="rounded-xl border border-esmeralda/30 bg-esmeralda/10 p-6 text-verde-profundo">
-        <p className="font-medium">Gracias por tu aporte a {sectorNombre}.</p>
+        <p className="font-medium">
+          {opcion ? `¡Gracias! ${opcion.gracias} en ${sectorNombre}.` : `Gracias por tu aporte a ${sectorNombre}.`}
+        </p>
         <p className="mt-1 text-sm text-verde-profundo/70">
           Te mandamos un mail con el comprobante y con las novedades de la reserva.
         </p>
@@ -92,25 +96,38 @@ export default function FormularioAporte({
           />
 
           <div id="monto-aporte">
-            <p className="text-lg font-bold text-verde-profundo">Monto del aporte</p>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {montosSugeridosArs.map((monto) => (
-              <button
-                key={monto}
-                type="button"
-                onClick={() => {
-                  setMontoElegido(monto);
-                  setMontoLibre("");
-                }}
-                className={`rounded-full border px-5 py-2.5 text-lg font-bold transition-colors ${
-                  montoElegido === monto && !montoLibre
-                    ? "border-esmeralda bg-esmeralda text-verde-profundo"
-                    : "border-verde-profundo/15 text-verde-profundo/70 hover:border-esmeralda/50"
-                }`}
-              >
-                ${formatNumero(monto)}
-              </button>
-            ))}
+            <p className="text-lg font-bold text-verde-profundo">Elegí tu aporte</p>
+            <p className="mt-1 text-sm text-verde-profundo/70">
+              Aportás al desarrollo de la reserva, no a un árbol a tu nombre.
+            </p>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            {opcionesAporte.map((opcion) => {
+              const activo = montoElegido === opcion.montoArs && !montoLibre;
+              return (
+                <button
+                  key={opcion.montoArs}
+                  type="button"
+                  onClick={() => {
+                    setMontoElegido(opcion.montoArs);
+                    setMontoLibre("");
+                  }}
+                  aria-pressed={activo}
+                  className={`relative rounded-2xl border px-4 py-3 text-left transition-colors ${
+                    activo
+                      ? "border-esmeralda bg-esmeralda text-verde-profundo"
+                      : "border-verde-profundo/15 text-verde-profundo/70 hover:border-esmeralda/50"
+                  }`}
+                >
+                  {opcion.recomendado && (
+                    <span className="absolute -top-2.5 right-3 rounded-full bg-verde-profundo px-2.5 py-0.5 text-[11px] font-bold tracking-wide text-crema uppercase">
+                      Recomendado
+                    </span>
+                  )}
+                  <span className="block text-lg font-bold">${formatNumero(opcion.montoArs)}</span>
+                  <span className="block text-sm leading-snug">{opcion.descripcion}</span>
+                </button>
+              );
+            })}
           </div>
           <div className="mt-3">
             <label htmlFor="montoLibre" className="text-base font-semibold text-verde-profundo/80">
