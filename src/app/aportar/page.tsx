@@ -7,12 +7,10 @@ import GestionCalidad from "@/components/GestionCalidad";
 import {
   aportarHistoria,
   aportarStorytelling,
-  capturaEspecies,
   primeraReserva,
   queEsPlantify,
   sectores,
 } from "@/data/site";
-import { formatNumero } from "@/lib/format";
 import { images } from "@/lib/images";
 
 const LOGROS_APORTE = [
@@ -165,25 +163,6 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
       </section>
 
       <GestionCalidad />
-
-      <section className="bg-card/40">
-        <div className="mx-auto max-w-5xl px-5 py-16 text-center sm:px-8">
-          <h2 className="text-3xl font-bold text-verde-profundo sm:text-4xl">Cuánto carbono captura cada especie</h2>
-          <p className="mt-4 text-verde-profundo/70">CO₂ que captura un árbol en toda su vida.</p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            {capturaEspecies.map((item) => (
-              <div key={item.especie} className="rounded-2xl bg-crema p-6">
-                <Leaf className="mx-auto text-esmeralda" size={28} strokeWidth={1.75} />
-                <p className="mt-3 font-bold text-verde-profundo">{item.especie}</p>
-                <p className="mt-2 font-black text-3xl text-verde-profundo">
-                  {item.capturaVidaTn ? `${formatNumero(item.capturaVidaTn)} t` : "A confirmar"}
-                </p>
-                <p className="mt-1 text-xs text-verde-profundo/60">de CO₂ en su vida</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="mx-auto max-w-5xl px-5 pb-16 sm:px-8">
         <h2 className="text-center text-3xl font-bold text-verde-profundo sm:text-4xl">

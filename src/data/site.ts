@@ -470,18 +470,6 @@ export const primeraReserva = {
   link: "https://tualdos-qr.vercel.app/", // TODO: [CONFIRMAR] link a la página de Los Tualdos
 };
 
-export type CapturaEspecie = {
-  especie: string;
-  capturaVidaTn: number; // t CO₂ en toda su vida — 0 = sin dato
-};
-
-// TODO: [CONFIRMAR] especies y captura de carbono de cada una en su vida.
-export const capturaEspecies: CapturaEspecie[] = [
-  { especie: "Sauce criollo", capturaVidaTn: 0 },
-  { especie: "Aliso de río", capturaVidaTn: 0 },
-  { especie: "Álamo", capturaVidaTn: 0 },
-];
-
 export const gestionCalidad = {
   titulo: "Nuestra gestión de calidad",
   // TODO: [CONFIRMAR] texto de certificación y auditoría.

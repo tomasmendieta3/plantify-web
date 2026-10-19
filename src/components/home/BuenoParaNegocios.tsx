@@ -31,7 +31,7 @@ export default function BuenoParaNegocios() {
             </Link>
           </div>
 
-          <div className="relative min-h-[820px] overflow-hidden rounded-3xl">
+          <div className="relative min-h-[410px] overflow-hidden rounded-3xl lg:min-h-[820px]">
             <Image
               src={images.heroFondo.src}
               alt={images.heroFondo.alt}
