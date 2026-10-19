@@ -40,53 +40,61 @@ function GrupoEntregables({ items, claro }: { items: typeof entregables; claro?:
   );
 }
 
+function BoxEntregables({
+  titulo,
+  imagen,
+  items,
+  imagenClassName = "",
+}: {
+  titulo: string;
+  imagen: { src: string; alt: string };
+  items: typeof entregables;
+  imagenClassName?: string;
+}) {
+  return (
+    <div className="relative isolate flex min-h-[600px] flex-col overflow-hidden rounded-3xl px-6 py-14 sm:px-10 lg:py-16">
+      <Image
+        src={imagen.src}
+        alt={imagen.alt}
+        fill
+        sizes="(min-width: 1024px) 50vw, 100vw"
+        className={`-z-20 object-cover ${imagenClassName}`}
+      />
+      <div className="absolute inset-0 -z-10 bg-verde-profundo/80" />
+      <h3 className="font-black text-2xl uppercase tracking-wide text-crema sm:text-3xl">
+        {titulo}
+      </h3>
+      <div className="mt-12 flex flex-1 items-center">
+        <div className="w-full">
+          <GrupoEntregables items={items} claro />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function QueRecibis() {
   const institucionales = entregables.filter((item) => item.categoria === "institucional");
   const marketing = entregables.filter((item) => item.categoria === "marketing");
 
   return (
-    <section className="bg-card/40 pt-20 text-center">
+    <section className="bg-card/40 px-5 py-20 text-center sm:px-8 lg:px-12">
       <h2 className="font-black text-3xl leading-tight text-verde-profundo sm:text-4xl">
         Qué recibís
       </h2>
+      <p className="mx-auto mt-4 max-w-2xl text-lg text-verde-profundo/70">
+        Una vez que sos parte, el equipo desarrolla todo en 2 bloques:{" "}
+        <strong className="font-bold text-verde-profundo">comunicación interna y externa.</strong>
+      </p>
 
-      <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-0">
-        <div>
-          <h3 className="font-black text-xl text-verde-profundo uppercase tracking-wide">
-            Institucional
-          </h3>
-          <div className="relative mt-6 min-h-[520px] overflow-hidden px-6 py-16">
-            <Image
-              src={images.cartelNativas.src}
-              alt={images.cartelNativas.alt}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover object-[center_35%]"
-            />
-            <div className="absolute inset-0 bg-verde-profundo/80" />
-            <div className="relative">
-              <GrupoEntregables items={institucionales} claro />
-            </div>
-          </div>
-        </div>
-        <div>
-          <h3 className="font-black text-xl text-verde-profundo uppercase tracking-wide">
-            Marketing Plantify
-          </h3>
-          <div className="relative mt-6 min-h-[520px] overflow-hidden px-6 py-16">
-            <Image
-              src={images.qrEscritorio.src}
-              alt={images.qrEscritorio.alt}
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-verde-profundo/80" />
-            <div className="relative">
-              <GrupoEntregables items={marketing} claro />
-            </div>
-          </div>
-        </div>
+      <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <BoxEntregables
+          titulo="Institucional"
+          imagen={images.cartelNativas}
+          items={institucionales}
+          imagenClassName="object-[center_35%]"
+        />
+        <BoxEntregables titulo="Marketing Plantify" imagen={images.qrEscritorio} items={marketing} />
       </div>
     </section>
   );

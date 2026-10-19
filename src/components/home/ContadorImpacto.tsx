@@ -6,8 +6,8 @@ type Stat = { label: string; valor: number; prefijo?: string };
 export default function ContadorImpacto() {
   const stats: Stat[] = [
     { label: "Árboles plantados", valor: reserva.arboles, prefijo: "+" },
-    { label: "Hectáreas bajo custodia", valor: reserva.hectareas },
-    { label: "Hectáreas asignadas a empresas", valor: reserva.hectareasAsignadas },
+    { label: "Hectáreas", valor: reserva.hectareas },
+    { label: "Hectáreas asignadas\na empresas", valor: reserva.hectareasAsignadas },
   ].filter((s) => !!s.valor);
 
   const hayCo2 = !!co2.proyectadoTn || !!co2.verificadoTn;
@@ -17,13 +17,13 @@ export default function ContadorImpacto() {
   return (
     <section className="border-y border-verde-profundo/10 bg-card/40">
       <div className="mx-auto max-w-6xl px-5 py-14 text-center sm:px-8">
-        <div className="flex flex-wrap justify-center gap-x-16 gap-y-10">
+        <div className="flex flex-nowrap justify-center gap-x-16 sm:gap-x-32 lg:gap-x-64">
           {stats.map((stat) => (
             <div key={stat.label}>
-              <p className="text-7xl font-black tracking-tight tabular-nums text-verde-profundo sm:text-8xl lg:text-9xl">
+              <p className="whitespace-nowrap text-[clamp(1.75rem,8vw,7.5rem)] font-black leading-none tracking-tight tabular-nums text-verde-profundo">
                 <NumeroAnimado valor={stat.valor} prefijo={stat.prefijo} solidificar />
               </p>
-              <p className="mt-2 text-base text-verde-profundo/70">{stat.label}</p>
+              <p className="mt-2 whitespace-pre leading-tight text-[clamp(0.625rem,2.7vw,2.5rem)] text-verde-profundo/70">{stat.label}</p>
             </div>
           ))}
         </div>

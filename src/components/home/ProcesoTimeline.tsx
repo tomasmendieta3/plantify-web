@@ -15,11 +15,6 @@ export default function ProcesoTimeline() {
             <h2 className="max-w-lg font-black text-3xl leading-tight text-crema sm:text-4xl">
               Cómo trabajamos
             </h2>
-            <p className="mt-4 max-w-md text-crema/70">
-              Con Plantify, las empresas pueden destinar parte de su inversión ambiental a un
-              proyecto concreto, seguir su evolución y contar con información
-              verificable para comunicar y reportar lo que están haciendo.
-            </p>
 
             <div className="mt-10 border-b border-dorado/60">
               {pasos.map((paso, i) => {
@@ -54,8 +49,8 @@ export default function ProcesoTimeline() {
                     {activo && (
                       <div className="-mt-1 max-w-md pb-6 text-sm leading-relaxed text-crema/70">
                         <p>{paso.hacemos}</p>
-                        <p className="mt-2 text-crema/85">
-                          <span className="font-medium">Recibís: </span>
+                        <p className="mt-2 font-bold text-crema">
+                          <span>Recibís: </span>
                           {paso.recibis}
                         </p>
                       </div>

@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Camera, Heart, Leaf, ShieldCheck, Sprout } from "lucide-react";
+import { Camera, Heart, Leaf, ShieldCheck, Sprout } from "lucide-react";
 import FormularioAporte from "@/components/FormularioAporte";
-import CaminoAporte from "@/components/CaminoAporte";
 import GestionCalidad from "@/components/GestionCalidad";
 import {
   aportarHistoria,
   aportarStorytelling,
-  caminoDinero,
   capturaEspecies,
   primeraReserva,
   queEsPlantify,
@@ -40,7 +38,6 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
 
   return (
     <div className="relative isolate">
-      <CaminoAporte />
 
       <section className="relative overflow-hidden bg-crema">
         <div className="mx-auto max-w-6xl px-5 py-5 sm:px-8 sm:pt-14 sm:pb-10">
@@ -61,12 +58,12 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
             <div className="absolute inset-0 flex items-center justify-center p-6 text-center sm:p-10">
               <div className="max-w-xl">
                 <h1 className="text-5xl font-extrabold text-white leading-[1.7] sm:text-6xl sm:leading-[1.7]">
-                  <span className="resaltado resaltado-fino">Plantá tu árbol</span>
+                  Plantá tu árbol
                 </h1>
 
                 {sector ? (
                   <p className="mt-4 text-lg leading-[1.75] text-white/90">
-                    <span className="resaltado">
+                    <span>
                       Tu aporte suma directo al sector de{" "}
                       <strong className="text-white">{sector.empresa}</strong>, {sector.hectareas}{" "}
                       hectáreas en Los Tualdos.
@@ -74,14 +71,14 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
                   </p>
                 ) : linkRoto ? (
                   <p className="mt-4 text-lg leading-[1.75] text-white/90">
-                    <span className="resaltado">
+                    <span>
                       No encontramos ese sector. Probá con el link que te compartieron o escribinos y te
                       ayudamos a encontrarlo.
                     </span>
                   </p>
                 ) : (
                   <p className="mt-4 text-lg leading-[1.75] text-white/90">
-                    <span className="resaltado">
+                    <span>
                       {aportarStorytelling.porQue}{" "}
                       <strong className="font-bold text-white">{aportarStorytelling.porQueDestacado}</strong>
                     </span>
@@ -184,32 +181,6 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
                 <p className="mt-1 text-xs text-verde-profundo/60">de CO₂ en su vida</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-5 py-16 text-center sm:px-8">
-        <h2 className="text-3xl font-bold text-verde-profundo sm:text-4xl">{caminoDinero.titulo}</h2>
-        <p className="mt-4 text-verde-profundo/70">{caminoDinero.bajada}</p>
-        <ol className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          {caminoDinero.pasos.map((paso, i) => (
-            <li key={paso} className="flex flex-col items-center gap-3 sm:flex-row">
-              <span className="rounded-full bg-verde-profundo px-6 py-3 font-bold text-crema">{paso}</span>
-              {i < caminoDinero.pasos.length - 1 && (
-                <ArrowRight className="rotate-90 text-esmeralda sm:rotate-0" size={24} />
-              )}
-            </li>
-          ))}
-        </ol>
-        <ArrowRight className="mx-auto mt-3 rotate-90 text-esmeralda" size={24} />
-        <div className="mt-3 grid gap-4 text-left sm:grid-cols-2">
-          <div className="rounded-2xl border border-verde-profundo/10 bg-card/40 p-6">
-            <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Plantación</p>
-            <p className="mt-2 text-verde-profundo/80">{caminoDinero.destinoPlantacion.join(" · ")}</p>
-          </div>
-          <div className="rounded-2xl border border-verde-profundo/10 bg-card/40 p-6">
-            <p className="text-sm font-bold tracking-wide text-dorado uppercase">Operación</p>
-            <p className="mt-2 text-verde-profundo/80">{caminoDinero.destinoOperacion.join(" · ")}</p>
           </div>
         </div>
       </section>

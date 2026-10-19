@@ -6,7 +6,6 @@ import {
   Leaf,
   FileCheck2,
   BadgeCheck,
-  ShieldCheck,
   CheckCircle2,
   Signpost,
   QrCode,
@@ -18,22 +17,19 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import FormularioContacto from "@/components/FormularioContacto";
-import ContadorImpacto from "@/components/home/ContadorImpacto";
 import HeroVideo from "@/components/empresas/HeroVideo";
 import RecorridoPasos from "@/components/empresas/RecorridoPasos";
-import CucardaGoldStandard from "@/components/CucardaGoldStandard";
+import GestionCalidad from "@/components/GestionCalidad";
 import {
-  acuerdoModelos,
-  alianzaCompleta,
   auditoriaControlUnion,
   capasEmpresa,
-  empresasAliadas,
   empresasHero,
   empresasMision,
   experienciasEmpresa,
   marketingForestal,
   organizacion,
   pasosReserva,
+  planesEmpresa,
   recorridoAportante,
 } from "@/data/site";
 import { images } from "@/lib/images";
@@ -41,23 +37,12 @@ import { images } from "@/lib/images";
 export const metadata: Metadata = {
   title: "Empresas",
   description:
-    "Desarrollamos reservas forestales a medida para empresas: reserva, marketing forestal, experiencias y un acuerdo certificado por Control Union.",
+    "Desarrollamos la reserva forestal de tu empresa: mínimo 1 hectárea por año y compromiso mínimo de 15 años. Plan a medida de tu empresa.",
 };
 
 const ICONOS_PASO_RESERVA: LucideIcon[] = [Sprout, Leaf, FileCheck2, BadgeCheck];
 const ICONOS_MARKETING: LucideIcon[] = [Signpost, QrCode, BadgeCheck, Share2, ImageIcon, BarChart3];
 const ICONOS_EXPERIENCIAS: LucideIcon[] = [Sprout, GraduationCap, Users];
-// En el mismo orden que alianzaCompleta.bullets.
-const ICONOS_ALIANZA: LucideIcon[] = [
-  Signpost,
-  ShieldCheck,
-  BadgeCheck,
-  FileCheck2,
-  QrCode,
-  ImageIcon,
-  GraduationCap,
-  Users,
-];
 
 export default function EmpresasPage() {
   return (
@@ -142,49 +127,51 @@ export default function EmpresasPage() {
         <div className="mx-auto max-w-6xl px-5 py-16 text-center sm:px-8">
           <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Capa 01 · La reserva</p>
           <h2 className="mx-auto mt-3 max-w-3xl font-black text-3xl leading-tight text-verde-profundo sm:text-4xl lg:text-5xl">
-            De la idea a tu espacio asignado.
+            De la idea a tu espacio.
           </h2>
 
-          <div className="mt-10 grid gap-10 text-left lg:grid-cols-[1fr_1fr] lg:items-stretch">
-            <div className="grid gap-4 sm:grid-cols-2 lg:h-full lg:grid-rows-2">
-              {pasosReserva.map((paso, i) => {
-                const Icono = ICONOS_PASO_RESERVA[i];
-                return (
-                  <div
-                    key={paso.numero}
-                    className="rounded-2xl bg-crema p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                  >
-                    <div className="flex items-center gap-3">
-                      <Icono className="shrink-0 text-verde-profundo" size={56} strokeWidth={1.5} />
-                      <span className="text-6xl font-black text-esmeralda">{paso.numero}</span>
-                    </div>
-                    <p className="mt-6 text-xl font-bold text-verde-profundo">{paso.titulo}</p>
+          <div className="mt-10 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-4">
+            {pasosReserva.map((paso, i) => {
+              const Icono = ICONOS_PASO_RESERVA[i];
+              return (
+                <div
+                  key={paso.numero}
+                  className="rounded-2xl bg-crema p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div className="flex items-center gap-3">
+                    <Icono className="shrink-0 text-verde-profundo" size={56} strokeWidth={1.5} />
+                    <span className="text-6xl font-black text-esmeralda">{paso.numero}</span>
                   </div>
-                );
-              })}
-            </div>
+                  <p className="mt-6 text-xl font-bold text-verde-profundo">{paso.titulo}</p>
+                </div>
+              );
+            })}
+          </div>
 
-            <div className="grid h-full gap-4">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
-                <Image
-                  src={images.heroFondo.src}
-                  alt={images.heroFondo.alt}
-                  fill
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
-                <Image
-                  src={images.plantacion.src}
-                  alt={images.plantacion.alt}
-                  fill
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
+          <div className="relative mt-4 aspect-[16/9] overflow-hidden rounded-2xl lg:aspect-[21/9]">
+            <Image
+              src={images.heroFondo.src}
+              alt={images.heroFondo.alt}
+              fill
+              sizes="(min-width: 1152px) 1152px, 100vw"
+              className="scale-[1.03] object-cover"
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+              <p className="px-6 text-center font-black text-3xl text-white sm:text-5xl">
+                Así se verá tu reserva
+              </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Especies nativas */}
+      <section className="bg-verde-profundo">
+        <div className="mx-auto max-w-6xl px-5 py-24 text-center sm:px-8 lg:py-32">
+          <p className="font-black text-4xl leading-tight text-crema sm:text-5xl lg:text-6xl">
+            Priorizamos <span className="text-esmeralda">especies nativas</span>: las que
+            mejor se adaptan al suelo, al clima y a la fauna de cada región.
+          </p>
         </div>
       </section>
 
@@ -213,9 +200,7 @@ export default function EmpresasPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
-        <CucardaGoldStandard />
-      </div>
+      <GestionCalidad />
 
       {/* Así viaja tu aporte */}
       <section className="bg-card/40">
@@ -317,78 +302,31 @@ export default function EmpresasPage() {
         </div>
       </section>
 
-      {/* Capa 04 · Acuerdo */}
+      {/* Capa 04 · Planes */}
       <section id="capa-04" className="scroll-mt-24 bg-card/40">
         <div className="mx-auto max-w-6xl px-5 py-16 text-center sm:px-8">
-          <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Capa 04 · Acuerdo</p>
+          <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Capa 04 · Planes</p>
           <h2 className="mx-auto mt-3 max-w-3xl font-black text-3xl leading-tight text-verde-profundo sm:text-4xl lg:text-5xl">
-            {acuerdoModelos.titulo}
+            {planesEmpresa.titulo}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-verde-profundo/70">{acuerdoModelos.bajada}</p>
 
-          <div className="mx-auto mt-10 max-w-md text-left">
-            <div className="rounded-2xl bg-crema p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-10">
-              <p className="font-black text-2xl text-verde-profundo">{acuerdoModelos.controlUnion.titulo}</p>
-              <p className="mt-1 font-bold text-esmeralda">{acuerdoModelos.controlUnion.subtitulo}</p>
-              <p className="mt-3 text-verde-profundo/75">{acuerdoModelos.controlUnion.texto}</p>
-            </div>
-          </div>
-
-          <div className="mt-6 rounded-2xl bg-esmeralda px-6 py-5 text-center">
-            <p className="font-bold text-verde-profundo">{acuerdoModelos.flexibilidad}</p>
+          <div className="mx-auto mt-10 flex max-w-3xl flex-col items-center rounded-2xl bg-crema p-10 sm:p-12">
+            <p className="max-w-xl text-lg text-verde-profundo/75">
+              {planesEmpresa.oferta.texto.antes}
+              <strong className="font-bold text-verde-profundo">
+                {planesEmpresa.oferta.texto.destacado}
+              </strong>
+              {planesEmpresa.oferta.texto.despues}
+            </p>
+            <Link
+              href="#propuesta"
+              className="mt-8 inline-block rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
+            >
+              {planesEmpresa.oferta.cta}
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* Una alianza completa */}
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <h2 className="font-black text-3xl leading-tight text-verde-profundo sm:text-4xl lg:text-5xl">
-          {alianzaCompleta.titulo}
-        </h2>
-        <p className="mt-4 max-w-2xl text-verde-profundo/70">{alianzaCompleta.bajada}</p>
-
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {alianzaCompleta.bullets.map((bullet, i) => {
-            const Icono = ICONOS_ALIANZA[i];
-            return (
-              <div key={bullet} className="flex items-center gap-3 text-verde-profundo/80">
-                <Icono className="shrink-0 text-esmeralda" size={24} strokeWidth={1.75} />
-                {bullet}
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-10 grid gap-6 rounded-2xl bg-verde-profundo px-6 py-8 text-crema sm:grid-cols-4 sm:px-10">
-          {alianzaCompleta.stats.map((stat) => (
-            <div key={stat.label} className="text-center sm:text-left">
-              <p className="font-bold text-xl sm:text-2xl">{stat.valor}</p>
-              <p className="mt-1 text-xs tracking-wide text-crema/60 uppercase">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <ContadorImpacto />
-
-      {/* Logos de empresas aliadas */}
-      {empresasAliadas.length > 0 && (
-        <div className="border-t border-verde-profundo/10 bg-card/40 py-14">
-          <div className="mx-auto max-w-6xl px-5 sm:px-8">
-            <div className="mask-scrollbar-none relative overflow-hidden">
-              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-card to-transparent sm:w-24" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-card to-transparent sm:w-24" />
-              <div className="marquee-track flex w-max items-center gap-16">
-                {[...empresasAliadas, ...empresasAliadas].map((empresa, i) => (
-                  <div key={`${empresa.nombre}-${i}`} className="relative h-16 w-44 shrink-0 opacity-70 grayscale">
-                    <Image src={empresa.logo} alt={empresa.nombre} fill className="object-contain" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Formulario */}
       <section id="propuesta" className="scroll-mt-24">

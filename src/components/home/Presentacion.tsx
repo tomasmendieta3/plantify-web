@@ -11,22 +11,21 @@ const IMAGENES: Record<string, { src: string; alt: string }> = {
 
 export default function Presentacion() {
   return (
-    <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-      <h2 className="font-black text-3xl leading-tight text-verde-profundo sm:text-4xl">
+    <section className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8">
+      <h2 className="font-black text-3xl leading-tight text-verde-profundo sm:text-4xl lg:text-5xl">
         Cómo podés ser parte
       </h2>
-      <div className="mt-6 grid gap-6 sm:grid-cols-3">
-        {presentacion.caminos.map((camino, i) => {
+      <div className="mt-10 grid gap-6 sm:grid-cols-3 lg:gap-8">
+        {presentacion.caminos.map((camino) => {
           const imagen = IMAGENES[camino.titulo];
           return (
             <div
               key={camino.titulo}
-              style={{ "--brillo-delay": `${i * 0.6}s` } as React.CSSProperties}
-              className="card-brillo group flex flex-col overflow-hidden rounded-2xl border border-verde-profundo/10 bg-card/40 hover:border-esmeralda/40"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-verde-profundo/10 bg-card/40"
             >
               {imagen && (
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105">
+                  <div className="absolute inset-0 transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-115">
                     <Image
                       src={imagen.src}
                       alt={imagen.alt}
@@ -37,12 +36,12 @@ export default function Presentacion() {
                   </div>
                 </div>
               )}
-              <div className="flex flex-1 flex-col p-6">
-                <p className="font-bold text-verde-profundo">{camino.titulo}</p>
-                <p className="mt-2 text-sm leading-relaxed text-verde-profundo/70">{camino.texto}</p>
+              <div className="flex flex-1 flex-col p-6 lg:p-8">
+                <p className="text-lg font-bold text-verde-profundo lg:text-2xl">{camino.titulo}</p>
+                <p className="mt-3 text-base leading-relaxed text-verde-profundo/70 lg:text-lg">{camino.texto}</p>
                 <Link
                   href={camino.href}
-                  className="mt-4 inline-block self-start rounded-full bg-esmeralda px-5 py-2.5 text-center text-sm font-medium text-verde-profundo transition-colors hover:bg-esmeralda/90"
+                  className="mt-6 inline-block self-start rounded-full bg-esmeralda px-6 py-3 text-center text-base font-medium text-verde-profundo transition-colors hover:bg-esmeralda/90"
                 >
                   {camino.cta}
                 </Link>

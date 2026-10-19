@@ -28,7 +28,7 @@ export const reserva = {
 // /comunidad — página de Los Tualdos dentro de la web de Plantify: solo flora y fauna autóctona.
 export const comunidad = {
   bajada:
-    "Desarrollamos las reservas en base a la biodiversidad que el suelo y la geografía permiten. Plantamos especies nativas y adaptadas al Delta, y cuidamos la fauna autóctona que vive en ellas.",
+    "Los Tualdos es la primera reserva de Plantify, te invitamos a conocerla y ser parte.",
   galeria: ["caminarReserva", "plantarArbol", "faunaDelta"] as const,
 };
 
@@ -75,12 +75,12 @@ export const pasos: Paso[] = [
     anio: "Año 0",
     titulo: "Diseñamos y plantamos",
     hacemos:
-      "Delimitamos tu sector dentro de Los Tualdos, elegimos las especies según el terreno y plantamos en la temporada correspondiente.",
-    recibis: "Las coordenadas de tu sector y las primeras fotos de la plantación.",
+      "Delimitamos tu sector dentro de una reserva disponible, elegimos las especies según el terreno y plantamos en la temporada correspondiente.",
+    recibis: "La ubicación de tu sector de plantación y las primeras fotos de la plantación.",
   },
   {
     anio: "Años 1-3",
-    titulo: "Cuidamos los plantines",
+    titulo: "Cuidamos la reserva",
     hacemos:
       "Hacemos el seguimiento de prendimiento, reponemos lo que no arraigó y controlamos el crecimiento temprano.",
     recibis: "Fotos georreferenciadas cada temporada y un informe de estado.",
@@ -89,7 +89,7 @@ export const pasos: Paso[] = [
     anio: "Años 4 en adelante",
     titulo: "Monitoreamos y auditamos",
     hacemos:
-      "Medimos el crecimiento, estimamos la captura de carbono con metodología alométrica IPCC y pasamos por la auditoría anual de Control Union.",
+      "Medimos el crecimiento y estimamos la captura de carbono.",
     recibis: "El informe auditado de cada campaña y el certificado digital actualizado.",
   },
   {
@@ -225,12 +225,12 @@ export const faqs: Faq[] = [
   {
     pregunta: "¿Qué especies plantan y por qué esas?",
     respuesta:
-      "Priorizamos especies nativas del Delta, como sauce criollo y aliso de río, adaptadas al régimen de crecientes de la zona. La combinación exacta depende del terreno de cada sector.",
+      "Las especies se asignan según la ubicación de la reserva elegida. Priorizamos especies nativas de cada zona, adaptadas a su clima y su suelo, y la combinación exacta depende del terreno de cada sector.",
   },
   {
     pregunta: "¿Cuántas hectáreas hay plantadas hoy?",
     respuesta:
-      "Los Tualdos tiene 340 hectáreas bajo custodia, con más de 80.000 árboles plantados. Publicamos las hectáreas ya asignadas a empresas en esta misma página.",
+      "Nuestra primera reserva, Los Tualdos, tiene 340 hectáreas bajo custodia, con más de 80.000 árboles plantados. Publicamos las hectáreas ya asignadas a empresas en esta misma página.",
   },
   {
     pregunta: "¿Puedo elegir dónde queda mi sector?",
@@ -243,14 +243,9 @@ export const faqs: Faq[] = [
       "No. Los árboles quedan en la reserva, bajo nuestro cuidado. Lo que recibís es la titularidad de tu sector, el seguimiento y la documentación.",
   },
   {
-    pregunta: "¿Cómo calculan el CO₂?",
-    respuesta:
-      "Con una estimación alométrica según metodología IPCC. Siempre distinguimos entre CO₂ proyectado (una estimación) y CO₂ verificado (lo que ya pasó por auditoría de Control Union).",
-  },
-  {
     pregunta: "¿Puedo visitar la reserva?",
     respuesta:
-      "Estamos armando el plan de visitas a Los Tualdos, con fechas y cupos. Próximamente lo vas a ver publicado en esta web.",
+      "Sí, podés visitar la reserva. Coordinamos las visitas con fechas y cupos.",
   },
   {
     pregunta: "¿Qué pasa si dejo de pagar antes de terminar el proyecto?",
@@ -359,7 +354,7 @@ export const presentacion = {
   caminos: [
     {
       titulo: "Aportá",
-      texto: "Tu aporte suma al desarrollo de Los Tualdos: plantación, cuidado y monitoreo de la reserva.",
+      texto: "Tu aporte suma al desarrollo de nuestras reservas: plantación, cuidado y monitoreo.",
       href: "/aportar",
       cta: "Aportar ahora",
     },
@@ -371,7 +366,7 @@ export const presentacion = {
     },
     {
       titulo: "Empresas",
-      texto: "Convertí tu compromiso ambiental en un sector real, auditado y a tu nombre.",
+      texto: "Capacitaciones, visitas y team building para tu equipo en nuestras reservas.",
       href: "/contacto",
       cta: "Hablemos",
     },
@@ -487,15 +482,6 @@ export const capturaEspecies: CapturaEspecie[] = [
   { especie: "Álamo", capturaVidaTn: 0 },
 ];
 
-// TODO: texto provisorio — reemplazar con el borrador de Ariel.
-export const caminoDinero = {
-  titulo: "El camino de tu aporte",
-  bajada: "Así se usa cada peso, de punta a punta.",
-  pasos: ["$5.000", "Plantify", "Fideicomiso Los Tualdos"],
-  destinoPlantacion: ["Semilla", "Plantín", "Maceta", "Tierra", "Cuidado", "Riego"],
-  destinoOperacion: ["Marketing", "Estructura", "Alquiler del campo"],
-};
-
 export const gestionCalidad = {
   titulo: "Nuestra gestión de calidad",
   // TODO: [CONFIRMAR] texto de certificación y auditoría.
@@ -546,9 +532,9 @@ export const empresasLanding: EmpresaLanding[] = [
 
 export const empresasHero = {
   eyebrow: "Para empresas",
-  titulo: "Desarrollamos Reservas Forestales a medida.",
-  bajada: "Cada proyecto se diseña a medida de las metas ambientales y de posicionamiento de cada empresa.",
-  bajadaDestacada: "Gestionamos desde la selección del campo hasta la certificación de la Reserva Forestal.",
+  titulo: "Desarrollamos la reserva forestal de tu empresa.",
+  bajada: "Tu empresa compensa su impacto con una reserva propia, medible y comunicable.",
+  bajadaDestacada: "Desde 1 hectárea por año, a 15 años.",
 };
 
 export type CapaEmpresa = {
@@ -560,10 +546,10 @@ export type CapaEmpresa = {
 };
 
 export const empresasMision = {
-  eyebrow: "Nuestra misión: facilitar y masificar la plantación de árboles.",
+  eyebrow: "Nuestra misión: hacemos que el mundo plante.",
   titulo: "Cuatro capas, una sola alianza.",
   bajada:
-    "Hacemos realidad tu propia reserva, como activo ambiental y herramienta de difusión de marca, política ambiental y cultura organizacional.",
+    "Tu reserva forestal: un activo ambiental y una herramienta para tu marca y tu equipo.",
 };
 
 export const capasEmpresa: CapaEmpresa[] = [
@@ -593,10 +579,9 @@ export const capasEmpresa: CapaEmpresa[] = [
   },
   {
     numero: "04",
-    titulo: "Acuerdo",
-    bajada: "A tu medida",
-    texto:
-      "Certificado por Control Union, con un abanico amplio de herramientas para convocar a tu comunidad sin que te demande presupuesto propio.",
+    titulo: "Planes",
+    bajada: "Un plan a medida de tu empresa",
+    texto: "Mínimo 1 hectárea por año y un compromiso mínimo de 15 años.",
     imagen: "reserva",
   },
 ];
@@ -661,23 +646,23 @@ export const recorridoAportante = {
     },
     {
       titulo: "Elige cómo\nsumarse",
-      texto: "Su aporte queda destinado a tu sector en Los Tualdos.",
+      texto: "Su aporte suma al desarrollo de la reserva de tu empresa.",
     },
     {
       titulo: "Plantamos\ny cuidamos",
-      texto: "Los Tualdos planta, mantiene y mide el árbol durante todo el proyecto.",
+      texto: "Plantamos, cuidamos y medimos cada árbol de la reserva.",
     },
     {
       titulo: "Auditan\ny certifican",
       texto: "Control Union audita la plantación y certifica el carbono capturado.",
     },
     {
-      titulo: "Certificado\ny dashboard",
-      texto: "La persona recibe su certificado y accede a un dashboard para seguir el impacto.",
+      titulo: "Certificado\npara cada persona",
+      texto: "La persona recibe un certificado por su colaboración.",
     },
     {
-      titulo: "Reportes\npara tu marca",
-      texto: "Tu empresa recibe informes y material con fotos y métricas de tu sector.",
+      titulo: "Certificado\npara tu empresa",
+      texto: "Tu empresa recibe un certificado mensual por el bosque construido.",
     },
   ] satisfies PasoRecorrido[],
 };
@@ -708,7 +693,7 @@ export const experienciasEmpresa = {
   items: [
     {
       titulo: "Team Building y Talleres presenciales",
-      texto: "Jornadas en Los Tualdos con recorrido, charla y plantación. Tu equipo planta su propio árbol.",
+      texto: "Jornadas en la reserva con recorrido, charla y plantación. Tu equipo planta árboles con sus manos.",
     },
     {
       titulo: "Plan anual para empleados",
@@ -721,36 +706,16 @@ export const experienciasEmpresa = {
   ] satisfies ItemCapa[],
 };
 
-// Capa 04 · Acuerdo — modelos de negocio.
-export const acuerdoModelos = {
-  titulo: "¿Cómo trabajamos?",
-  bajada: "Certificamos y auditamos tu sector forestal con Control Union, y armamos la alianza a medida de tu empresa.",
-  controlUnion: {
-    titulo: "Control Union",
-    subtitulo: "Sector forestal certificado",
-    texto:
-      "Tu sector forestal en Los Tualdos, auditado y certificado por Control Union, con una alianza pensada para tu empresa.",
+// Capa 04 · Plan para empresas: una sola oferta a medida, se cierra en reunión.
+export const planesEmpresa = {
+  titulo: "Planes para empresas",
+  oferta: {
+    texto: {
+      antes: "Diseñamos la reserva según ",
+      destacado: "el tamaño, los objetivos y el presupuesto de tu empresa",
+      despues: ". Lo definimos juntos en una reunión.",
+    },
+    cta: "Agendá una reunión",
   },
-  flexibilidad: "Flexibilidad total · armamos cada alianza a medida según las necesidades de tu empresa.",
 };
 
-// Capa 04 · Acuerdo — la alianza en concreto.
-export const alianzaCompleta = {
-  titulo: "Una alianza completa, lo que tu marca gana.",
-  bajada: "Tu bosque desde el día uno. Un bosque no se levanta en 15 días.",
-  bullets: [
-    "Sector exclusivo en Los Tualdos con cartel de tu marca.",
-    "Custodia y mantenimiento.",
-    "Certificación Control Union.",
-    "Documentación auditada lista para tu reporte de carbono.",
-    "QR único que conecta tu producto con tu bosque.",
-    "Material gráfico y audiovisual desde el día uno.",
-    "Plan de capacitación a medida para tu equipo.",
-    "Talleres presenciales en la reserva.",
-  ],
-  stats: [
-    { valor: "A medida", label: "Proyecto único" },
-    { valor: "Certificado", label: "Control Union" },
-    { valor: "Llave en mano", label: "Operado por Plantify" },
-  ],
-};

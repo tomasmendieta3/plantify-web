@@ -27,35 +27,36 @@ export default function AliadosEmpresas() {
       {/* velo oscuro casi total: el video queda de textura y el contenido va en blanco */}
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-verde-profundo/90" />
 
-      <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 py-28 sm:px-8 sm:py-36 lg:grid-cols-[340px_1fr] lg:items-stretch">
+      <div className="mx-auto grid w-full max-w-[1400px] gap-12 px-5 py-28 sm:px-8 sm:py-36 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-stretch lg:gap-16">
         <div>
           <h2 className="font-black text-3xl leading-tight text-white sm:text-4xl">
             ¿Qué hacemos?
           </h2>
-          <p className="mt-4 text-white/75">
-            Ayudamos a empresas a convertir su inversión ambiental en un proyecto que pueden
-            mostrar y respaldar.
+          <p className="mt-6 text-base text-white lg:text-lg">
+            Ayudamos a empresas a convertir su compromiso ambiental en un proyecto concreto,
+            medible y comunicable.
           </p>
-          <p className="mt-4 text-white/75">
-            Financiamos junto a ellas sectores de forestación y conservación en Los Tualdos
-            con seguimiento satelital, auditorías y reportes sobre su evolución,
-            superficie y captura de carbono.
+          <p className="mt-6 text-base text-white lg:text-lg">
+            Creamos reservas de forestación y conservación vinculadas a cada empresa, con
+            seguimiento, auditorías y reportes que documentan su evolución, la superficie
+            conservada o forestada y la captura de carbono.
           </p>
-          <p className="mt-4 font-bold text-white">
-            La empresa sabe dónde está su aporte, qué está financiando y qué resultados puede
-            documentar.
+          <p className="mt-6 text-base font-bold text-white lg:text-lg">
+            Además, desarrollamos la comunicación y el marketing de cada reserva para que la
+            empresa pueda mostrar dónde está su aporte, qué acciones financia y qué resultados
+            puede respaldar con información verificable.
           </p>
         </div>
 
         <div className="flex flex-col">
-          <div className="mb-12 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+          <div className="mb-12 grid grid-cols-2 gap-x-10 gap-y-12 sm:grid-cols-4 lg:gap-x-14 lg:gap-y-16">
             {empresasAliadas.map((empresa) => (
-              <div key={empresa.nombre} className="relative h-16">
+              <div key={empresa.nombre} className="relative h-14 lg:h-20">
                 <Image
                   src={LOGOS_BLANCOS[empresa.logo] ?? empresa.logo}
                   alt={empresa.nombre}
                   fill
-                  sizes="200px"
+                  sizes="300px"
                   className="object-contain object-center brightness-0 invert"
                 />
               </div>
@@ -64,7 +65,7 @@ export default function AliadosEmpresas() {
 
           <Link
             href="/empresas"
-            className="mt-auto block rounded-lg bg-white px-6 py-5 text-center text-lg font-bold text-verde-profundo transition-colors hover:bg-white/90"
+            className="mt-auto block rounded-lg bg-white px-6 py-4 text-center text-base font-bold lg:text-lg text-verde-profundo transition-colors hover:bg-white/90"
           >
             Sumá tu empresa ahora
           </Link>

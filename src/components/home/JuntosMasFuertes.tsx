@@ -30,13 +30,6 @@ export default function JuntosMasFuertes() {
               Trabajamos con vos para armar tu alianza a medida, combinando aportes monetarios,
               un sector forestal propio y programas para tu equipo.
             </p>
-            <p className="text-verde-profundo/70">
-              Impulsá tu impacto ambiental y fortalecé tu credibilidad con seguimiento satelital,
-              auditorías y certificación de Control Union.{" "}
-              <span className="font-bold text-verde-profundo">
-                Hablemos de cómo la alianza puede beneficiarte a vos y a Los Tualdos.
-              </span>
-            </p>
             <Link
               href="/contacto"
               className="block w-fit rounded-lg bg-verde-profundo px-6 py-5 text-lg font-bold text-crema transition-colors hover:bg-verde-profundo/90"

@@ -2,47 +2,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { images } from "@/lib/images";
 
-const carrusel = [images.heroFondo, images.reserva];
-
 export default function Hero() {
-  const tira = [...carrusel, ...carrusel];
-
   return (
-    <section className="relative -mt-[72px] flex min-h-screen items-end overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="hero-slide-track flex h-full w-max">
-          {tira.map((img, i) => (
-            <div key={`${img.src}-${i}`} className="relative h-full w-screen shrink-0">
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                priority={i === 0}
-                sizes="100vw"
-                className="object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/50 to-transparent" />
-
-      <div className="relative w-full px-4 pt-24 pb-10 sm:px-6 lg:px-8 lg:pb-12">
-        <div className="max-w-5xl">
-          <div className="lg:translate-x-20 lg:-translate-y-20">
-            <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
-              Desarrollamos tu reserva forestal.
-              <br />
-              Cuidando lo que más importa.
+    <section className="relative -mt-[72px] flex min-h-screen items-center overflow-hidden bg-verde-profundo">
+      <div className="mx-auto w-full max-w-[1400px] px-4 pt-[88px] pb-4 sm:px-6 lg:px-8 lg:pt-28 lg:pb-12">
+        {/* mobile: box redondeado con la foto de fondo; desktop: texto a la izquierda y foto en box a la derecha */}
+        <div className="relative grid min-h-[calc(100svh-104px)] items-center gap-10 overflow-hidden rounded-3xl px-6 py-14 lg:min-h-0 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-16 lg:overflow-visible lg:rounded-none lg:p-0">
+          <div className="relative z-10 text-center lg:text-left">
+            <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-[clamp(1.75rem,3.1vw,3rem)]">
+              <span className="sm:whitespace-nowrap">Desarrollamos reservas forestales</span>
+              <br className="hidden sm:block" />{" "}
+              <span className="sm:whitespace-nowrap">nativas a la medida de tu empresa.</span>
             </h1>
-            <p className="mt-5 max-w-2xl text-lg font-semibold text-white/90">
-              Tu inversión ambiental tiene ubicación, superficie y seguimiento. Asignamos un sector
-              forestal a tu empresa y acompañamos su evolución, registrando el
-              desarrollo de la plantación y su captura de carbono.
+            <p className="mx-auto mt-5 max-w-2xl text-lg font-semibold text-white/90 lg:mx-0">
+              Creamos reservas de forestación y conservación vinculadas a cada empresa, con
+              seguimiento, auditorías y reportes que documentan su evolución.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:justify-start">
               <Link
                 href="/contacto"
                 className="rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
@@ -53,6 +30,18 @@ export default function Hero() {
                 o mirá cómo funciona
               </Link>
             </div>
+          </div>
+
+          <div className="absolute inset-0 lg:relative lg:inset-auto lg:aspect-[4/5] lg:max-h-[75vh] lg:w-full lg:overflow-hidden lg:rounded-3xl">
+            <Image
+              src={images.heroPlantando.src}
+              alt={images.heroPlantando.alt}
+              fill
+              priority
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover object-[center_60%]"
+            />
+            <div className="absolute inset-0 bg-verde-profundo/75 lg:hidden" />
           </div>
         </div>
       </div>

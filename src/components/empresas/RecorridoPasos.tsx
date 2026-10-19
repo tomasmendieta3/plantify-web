@@ -27,7 +27,7 @@ export default function RecorridoPasos({ pasos }: { pasos: PasoRecorrido[] }) {
                   className={`flex h-24 w-24 shrink-0 items-center justify-center rounded-full border-4 text-4xl font-black transition-all duration-300 ${
                     esActivo
                       ? "scale-110 border-esmeralda bg-esmeralda text-verde-profundo shadow-lg"
-                      : "border-esmeralda bg-crema text-esmeralda group-hover:scale-105 group-hover:bg-esmeralda/15"
+                      : "border-esmeralda bg-crema text-esmeralda group-hover:scale-105 group-hover:bg-[color-mix(in_srgb,var(--esmeralda)_15%,var(--crema))]"
                   }`}
                 >
                   {i + 1}

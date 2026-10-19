@@ -9,6 +9,11 @@ function unsplash(id: string, params = "q=80&auto=format&fit=crop") {
 }
 
 export const images = {
+  // Hero de la home: familia plantando un árbol.
+  heroPlantando: {
+    src: "/home/hero-plantando.jpg",
+    alt: "Una familia plantando un árbol nativo",
+  },
   // Foto real: vista aérea de la plantación en Los Tualdos.
   heroFondo: {
     src: "/reserva/tualdos-aerea.jpg",
@@ -98,8 +103,9 @@ export const images = {
   },
   // Foto real: ñandú en Los Tualdos.
   faunaDelta: {
-    src: "/comunidad/qva-fauna.jpg",
-    alt: "Ñandú caminando en Los Tualdos",
+    // Foto de Tioni Oliv en Unsplash (licencia Unsplash): unsplash.com/photos/yelJAbAPLy8
+    src: "/comunidad/carpincho.jpg",
+    alt: "Carpincho a orillas del agua",
   },
   // Foto real: plantines en el vivero de Los Tualdos.
   plantarArbol: {
