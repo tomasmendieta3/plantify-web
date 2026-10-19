@@ -17,13 +17,13 @@ export default function ContadorImpacto() {
   return (
     <section className="border-y border-verde-profundo/10 bg-card/40">
       <div className="mx-auto max-w-6xl px-5 py-14 text-center sm:px-8">
-        <div className="flex flex-nowrap justify-center gap-x-16 sm:gap-x-32 lg:gap-x-64">
+        <div className="flex flex-nowrap justify-center gap-x-10 sm:gap-x-32 lg:gap-x-64">
           {stats.map((stat) => (
             <div key={stat.label}>
-              <p className="whitespace-nowrap text-[clamp(1.75rem,8vw,7.5rem)] font-black leading-none tracking-tight tabular-nums text-verde-profundo">
+              <p className="whitespace-nowrap text-[11vw] sm:text-[clamp(1.75rem,8vw,7.5rem)] font-black leading-none tracking-tight tabular-nums text-verde-profundo">
                 <NumeroAnimado valor={stat.valor} prefijo={stat.prefijo} solidificar />
               </p>
-              <p className="mt-2 whitespace-pre leading-tight text-[clamp(0.625rem,2.7vw,2.5rem)] text-verde-profundo/70">{stat.label}</p>
+              <p className="mt-2 whitespace-pre leading-tight text-[5vw] sm:text-[clamp(0.625rem,2.7vw,2.5rem)] text-verde-profundo/70">{stat.label}</p>
             </div>
           ))}
         </div>

@@ -33,10 +33,6 @@ export default function AliadosEmpresas() {
             ¿Qué hacemos?
           </h2>
           <p className="mt-6 text-base text-white lg:text-lg">
-            Ayudamos a empresas a convertir su compromiso ambiental en un proyecto concreto,
-            medible y comunicable.
-          </p>
-          <p className="mt-6 text-base text-white lg:text-lg">
             Creamos reservas de forestación y conservación vinculadas a cada empresa, con
             seguimiento, auditorías y reportes que documentan su evolución, la superficie
             conservada o forestada y la captura de carbono.
