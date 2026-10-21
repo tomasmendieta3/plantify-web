@@ -34,7 +34,7 @@ export default function JuntosMasFuertes() {
               href="/contacto"
               className="block w-fit rounded-lg bg-verde-profundo px-6 py-5 text-lg font-bold text-crema transition-colors hover:bg-verde-profundo/90"
             >
-              Contactá a un especialista en alianzas.
+              Coordiná tu visita hoy
             </Link>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { gestionCalidad } from "@/data/site";
 
 export default function GestionCalidad() {
@@ -19,12 +18,6 @@ export default function GestionCalidad() {
               </div>
               <p className="mt-5 font-bold text-verde-profundo">{gestionCalidad.goldStandard.titulo}</p>
               <p className="mt-1 leading-relaxed text-verde-profundo/80">{gestionCalidad.goldStandard.texto}</p>
-              <Link
-                href={gestionCalidad.goldStandard.href}
-                className="mt-6 inline-block self-start rounded-full bg-esmeralda px-5 py-2.5 text-sm font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
-              >
-                {gestionCalidad.goldStandard.cta}
-              </Link>
             </div>
           </div>
         </section>

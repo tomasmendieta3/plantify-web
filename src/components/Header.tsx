@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -15,22 +14,7 @@ const NAV_LINKS = [
 ];
 
 export default function Header() {
-  const pathname = usePathname();
-  const esHome = pathname === "/";
-
-  const [scrolled, setScrolled] = useState(false);
   const [menuAbierto, setMenuAbierto] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Solo la home tiene un hero oscuro detrás: en el resto de las páginas el
-  // navbar siempre va con el fondo cristal y el texto oscuro, aunque no se haya scrolleado.
-  const sobreHeroOscuro = esHome && !scrolled;
 
   useEffect(() => {
     if (!menuAbierto) return;
@@ -49,33 +33,15 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50">
+      {/* fondo cristal blanco, el mismo del box del sello Plantify */}
       <div
         aria-hidden
-        className={`absolute inset-0 border-b border-verde-profundo/10 bg-crema/70 shadow-sm backdrop-blur-xl transition-opacity duration-500 ${
-          sobreHeroOscuro ? "opacity-0" : "opacity-100"
-        }`}
+        className="absolute inset-0 border-b border-white/70 bg-white/55 shadow-[0_8px_32px_rgba(14,53,40,0.12)] backdrop-blur-xl"
       />
 
       <div className="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Link href="/" aria-label="Plantify — inicio" className="relative block h-9 w-[122px]">
-          <Image
-            src="/logo-blanco.svg"
-            alt="Plantify"
-            fill
-            priority
-            className={`object-contain object-left transition-opacity duration-500 ${
-              sobreHeroOscuro ? "opacity-100" : "opacity-0"
-            }`}
-          />
-          <Image
-            src="/logo.svg"
-            alt="Plantify"
-            fill
-            priority
-            className={`object-contain object-left transition-opacity duration-500 ${
-              sobreHeroOscuro ? "opacity-0" : "opacity-100"
-            }`}
-          />
+          <Image src="/logo.svg" alt="Plantify" fill priority className="object-contain object-left" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Navegación principal">
@@ -83,11 +49,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm transition-colors duration-500 ${
-                sobreHeroOscuro
-                  ? "text-white/90 hover:text-white"
-                  : "text-verde-profundo/80 hover:text-verde-profundo"
-              }`}
+              className="text-sm text-verde-profundo/80 transition-colors hover:text-verde-profundo"
             >
               {link.label}
             </Link>
@@ -105,9 +67,7 @@ export default function Header() {
 
         <button
           type="button"
-          className={`p-2 transition-colors duration-500 md:hidden ${
-            sobreHeroOscuro ? "text-white" : "text-verde-profundo"
-          }`}
+          className="p-2 text-verde-profundo md:hidden"
           aria-label={menuAbierto ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={menuAbierto}
           onClick={() => setMenuAbierto((v) => !v)}

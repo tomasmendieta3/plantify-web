@@ -108,7 +108,6 @@ export type Entregable = {
 
 export const entregables: Entregable[] = [
   { icono: "MapPin", texto: "Sector delimitado a tu nombre", categoria: "institucional" },
-  { icono: "Camera", texto: "Fotos georreferenciadas cada temporada", categoria: "institucional" },
   {
     icono: "FileCheck2",
     texto: "Informe anual auditado por Control Union",
@@ -183,20 +182,20 @@ export type Valor = {
 // TODO: PROPUESTA — validar con Polito que reflejen sus valores.
 export const valores: Valor[] = [
   {
-    titulo: "Compromiso de largo plazo",
-    texto: "Un bosque no se levanta en quince días. Cuidamos cada sector a largo plazo.",
+    titulo: "Compromiso a 15 años",
+    texto: "Cada reserva se asume por un mínimo de 15 años: plantamos, reponemos y cuidamos cada sector.",
   },
   {
-    titulo: "Transparencia",
-    texto: "Mostramos lo que hacemos tal cual es, con auditoría externa y sin inflar números.",
+    titulo: "Transparencia auditada",
+    texto: "Control Union audita cada año, en el terreno: árboles, supervivencia, carbono y cada hectárea.",
   },
   {
-    titulo: "Ciencia y trabajo de campo",
-    texto: "Ingeniería forestal, monitoreo y medición, con los pies en el Delta todos los días.",
+    titulo: "Especies nativas",
+    texto: "Diseñamos según lo que el suelo y la geografía permiten, con producción propia de plantines.",
   },
   {
-    titulo: "Impacto compartido",
-    texto: "Creemos que personas y empresas pueden ser parte real de la regeneración del planeta.",
+    titulo: "Impacto con la comunidad",
+    texto: "Viveros con escuelas y municipios, y jornadas en la reserva para equipos y comunidades.",
   },
 ];
 
@@ -213,6 +212,8 @@ export const empresasAliadas: EmpresaAliada[] = [
   { nombre: "MB Trading Group", logo: "/logos-empresas/mb-trading.webp" },
   { nombre: "Tenis Club Zárate", logo: "/logos-empresas/tenis-club-zarate.png" },
   { nombre: "Entre Ríos Crushing", logo: "/logos-empresas/entre-rios-crushing.jpg" },
+  { nombre: "Wilson Hotel", logo: "/logos-empresas/wilson-hotel-white.png" },
+  { nombre: "Puentify", logo: "/logos-empresas/puentify-white.png" },
   { nombre: "Padilla & Serrano", logo: "/logos-empresas/padilla-serrano.png" },
 ];
 
@@ -248,11 +249,6 @@ export const faqs: Faq[] = [
       "Sí, podés visitar la reserva. Coordinamos las visitas con fechas y cupos.",
   },
   {
-    pregunta: "¿Qué pasa si dejo de pagar antes de terminar el proyecto?",
-    respuesta:
-      "Lo conversamos caso por caso al armar la propuesta: lo que ya plantamos y auditamos queda documentado, y ajustamos el alcance del sector al tiempo efectivamente cubierto.",
-  },
-  {
     pregunta: "¿Esto sirve para mi reporte de sostenibilidad?",
     respuesta:
       "Sí. Te damos el informe auditado, el certificado digital y la distinción entre CO₂ proyectado y verificado para que lo uses en tu reporte sin inflar números.",
@@ -262,47 +258,42 @@ export const faqs: Faq[] = [
 export type PilarProyecto = {
   titulo: string;
   texto: string;
-  subitems?: { titulo: string; texto: string }[];
-  imagen: "heroFondo" | "plantacion" | "teamBuilding" | "reserva" | "marketingCartel" | "plantarArbol";
+  icono: "TreePine" | "Sprout" | "Satellite" | "Megaphone";
 };
 
 // Misión y visión de /nosotros.
 // TODO: [CONFIRMAR] misión — frase muy corta. Visión: se revisa en la pasada de copy.
 export const misionVisionValores = {
-  mision: "Hacemos que el mundo plante.",
-  vision:
-    "Transformar el mundo en un lugar más verde, sano y sostenible, desarrollando sistemas forestales de alto impacto que combinen ciencia, tecnología, trazabilidad y compromiso social.",
+  mision: "Hacemos que el mundo plante. Desarrollamos reservas forestales nativas y cuidamos cada árbol.",
+  vision: "Más reservas forestales nativas, empezando por Los Tualdos, en el Delta del Paraná.",
 };
 
 export const mision = {
+  // Bloque "Qué es Plantify" de /nosotros. Textos tomados de presentacion.frase y queEsPlantify.
   pilares: {
-    titulo: "Qué hacemos",
-    subtitulo: "",
+    titulo: "Qué es Plantify",
+    subtitulo:
+      "Un sistema de reservas forestales: financiamos, junto con empresas y personas, proyectos de conservación, forestación y captura de carbono.",
     items: [
       {
-        titulo: "Desarrollo de reservas forestales",
-        texto: "Desarrollamos las reservas en base a la biodiversidad que el suelo y la geografía permiten.",
-        subitems: [
-          { titulo: "Nuevas reservas", texto: "Elegimos el campo, diseñamos y plantamos." },
-          { titulo: "Conservación", texto: "Cuidamos y mejoramos reservas que ya existen." },
-        ],
-        imagen: "heroFondo",
+        titulo: "Reservas nativas",
+        texto: "Desarrollamos reservas forestales con especies nativas y adaptadas a cada suelo.",
+        icono: "TreePine",
       },
       {
-        titulo: "Marketing forestal",
-        texto: "Ayudamos a las empresas y a sus comunidades a plantar árboles y compensar sus actividades.",
-        imagen: "marketingCartel",
+        titulo: "Forestación y conservación",
+        texto: "Combinamos forestación, conservación, captura de CO₂ y cuidado de la biodiversidad nativa.",
+        icono: "Sprout",
       },
       {
-        titulo: "Capacitación y concientización",
-        texto: "Talleres presenciales para personas y empresas.",
-        imagen: "teamBuilding",
+        titulo: "Trazabilidad y auditoría",
+        texto: "Plantamos, cuidamos y medimos cada árbol, con seguimiento y auditoría externa.",
+        icono: "Satellite",
       },
       {
-        titulo: "Responsabilidad social",
-        texto:
-          "Familias que desarrollan viveros de nativas. Acuerdos con municipios, comunidades y escuelas para que chicos desarrollen plantines de nativas que después se plantan en las reservas.",
-        imagen: "plantarArbol",
+        titulo: "Impacto comunicable",
+        texto: "Convertimos la inversión ambiental de las empresas en proyectos medibles, trazables y comunicables.",
+        icono: "Megaphone",
       },
     ] satisfies PilarProyecto[],
   },
@@ -359,7 +350,7 @@ export const presentacion = {
       cta: "Aportar ahora",
     },
     {
-      titulo: "Los Tualdos",
+      titulo: "Armá tu reserva",
       texto: "Conocé nuestra primera reserva forestal, en el Delta del Paraná.",
       href: "/comunidad",
       cta: "Conocerla",
@@ -474,7 +465,7 @@ export const gestionCalidad = {
   titulo: "Nuestra gestión de calidad",
   // TODO: [CONFIRMAR] texto de certificación y auditoría.
   texto:
-    "Todo lo que plantamos lo certifican compañías internacionales de primer nivel. La trazabilidad del dinero está auditada por Control Union.",
+    "Todo lo que plantamos lo certifican compañías internacionales de primer nivel.",
   goldStandard: {
     titulo: "Certificados de carbono",
     texto: "Desarrollamos proyectos a medida bajo Gold Standard.",
@@ -567,9 +558,10 @@ export const capasEmpresa: CapaEmpresa[] = [
   },
   {
     numero: "04",
-    titulo: "Planes",
-    bajada: "Un plan a medida de tu empresa",
-    texto: "Mínimo 1 hectárea por año y un compromiso mínimo de 15 años.",
+    titulo: "Alianzas sociales",
+    bajada: "Que el bosque crezca con la comunidad",
+    texto:
+      "Viveros de nativas y acuerdos con municipios y escuelas para que los chicos críen plantines que después se plantan en tu reserva.",
     imagen: "reserva",
   },
 ];

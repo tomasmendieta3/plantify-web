@@ -48,9 +48,21 @@ export default function EmpresasPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-verde-profundo">
-        <div className="mx-auto max-w-6xl px-5 pt-24 pb-14 sm:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+      <section className="relative overflow-hidden bg-verde-profundo">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/videos/hero-empresas.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
+        {/* degradé oscuro desde abajo a la izquierda para que el texto se lea, como en la home */}
+        <div className="absolute inset-0 bg-linear-to-tr from-black/70 via-black/30 via-50% to-transparent" />
+        <div className="relative mx-auto max-w-6xl px-5 pt-24 pb-20 sm:px-8 lg:pt-32 lg:pb-28">
+          <div>
             <div>
               <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">
                 {empresasHero.eyebrow}
@@ -76,8 +88,6 @@ export default function EmpresasPage() {
                 </Link>
               </div>
             </div>
-
-            <HeroVideo src="/reserva/tualdos-hero.mp4" poster="/reserva/tualdos-hero-poster.jpg" />
           </div>
         </div>
       </section>
@@ -130,36 +140,25 @@ export default function EmpresasPage() {
             De la idea a tu espacio.
           </h2>
 
-          <div className="mt-10 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-4">
-            {pasosReserva.map((paso, i) => {
-              const Icono = ICONOS_PASO_RESERVA[i];
-              return (
-                <div
-                  key={paso.numero}
-                  className="rounded-2xl bg-crema p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div className="flex items-center gap-3">
-                    <Icono className="shrink-0 text-verde-profundo" size={56} strokeWidth={1.5} />
-                    <span className="text-6xl font-black text-esmeralda">{paso.numero}</span>
+          {/* video vertical a la izquierda, los 4 pasos al lado */}
+          <div className="mt-10 grid items-center gap-8 lg:grid-cols-[auto_1fr]">
+            <HeroVideo src="/reserva/tualdos-hero.mp4" poster="/reserva/tualdos-hero-poster.jpg" />
+            <div className="grid gap-4 text-left sm:grid-cols-2">
+              {pasosReserva.map((paso, i) => {
+                const Icono = ICONOS_PASO_RESERVA[i];
+                return (
+                  <div
+                    key={paso.numero}
+                    className="rounded-2xl bg-crema p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icono className="shrink-0 text-verde-profundo" size={56} strokeWidth={1.5} />
+                      <span className="text-6xl font-black text-esmeralda">{paso.numero}</span>
+                    </div>
+                    <p className="mt-6 text-xl font-bold text-verde-profundo">{paso.titulo}</p>
                   </div>
-                  <p className="mt-6 text-xl font-bold text-verde-profundo">{paso.titulo}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="relative mt-4 aspect-[16/9] overflow-hidden rounded-2xl lg:aspect-[21/9]">
-            <Image
-              src={images.heroFondo.src}
-              alt={images.heroFondo.alt}
-              fill
-              sizes="(min-width: 1152px) 1152px, 100vw"
-              className="scale-[1.03] object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-              <p className="px-6 text-center font-black text-3xl text-white sm:text-5xl">
-                Así se verá tu reserva
-              </p>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -249,14 +248,11 @@ export default function EmpresasPage() {
             {marketingForestal.items.map((item, i) => {
               const Icono = ICONOS_MARKETING[i];
               return (
-                <div key={item.titulo} className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-crema/10">
-                    <Icono className="text-esmeralda" size={22} strokeWidth={1.75} />
+                <div key={item.titulo} className="flex items-center gap-6">
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-crema/10">
+                    <Icono className="text-esmeralda" size={30} strokeWidth={1.75} />
                   </div>
-                  <div>
-                    <p className="font-medium text-crema">{item.titulo}</p>
-                    <p className="mt-1 text-sm text-crema/70">{item.texto}</p>
-                  </div>
+                  <p className="text-xl font-bold text-crema lg:text-2xl">{item.titulo}</p>
                 </div>
               );
             })}
@@ -273,18 +269,15 @@ export default function EmpresasPage() {
         <p className="mx-auto mt-4 max-w-2xl text-verde-profundo/70">{experienciasEmpresa.bajada}</p>
 
         <div className="mt-10 grid gap-10 text-left lg:grid-cols-[1fr_0.8fr] lg:items-center">
-          <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-1">
+          <div className="grid gap-8 sm:grid-cols-3 lg:grid-cols-1">
             {experienciasEmpresa.items.map((item, i) => {
               const Icono = ICONOS_EXPERIENCIAS[i];
               return (
-                <div key={item.titulo} className="lg:flex lg:items-start lg:gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-verde-profundo">
-                    <Icono className="text-esmeralda" size={22} strokeWidth={1.75} />
+                <div key={item.titulo} className="lg:flex lg:items-center lg:gap-6">
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-verde-profundo">
+                    <Icono className="text-esmeralda" size={30} strokeWidth={1.75} />
                   </div>
-                  <div>
-                    <p className="mt-4 font-medium text-verde-profundo lg:mt-0">{item.titulo}</p>
-                    <p className="mt-1 text-sm text-verde-profundo/70">{item.texto}</p>
-                  </div>
+                  <p className="mt-4 text-xl font-bold text-verde-profundo lg:mt-0 lg:text-2xl">{item.titulo}</p>
                 </div>
               );
             })}

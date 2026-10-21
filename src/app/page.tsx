@@ -4,6 +4,7 @@ import Presentacion from "@/components/home/Presentacion";
 import AliadosEmpresas from "@/components/home/AliadosEmpresas";
 import ProcesoTimeline from "@/components/home/ProcesoTimeline";
 import QueRecibis from "@/components/home/QueRecibis";
+import CrecimientoArboles from "@/components/home/CrecimientoArboles";
 import BuenoParaNegocios from "@/components/home/BuenoParaNegocios";
 import JuntosMasFuertes from "@/components/home/JuntosMasFuertes";
 import Faq from "@/components/Faq";
@@ -17,6 +18,7 @@ export default function Home() {
       <AliadosEmpresas />
       <Presentacion />
       <ProcesoTimeline />
+      <CrecimientoArboles />
       <BuenoParaNegocios />
       <JuntosMasFuertes />
       <QueRecibis />

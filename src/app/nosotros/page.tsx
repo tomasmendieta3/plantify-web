@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { Droplet, Leaf, MapPin, TreePine, Users, Zap, type LucideIcon } from "lucide-react";
+import { Megaphone, Satellite, Sprout, TreePine, type LucideIcon } from "lucide-react";
 import GestionCalidad from "@/components/GestionCalidad";
-import { caracteristicasReserva, datosReserva, mision, misionVisionValores, primeraReserva, valores } from "@/data/site";
-import { images } from "@/lib/images";
+import { mision, misionVisionValores, valores } from "@/data/site";
 
-const ICONOS_CARACTERISTICA: Record<string, LucideIcon> = { TreePine, Droplet, Zap };
+const ICONOS_PILAR: Record<string, LucideIcon> = { TreePine, Sprout, Satellite, Megaphone };
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -15,158 +13,86 @@ export const metadata: Metadata = {
 
 export default function NosotrosPage() {
   return (
-    <div className="text-center">
-      <section className="mx-auto max-w-6xl px-5 pt-14 pb-10 sm:px-8">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-esmeralda/15">
-          <Users className="text-verde-profundo" size={30} strokeWidth={1.75} />
+    // Escritorio: dos columnas. A la izquierda va todo el contenido y a la derecha el video
+    // vertical (1080×1920), que queda fijo (sticky) mientras se scrollea toda la página.
+    // En celu: texto, video y después el resto, una cosa debajo de la otra.
+    <div className="mx-auto max-w-[1400px] px-5 pt-10 pb-16 text-center sm:px-8 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-x-12">
+      <section className="py-6 text-left lg:col-start-1 lg:row-start-1 lg:flex lg:min-h-[calc(100svh-120px)] lg:items-center">
+        <div>
+          <h1 className="font-black text-5xl text-verde-profundo sm:text-6xl">Nosotros</h1>
+          <p className="mt-4 max-w-xl text-lg text-verde-profundo/75">
+            Somos un equipo comprometido con el cuidado del medio ambiente, creemos en la correcta
+            implementación de soluciones para el cuidado del mismo, de una forma que todos puedan ser
+            parte.
+          </p>
         </div>
-        <h1 className="mt-5 font-black text-5xl text-verde-profundo sm:text-6xl">Nosotros</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-verde-profundo/75">
-          Plantify desarrolla reservas forestales. Plantá un árbol y compensá tu huella.
-        </p>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 pt-6 pb-16 sm:px-8">
-        <div className="relative aspect-video w-full overflow-hidden rounded-2xl shadow-xl">
+      <div className="mt-6 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mt-0">
+        <div className="relative mx-auto aspect-[9/16] h-[80svh] overflow-hidden rounded-3xl bg-verde-profundo shadow-xl lg:sticky lg:top-24 lg:h-[calc(100svh-120px)]">
           <video
-            src="/reserva/tualdos-nosotros-hero.mp4"
-            poster="/reserva/tualdos-nosotros-hero-poster.jpg"
-            controls
+            className="absolute inset-0 h-full w-full object-cover"
+            src="/videos/hero-nosotros.mp4"
+            autoPlay
+            muted
+            loop
             playsInline
-            className="h-full w-full object-cover"
+            preload="auto"
+            aria-hidden="true"
           />
         </div>
-      </section>
+      </div>
 
-      <section className="bg-verde-profundo">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-          <h2 className="text-center font-bold text-3xl text-crema sm:text-4xl">{mision.pilares.titulo}</h2>
-          {mision.pilares.subtitulo && (
-            <p className="mt-4 text-center text-lg text-crema/80">{mision.pilares.subtitulo}</p>
-          )}
+      <div className="mt-12 space-y-12 lg:col-start-1 lg:row-start-2 lg:mt-0">
+        <section className="overflow-hidden rounded-3xl bg-verde-profundo">
+          <div className="px-6 py-14 sm:px-10">
+            <h2 className="text-center font-bold text-3xl text-crema sm:text-4xl">{mision.pilares.titulo}</h2>
+            {mision.pilares.subtitulo && (
+              <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-crema/80">{mision.pilares.subtitulo}</p>
+            )}
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {mision.pilares.items.map((pilar) => {
-              const imagen = images[pilar.imagen];
-              return (
-                <div
-                  key={pilar.titulo}
-                  className="overflow-hidden rounded-2xl border border-crema/10 bg-crema/5"
-                >
-                  <div className="relative h-40 w-full">
-                    <Image src={imagen.src} alt={imagen.alt} fill className="object-cover" />
-                  </div>
-                  <div className="p-5">
-                    <p className="font-medium text-crema">{pilar.titulo}</p>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2">
+              {mision.pilares.items.map((pilar) => {
+                const Icono = ICONOS_PILAR[pilar.icono];
+                return (
+                  <div key={pilar.titulo} className="rounded-2xl border border-crema/10 bg-crema/5 p-6 text-left">
+                    <Icono className="text-esmeralda" size={32} strokeWidth={1.5} />
+                    <p className="mt-4 font-bold text-crema">{pilar.titulo}</p>
                     <p className="mt-2 text-sm leading-relaxed text-crema/70">{pilar.texto}</p>
-                    {pilar.subitems && (
-                      <ul className="mt-4 space-y-3 border-t border-crema/10 pt-4">
-                        {pilar.subitems.map((sub) => (
-                          <li key={sub.titulo}>
-                            <p className="text-sm font-bold text-esmeralda">{sub.titulo}</p>
-                            <p className="mt-0.5 text-sm text-crema/70">{sub.texto}</p>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="relative overflow-hidden py-24">
-        <Image
-          src={images.heroFondo.src}
-          alt={images.heroFondo.alt}
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-verde-profundo/70" />
-        <div className="relative mx-auto max-w-4xl px-5 sm:px-8">
-          <h2 className="font-bold text-2xl text-crema sm:text-4xl lg:text-5xl">
-            ¿Cómo mejoramos el clima? Plantemos árboles.
-          </h2>
-        </div>
-      </section>
+        <GestionCalidad />
 
-      <GestionCalidad />
+        <section className="py-4">
+          <h2 className="font-bold text-3xl text-verde-profundo sm:text-4xl">Misión, visión y valores</h2>
 
-      <section className="bg-card/40">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-          <h2 className="font-bold text-3xl text-verde-profundo sm:text-4xl">Los Tualdos, nuestra primera reserva forestal</h2>
-          <a
-            href={primeraReserva.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 mb-10 inline-block rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
-          >
-            Conocé Los Tualdos
-          </a>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {caracteristicasReserva.map((item) => {
-              const Icono = ICONOS_CARACTERISTICA[item.icono];
-              return (
-                <div
-                  key={item.titulo}
-                  className="rounded-2xl bg-crema p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <Icono className="shrink-0 text-verde-profundo" size={32} strokeWidth={1.75} />
-                  <p className="mt-4 font-medium text-verde-profundo">{item.titulo}</p>
-                  <p className="mt-1 text-sm text-verde-profundo/70">{item.texto}</p>
-                </div>
-              );
-            })}
+          <div className="mt-10 grid gap-6 text-left md:grid-cols-2">
+            <div className="rounded-2xl bg-verde-profundo p-8">
+              <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Misión</p>
+              <p className="mt-3 text-lg leading-relaxed text-crema">{misionVisionValores.mision}</p>
+            </div>
+            <div className="rounded-2xl bg-verde-profundo p-8">
+              <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Visión</p>
+              <p className="mt-3 text-lg leading-relaxed text-crema">{misionVisionValores.vision}</p>
+            </div>
+          </div>
 
-            <div className="rounded-2xl bg-crema p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-bold tracking-wide text-esmeralda uppercase">
-                    <MapPin size={16} />
-                    Ubicación
-                  </div>
-                  <p className="mt-2 text-sm text-verde-profundo/70">{datosReserva.ubicacion}</p>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-bold tracking-wide text-dorado uppercase">
-                    <Leaf size={16} />
-                    Superficie
-                  </div>
-                  <p className="mt-2 text-sm text-verde-profundo/70">{datosReserva.superficie}</p>
-                </div>
+          <p className="mt-12 text-sm font-bold tracking-wide text-esmeralda uppercase">Valores</p>
+          <div className="mt-4 grid gap-6 text-left sm:grid-cols-2">
+            {valores.map((valor) => (
+              <div key={valor.titulo} className="rounded-2xl border border-verde-profundo/10 bg-card/40 p-6">
+                <p className="font-bold text-verde-profundo">{valor.titulo}</p>
+                <p className="mt-2 text-sm leading-relaxed text-verde-profundo/70">{valor.texto}</p>
               </div>
-            </div>
+            ))}
           </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <h2 className="font-bold text-3xl text-verde-profundo sm:text-4xl">Misión, visión y valores</h2>
-
-        <div className="mt-10 grid gap-6 text-left md:grid-cols-2">
-          <div className="rounded-2xl bg-verde-profundo p-8">
-            <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Misión</p>
-            <p className="mt-3 text-lg leading-relaxed text-crema">{misionVisionValores.mision}</p>
-          </div>
-          <div className="rounded-2xl bg-verde-profundo p-8">
-            <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Visión</p>
-            <p className="mt-3 text-lg leading-relaxed text-crema">{misionVisionValores.vision}</p>
-          </div>
-        </div>
-
-        <p className="mt-12 text-sm font-bold tracking-wide text-esmeralda uppercase">Valores</p>
-        <div className="mt-4 grid gap-6 text-left sm:grid-cols-2 lg:grid-cols-4">
-          {valores.map((valor) => (
-            <div key={valor.titulo} className="rounded-2xl border border-verde-profundo/10 bg-card/40 p-6">
-              <p className="font-bold text-verde-profundo">{valor.titulo}</p>
-              <p className="mt-2 text-sm leading-relaxed text-verde-profundo/70">{valor.texto}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

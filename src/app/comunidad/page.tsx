@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { comunidad, primeraReserva } from "@/data/site";
 import { images } from "@/lib/images";
-import HeroVideo from "@/components/empresas/HeroVideo";
 
 export const metadata: Metadata = {
   title: "Los Tualdos",
@@ -12,24 +11,33 @@ export const metadata: Metadata = {
 export default function ComunidadPage() {
   return (
     <div>
-      <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 pt-14 pb-10 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center">
-          <div>
-            <h1 className="text-4xl leading-tight text-verde-profundo sm:text-5xl">{primeraReserva.titulo}</h1>
-            <p className="mt-5 max-w-md text-lg text-verde-profundo/75">{comunidad.bajada}</p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a
-                href={primeraReserva.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
-              >
-                Conocé Los Tualdos
-              </a>
-            </div>
+      {/* hero con el video de Los Tualdos de fondo, mismo armado que el de la home */}
+      <section className="relative flex min-h-[85svh] items-end overflow-hidden bg-verde-profundo">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/reserva/tualdos-nosotros-hero.mp4"
+          poster="/reserva/tualdos-nosotros-hero-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-linear-to-tr from-black/70 via-black/20 via-45% to-transparent" />
+        <div className="relative mx-auto w-full max-w-6xl px-5 pt-24 pb-12 sm:px-8 lg:pb-16">
+          <h1 className="text-4xl leading-tight text-white sm:text-5xl">{primeraReserva.titulo}</h1>
+          <p className="mt-5 max-w-md text-lg text-white/90">{comunidad.bajada}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href={primeraReserva.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
+            >
+              Conocé Los Tualdos
+            </a>
           </div>
-
-          <HeroVideo src="/reserva/tualdos-hero.mp4" poster="/reserva/tualdos-hero-poster.jpg" />
         </div>
       </section>
 

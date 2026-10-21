@@ -9,24 +9,12 @@ const LOGOS_BLANCOS: Record<string, string> = {
   "/logos-empresas/entre-rios-crushing.jpg": "/logos-empresas/entre-rios-crushing-white.png",
 };
 
+// Logos que no se muestran en esta sección (siguen en el marquee de /contacto).
+const OCULTOS = new Set(["Padilla & Serrano", "Tenis Club Zárate"]);
+
 export default function AliadosEmpresas() {
   return (
-    <section className="relative isolate flex min-h-[85svh] items-center overflow-hidden">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster="/videos/que-hacemos-poster.jpg"
-        aria-hidden="true"
-        className="absolute inset-0 -z-20 h-full w-full object-cover"
-      >
-        <source src="/videos/que-hacemos.mp4" type="video/mp4" />
-      </video>
-      {/* velo oscuro casi total: el video queda de textura y el contenido va en blanco */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-verde-profundo/90" />
-
+    <section className="relative isolate flex min-h-[85svh] items-center overflow-hidden bg-verde-profundo">
       <div className="mx-auto grid w-full max-w-[1400px] gap-12 px-5 py-28 sm:px-8 sm:py-36 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-stretch lg:gap-16">
         <div>
           <h2 className="font-black text-3xl leading-tight text-white sm:text-4xl">
@@ -46,7 +34,7 @@ export default function AliadosEmpresas() {
 
         <div className="flex flex-col">
           <div className="mb-12 grid grid-cols-2 gap-x-10 gap-y-12 sm:grid-cols-4 lg:gap-x-14 lg:gap-y-16">
-            {empresasAliadas.map((empresa) => (
+            {empresasAliadas.filter((empresa) => !OCULTOS.has(empresa.nombre)).map((empresa) => (
               <div key={empresa.nombre} className="relative h-14 lg:h-20">
                 <Image
                   src={LOGOS_BLANCOS[empresa.logo] ?? empresa.logo}

@@ -5,7 +5,7 @@ import { images } from "@/lib/images";
 
 const IMAGENES: Record<string, { src: string; alt: string }> = {
   Aportá: images.plantacion,
-  "Los Tualdos": images.reserva,
+  "Armá tu reserva": images.reserva,
   Empresas: images.teamBuilding,
 };
 
@@ -31,7 +31,7 @@ export default function Presentacion() {
                       alt={imagen.alt}
                       fill
                       sizes="(min-width: 640px) 33vw, 100vw"
-                      className={`object-cover ${camino.titulo === "Los Tualdos" ? "scale-150" : ""}`}
+                      className={`object-cover ${camino.titulo === "Armá tu reserva" ? "scale-150" : ""}`}
                     />
                   </div>
                 </div>

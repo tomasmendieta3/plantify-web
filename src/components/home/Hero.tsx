@@ -1,47 +1,41 @@
-import Image from "next/image";
 import Link from "next/link";
-import { images } from "@/lib/images";
 
 export default function Hero() {
   return (
-    <section className="relative -mt-[72px] flex min-h-screen items-center overflow-hidden bg-verde-profundo">
-      <div className="mx-auto w-full max-w-[1400px] px-4 pt-[88px] pb-4 sm:px-6 lg:px-8 lg:pt-28 lg:pb-12">
-        {/* mobile: box redondeado con la foto de fondo; desktop: texto a la izquierda y foto en box a la derecha */}
-        <div className="relative grid min-h-[calc(100svh-104px)] items-center gap-10 overflow-hidden rounded-3xl px-6 py-14 lg:min-h-0 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-16 lg:overflow-visible lg:rounded-none lg:p-0">
-          <div className="relative z-10 text-center lg:text-left">
-            <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-[clamp(1.75rem,3.1vw,3rem)]">
-              <span className="sm:whitespace-nowrap">Desarrollamos reservas forestales</span>
-              <br className="hidden sm:block" />{" "}
-              <span className="sm:whitespace-nowrap">nativas a la medida de tu empresa.</span>
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg font-semibold text-white/90 lg:mx-0">
-              Creamos reservas de forestación y conservación vinculadas a cada empresa, con
-              seguimiento, auditorías y reportes que documentan su evolución.
-            </p>
+    <section className="relative -mt-[72px] flex min-h-screen items-end overflow-hidden bg-verde-profundo">
+      {/* video de fondo a sangre completa */}
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        src="/videos/hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      />
+      {/* degradé oscuro desde abajo a la izquierda para que el texto se lea */}
+      <div className="absolute inset-0 bg-linear-to-tr from-black/70 via-black/20 via-45% to-transparent" />
 
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:justify-start">
-              <Link
-                href="/contacto"
-                className="rounded-full bg-esmeralda px-7 py-3.5 text-base font-bold text-verde-profundo transition-colors hover:bg-esmeralda/90"
-              >
-                Sumá tu empresa hoy
-              </Link>
-              <Link href="#como-trabajamos" className="text-sm font-semibold text-white/85 underline underline-offset-4 hover:text-white">
-                o mirá cómo funciona
-              </Link>
-            </div>
-          </div>
+      <div className="relative z-10 w-full px-5 pt-[88px] pb-10 lg:px-10 lg:pb-14">
+        <div className="text-left">
+          <h1 className="text-[1.75rem] font-extrabold leading-[1.08] text-white sm:text-4xl lg:text-[clamp(2.25rem,3.2vw,3.75rem)]">
+            <span className="lg:whitespace-nowrap">Desarrollamos reservas forestales</span>
+            <br className="hidden lg:block" />{" "}
+            <span className="lg:whitespace-nowrap">nativas a la medida de tu empresa.</span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg font-semibold text-white/90">
+            Creamos reservas de forestación y conservación vinculadas a cada empresa, con
+            seguimiento, auditorías y reportes que documentan su evolución.
+          </p>
 
-          <div className="absolute inset-0 lg:relative lg:inset-auto lg:aspect-[4/5] lg:max-h-[75vh] lg:w-full lg:overflow-hidden lg:rounded-3xl">
-            <Image
-              src={images.heroPlantando.src}
-              alt={images.heroPlantando.alt}
-              fill
-              priority
-              sizes="(min-width: 1024px) 40vw, 100vw"
-              className="object-cover object-[center_60%]"
-            />
-            <div className="absolute inset-0 bg-verde-profundo/75 lg:hidden" />
+          <div className="mt-8 flex flex-wrap items-center justify-start gap-x-6 gap-y-3">
+            <Link
+              href="/contacto"
+              className="rounded-full bg-[#2a8c64] px-7 py-3.5 text-base font-bold text-white transition-colors hover:bg-[#237a57]"
+            >
+              Sumá tu empresa hoy
+            </Link>
           </div>
         </div>
       </div>
