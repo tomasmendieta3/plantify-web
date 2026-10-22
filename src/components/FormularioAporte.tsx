@@ -15,9 +15,11 @@ const co2TnPorArs =
 export default function FormularioAporte({
   sectorSlug,
   sectorNombre,
+  fondoBlanco = false,
 }: {
   sectorSlug: string;
   sectorNombre: string;
+  fondoBlanco?: boolean;
 }) {
   const [montoElegido, setMontoElegido] = useState<number | null>(montoPorDefecto);
   const [montoLibre, setMontoLibre] = useState("");
@@ -71,7 +73,7 @@ export default function FormularioAporte({
   if (estado === "ok") {
     const opcion = montoLibre ? undefined : opcionesAporte.find((o) => o.montoArs === montoElegido);
     return (
-      <div className="rounded-xl border border-esmeralda/30 bg-esmeralda/10 p-6 text-verde-profundo">
+      <div className={`rounded-xl border border-esmeralda/30 p-6 text-verde-profundo ${fondoBlanco ? "bg-white" : "bg-esmeralda/10"}`}>
         <p className="font-medium">
           {opcion ? `¡Gracias! ${opcion.gracias} en ${sectorNombre}.` : `Gracias por tu aporte a ${sectorNombre}.`}
         </p>
@@ -84,7 +86,7 @@ export default function FormularioAporte({
 
   return (
     <div>
-      <div className="mx-auto mt-6 max-w-md overflow-hidden rounded-3xl border border-verde-profundo/10 bg-card/40">
+      <div className={`mx-auto mt-6 max-w-md overflow-hidden rounded-3xl border border-verde-profundo/10 ${fondoBlanco ? "bg-white" : "bg-card/40"}`}>
         <form onSubmit={onSubmit} noValidate className="space-y-5 p-6 sm:p-7">
           <input
             type="text"

@@ -165,12 +165,32 @@ export default function EmpresasPage() {
       </section>
 
       {/* Especies nativas */}
-      <section className="bg-verde-profundo">
-        <div className="mx-auto max-w-6xl px-5 py-24 text-center sm:px-8 lg:py-32">
-          <p className="font-black text-4xl leading-tight text-crema sm:text-5xl lg:text-6xl">
+      <section className="overflow-hidden bg-white">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_auto] lg:py-20">
+          {/* espacios duros para que "se" e "y a" no queden sueltos al final de una línea */}
+          <p className="text-left font-black text-3xl leading-tight text-balance text-verde-profundo sm:text-4xl lg:text-5xl">
             Priorizamos <span className="text-esmeralda">especies nativas</span>: las que
-            mejor se adaptan al suelo, al clima y a la fauna de cada región.
+            mejor se&nbsp;adaptan al suelo, al clima y&nbsp;a&nbsp;la fauna de cada región.
           </p>
+          {/* plantín y árbol joven (mismas imágenes que la sección de crecimiento del home) */}
+          <div className="flex items-end justify-end gap-4">
+            <Image
+              src="/home/arboles/arbol-1.webp"
+              alt="Plantín nativo"
+              width={363}
+              height={900}
+              sizes="160px"
+              className="h-[220px] w-auto sm:h-[280px]"
+            />
+            <Image
+              src="/home/arboles/arbol-2.webp"
+              alt="Árbol nativo joven"
+              width={577}
+              height={900}
+              sizes="260px"
+              className="h-[300px] w-auto sm:h-[380px]"
+            />
+          </div>
         </div>
       </section>
 

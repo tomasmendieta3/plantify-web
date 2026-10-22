@@ -7,6 +7,7 @@ const IMAGENES: Record<string, { src: string; alt: string }> = {
   Aportá: images.plantacion,
   "Armá tu reserva": images.reserva,
   Empresas: images.teamBuilding,
+  Visitante: images.faunaDelta,
 };
 
 export default function Presentacion() {
@@ -15,7 +16,7 @@ export default function Presentacion() {
       <h2 className="font-black text-3xl leading-tight text-verde-profundo sm:text-4xl lg:text-5xl">
         Cómo podés ser parte
       </h2>
-      <div className="mt-10 grid gap-6 sm:grid-cols-3 lg:gap-8">
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
         {presentacion.caminos.map((camino) => {
           const imagen = IMAGENES[camino.titulo];
           return (
@@ -30,7 +31,7 @@ export default function Presentacion() {
                       src={imagen.src}
                       alt={imagen.alt}
                       fill
-                      sizes="(min-width: 640px) 33vw, 100vw"
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                       className={`object-cover ${camino.titulo === "Armá tu reserva" ? "scale-150" : ""}`}
                     />
                   </div>

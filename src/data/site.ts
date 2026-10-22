@@ -361,6 +361,12 @@ export const presentacion = {
       href: "/contacto",
       cta: "Hablemos",
     },
+    {
+      titulo: "Visitante",
+      texto: "Nuestro compromiso se basa en que todos son bienvenidos: podés visitar las reservas.",
+      href: "/contacto",
+      cta: "Coordiná tu visita",
+    },
   ] satisfies Camino[],
 };
 
@@ -463,12 +469,12 @@ export const primeraReserva = {
 
 export const gestionCalidad = {
   titulo: "Nuestra gestión de calidad",
-  // TODO: [CONFIRMAR] texto de certificación y auditoría.
+  // Textos tomados de certificaciones y auditoriaControlUnion.
   texto:
-    "Todo lo que plantamos lo certifican compañías internacionales de primer nivel.",
+    "Control Union, certificadora internacional, audita la reserva una vez por año en el terreno: cantidad de árboles, estado y supervivencia, carbono capturado y trazabilidad de cada hectárea.",
   goldStandard: {
     titulo: "Certificados de carbono",
-    texto: "Desarrollamos proyectos a medida bajo Gold Standard.",
+    texto: "Gold Standard es un estándar internacional que certifica proyectos de captura de carbono. Desarrollamos proyectos bajo este estándar.",
     cta: "¿Te interesan los certificados de carbono? Contactanos",
     href: "/contacto?motivo=gold-standard",
   },
@@ -477,6 +483,7 @@ export const gestionCalidad = {
 export type EmpresaLanding = {
   slug: string;
   empresa: string;
+  empresaCorto?: string; // nombre para el título de la landing, si es distinto de `empresa`
   logo: string; // path en /public
   logoAncho: number;
   logoAlto: number;
@@ -484,6 +491,7 @@ export type EmpresaLanding = {
   explicacion: string;
   video: string; // path en /public
   videoCartel?: string; // video del cartel de la empresa en el campo — reemplaza a `video` cuando esté
+  reserva?: { titulo: string; texto: string }; // bloque de la reserva debajo del formulario
 };
 
 // Landing enfocada por empresa (para QR / links directos de campaña). Una sola
@@ -492,11 +500,17 @@ export const empresasLanding: EmpresaLanding[] = [
   {
     slug: "aeropuertos-argentina-2000",
     empresa: "Aeropuertos Argentina 2000",
-    logo: "/logos-empresas/aeropuertos-argentina-2000.svg",
+    empresaCorto: "Aeropuertos Argentina",
+    logo: "/logos-empresas/aeropuertos-argentina-2000-white.svg", // versión blanca: la landing va sobre fondo oscuro
     logoAncho: 220,
     logoAlto: 84,
-    frase: "Estamos construyendo un bosque juntos",
+    frase: "Sumate al cambio para que la reserva crezca cada vez más.",
     explicacion: "Tu aporte suma al desarrollo de la reserva forestal de Aeropuertos Argentina 2000.",
+    reserva: {
+      titulo: "Conocé la reserva de Aeropuertos Argentina",
+      texto:
+        "Tu aporte suma al desarrollo de la reserva forestal de Aeropuertos Argentina 2000. Desarrollamos las reservas en base a la biodiversidad que el suelo y la geografía permiten.",
+    },
     video: "/reserva/tualdos-hero.mp4",
     videoCartel: "", // TODO: video del cartel de la empresa en el campo
   },
@@ -552,16 +566,14 @@ export const capasEmpresa: CapaEmpresa[] = [
     numero: "03",
     titulo: "Experiencias",
     bajada: "Que tu gente lo viva",
-    texto:
-      "Team building, talleres presenciales, visitas con equipo/comunidad a Los Tualdos con un plan anual de educación ambiental para empleados, proveedores y comunidad.",
+    texto: "Team building, talleres y visitas a nuestras reservas para tu equipo y comunidad.",
     imagen: "teamBuilding",
   },
   {
     numero: "04",
     titulo: "Alianzas sociales",
     bajada: "Que el bosque crezca con la comunidad",
-    texto:
-      "Viveros de nativas y acuerdos con municipios y escuelas para que los chicos críen plantines que después se plantan en tu reserva.",
+    texto: "Alianzas con entidades educativas y gubernamentales.",
     imagen: "reserva",
   },
 ];
