@@ -18,7 +18,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-linear-to-tr from-black/70 via-black/20 via-45% to-transparent" />
 
       <div className="relative z-10 w-full px-5 pt-[88px] pb-10 lg:px-10 lg:pb-14">
-        <div className="text-left">
+        <div data-aparecer-grupo className="text-left">
           <h1 className="text-[1.75rem] font-extrabold leading-[1.08] text-white sm:text-4xl lg:text-[clamp(2.25rem,3.2vw,3.75rem)]">
             <span className="lg:whitespace-nowrap">Desarrollamos reservas forestales</span>
             <br className="hidden lg:block" />{" "}

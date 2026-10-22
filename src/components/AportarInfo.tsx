@@ -22,14 +22,14 @@ export default function AportarInfo({
     <div className={oscuro ? "bg-verde-profundo" : ""}>
       <section className={oscuro ? "" : "bg-card/40"}>
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
+          <div data-aparecer-grupo className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl order-2 lg:order-1">
               <Image
                 src={images.plantacion.src}
                 alt={images.plantacion.alt}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-700 ease-out hover:scale-105"
               />
             </div>
             <div className="order-1 flex items-center justify-center text-center lg:order-2">
@@ -53,7 +53,7 @@ export default function AportarInfo({
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
+        <div data-aparecer-grupo className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div>
             <h2 className={`text-3xl font-bold sm:text-4xl ${oscuro ? "text-crema" : "text-verde-profundo"}`}>{reserva?.titulo ?? primeraReserva.titulo}</h2>
             <p className={`mt-4 leading-relaxed ${oscuro ? "text-crema/75" : "text-verde-profundo/75"}`}>{reserva?.texto ?? primeraReserva.texto}</p>
@@ -74,7 +74,7 @@ export default function AportarInfo({
               alt={images.heroFondo.alt}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-700 ease-out hover:scale-105"
             />
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function AportarInfo({
       {/* el bloque de Empresas no va en las landings de empresa */}
       {!oscuro && (
         <section className="bg-verde-profundo text-crema">
-          <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-8">
+          <div data-aparecer-grupo className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-8">
             <p className="font-bold text-3xl sm:text-4xl">Empresas</p>
             <p className="mt-4 text-crema/75">
               Ayudamos a las empresas y a sus comunidades a plantar árboles y compensar sus actividades.
@@ -101,12 +101,12 @@ export default function AportarInfo({
       <GestionCalidad oscuro={oscuro} />
 
       <section className="mx-auto max-w-5xl px-5 pb-16 sm:px-8">
-        <h2 className={`text-center text-3xl font-bold sm:text-4xl ${oscuro ? "text-crema" : "text-verde-profundo"}`}>
+        <h2 data-aparecer className={`text-center text-3xl font-bold sm:text-4xl ${oscuro ? "text-crema" : "text-verde-profundo"}`}>
           Este es el recorrido de <span className="text-esmeralda">TU</span> aporte
         </h2>
 
         <div className="relative mt-10">
-          <div className="relative space-y-10">
+          <div data-aparecer-grupo className="relative space-y-10">
             {aportarHistoria.map((item, i) => {
               const imagen = IMAGENES_HISTORIA[i % IMAGENES_HISTORIA.length];
               const imagenDerecha = i % 2 === 1;
@@ -123,7 +123,7 @@ export default function AportarInfo({
                       alt={imagen.alt}
                       fill
                       sizes="96px"
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 ease-out hover:scale-105"
                     />
                     <span className="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full border-2 border-crema bg-esmeralda text-xs font-bold text-verde-profundo">
                       {i + 1}
@@ -143,6 +143,7 @@ export default function AportarInfo({
       <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
         {/* en la landing (fondo oscuro) el box va en blanco y con un certificado en vez del corazón */}
         <div
+          data-aparecer
           className={`relative mx-auto flex aspect-square w-full max-w-md flex-col items-center justify-center rounded-2xl p-10 text-center ${
             oscuro ? "bg-white" : "bg-verde-profundo"
           }`}

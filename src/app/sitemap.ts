@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/aportar",
     "/nosotros",
     "/contacto",
+    "/terminos",
   ].map((ruta) => ({
     url: `${organizacion.sitio}${ruta}`,
     lastModified: new Date(),

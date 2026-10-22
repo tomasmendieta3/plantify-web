@@ -30,6 +30,47 @@ export const comunidad = {
   bajada:
     "Los Tualdos es la primera reserva de Plantify, te invitamos a conocerla y ser parte.",
   galeria: ["caminarReserva", "plantarArbol", "faunaDelta"] as const,
+  // Textos debajo de cada foto de la galería, tomados de lostualdos.com
+  galeriaTextos: {
+    caminarReserva: {
+      titulo: "Forestación",
+      texto: "Filas de árboles nativos y forestales que, desde 2024, restauran el ecosistema y capturan carbono.",
+    },
+    plantarArbol: {
+      titulo: "Vivero",
+      texto: "Cada plantín crece en la reserva antes de ir al campo: así sumamos miles de árboles, uno a la vez.",
+    },
+    faunaDelta: {
+      titulo: "Fauna del Delta",
+      texto: "El bosque que crece vuelve a dar hábitat a numerosas especies animales y vegetales de la región.",
+    },
+  },
+  // Resumen tomado de lostualdos.com
+  queEs: {
+    titulo: "¿Qué es Los Tualdos?",
+    parrafos: [
+      "Los Tualdos es la primera reserva forestal que desarrolla Plantify. Nació de una familia de Ibicuy, Entre Ríos, que cuida este campo desde hace años con un propósito claro: regenerar la naturaleza para las futuras generaciones.",
+    ],
+    pilares: [
+      {
+        titulo: "Restauración y carbono",
+        texto: "Cada árbol plantado recupera el ecosistema y captura carbono de la atmósfera.",
+      },
+      {
+        titulo: "Biodiversidad",
+        texto: "Combinamos especies nativas y forestales que crean hábitat para numerosas especies animales y vegetales.",
+      },
+      {
+        titulo: "Bosque sustentable",
+        texto: "Construimos un sistema de aprovechamiento forestal sustentable que, además, fija carbono y suma biodiversidad.",
+      },
+    ],
+    datos: [
+      { valor: "340 ha", numero: 340, sufijo: " ha", label: "en el Delta del Paraná" },
+      { valor: "2024", label: "comenzamos a plantar" },
+      { valor: "Gold Standard", label: "estándar internacional de carbono" },
+    ],
+  },
 };
 
 export const co2 = {

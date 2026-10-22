@@ -38,10 +38,10 @@ const ARBOLES = [
 export default function CrecimientoArboles() {
   return (
     <section className="px-4 pt-8 sm:px-8 lg:px-12">
-      <h2 className="mb-12 text-center font-black text-3xl leading-tight text-verde-profundo sm:text-4xl">
+      <h2 data-aparecer className="mb-12 text-center font-black text-3xl leading-tight text-verde-profundo sm:text-4xl">
         Somos parte de todo el proceso
       </h2>
-      <div className="flex w-full items-start justify-between gap-3">
+      <div data-aparecer-grupo className="flex w-full items-start justify-between gap-3">
         {ARBOLES.map((arbol) => (
           <figure key={arbol.src} className="flex flex-col items-center">
             <div className="flex h-[300px] items-end sm:h-[450px] lg:h-[560px]">
@@ -54,10 +54,10 @@ export default function CrecimientoArboles() {
                 className={`${arbol.alto} w-auto`}
               />
             </div>
-            <figcaption className="mt-5 max-w-[15rem] text-center">
-              <p className="text-xs font-bold uppercase tracking-wider text-esmeralda sm:text-sm">{arbol.etapa}</p>
-              <p className="mt-1 text-sm font-black text-verde-profundo sm:text-lg">{arbol.titulo}</p>
-              <p className="mt-1 hidden text-sm text-verde-profundo/70 sm:block">{arbol.texto}</p>
+            <figcaption className="mt-6 max-w-[15rem] text-center sm:max-w-[19rem] lg:max-w-[22rem]">
+              <p className="text-sm font-bold uppercase tracking-wider text-esmeralda sm:text-base lg:text-lg">{arbol.etapa}</p>
+              <p className="mt-1 text-base font-black leading-tight text-verde-profundo sm:text-xl lg:text-2xl">{arbol.titulo}</p>
+              <p className="mt-2 hidden text-base leading-relaxed text-verde-profundo/85 sm:block lg:text-lg">{arbol.texto}</p>
             </figcaption>
           </figure>
         ))}

@@ -13,17 +13,33 @@ const IMAGENES: Record<string, { src: string; alt: string }> = {
 export default function Presentacion() {
   return (
     <section className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8">
-      <h2 className="font-black text-3xl leading-tight text-verde-profundo sm:text-4xl lg:text-5xl">
+      <h2 data-aparecer className="font-black text-3xl leading-tight text-verde-profundo sm:text-4xl lg:text-5xl">
         Cómo podés ser parte
       </h2>
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      <div data-aparecer-grupo className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
         {presentacion.caminos.map((camino) => {
           const imagen = IMAGENES[camino.titulo];
           return (
             <div
               key={camino.titulo}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-verde-profundo/10 bg-card/40"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-verde-profundo/10 bg-card/40"
             >
+              {/* "Aportá" es el camino a destacar: contorno verde que se traza alrededor de la card
+                  en 3 s y queda fijo. El trazo va centrado en el borde y la card recorta la mitad
+                  de afuera, así se ven 4px hacia adentro. */}
+              {camino.titulo === "Aportá" && (
+                <svg aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 h-full w-full">
+                  <rect
+                    className="resaltar-contorno"
+                    width="100%"
+                    height="100%"
+                    rx="16"
+                    pathLength={100}
+                    fill="none"
+                    strokeWidth={8}
+                  />
+                </svg>
+              )}
               {imagen && (
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <div className="absolute inset-0 transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-115">

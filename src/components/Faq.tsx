@@ -3,11 +3,11 @@ import { faqs } from "@/data/site";
 export default function Faq() {
   return (
     <section className="mx-auto max-w-3xl px-5 py-20 sm:px-8">
-      <h2 className="font-bold text-3xl text-verde-profundo sm:text-4xl">
+      <h2 data-aparecer className="font-bold text-3xl text-verde-profundo sm:text-4xl">
         Preguntas frecuentes
       </h2>
 
-      <div className="mt-8 divide-y divide-verde-profundo/10">
+      <div data-aparecer-grupo className="mt-8 divide-y divide-verde-profundo/10">
         {faqs.map((faq) => (
           <details key={faq.pregunta} className="group py-4">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-verde-profundo">

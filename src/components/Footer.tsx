@@ -46,6 +46,7 @@ export default function Footer() {
             <p className="text-sm font-medium text-crema">Legal</p>
             <ul className="mt-3 space-y-2 text-sm">
               <li>{organizacion.razonSocial}</li>
+              <li><Link href="/terminos" className="hover:text-crema">Términos y condiciones</Link></li>
             </ul>
           </div>
         </div>

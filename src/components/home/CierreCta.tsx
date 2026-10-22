@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function CierreCta() {
   return (
     <section className="bg-verde-profundo text-crema">
-      <div className="mx-auto max-w-3xl px-5 py-20 text-center sm:px-8">
+      <div data-aparecer-grupo className="mx-auto max-w-3xl px-5 py-20 text-center sm:px-8">
         <p className="font-bold text-3xl sm:text-4xl">
           Armemos tu sector en Los Tualdos.
         </p>

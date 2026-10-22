@@ -18,7 +18,7 @@ export default function NosotrosPage() {
     // En celu: texto, video y después el resto, una cosa debajo de la otra.
     <div className="mx-auto max-w-[1400px] px-5 pt-10 pb-16 text-center sm:px-8 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-x-12">
       <section className="py-6 text-left lg:col-start-1 lg:row-start-1 lg:flex lg:min-h-[calc(100svh-120px)] lg:items-center">
-        <div>
+        <div data-aparecer-grupo>
           <h1 className="font-black text-5xl text-verde-profundo sm:text-6xl">Nosotros</h1>
           <p className="mt-4 max-w-xl text-lg text-verde-profundo/75">
             Somos un equipo comprometido con el cuidado del medio ambiente, creemos en la correcta
@@ -46,12 +46,12 @@ export default function NosotrosPage() {
       <div className="mt-12 space-y-12 lg:col-start-1 lg:row-start-2 lg:mt-0">
         <section className="overflow-hidden rounded-3xl bg-verde-profundo">
           <div className="px-6 py-14 sm:px-10">
-            <h2 className="text-center font-bold text-3xl text-crema sm:text-4xl">{mision.pilares.titulo}</h2>
+            <h2 data-aparecer className="text-center font-bold text-3xl text-crema sm:text-4xl">{mision.pilares.titulo}</h2>
             {mision.pilares.subtitulo && (
-              <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-crema/80">{mision.pilares.subtitulo}</p>
+              <p data-aparecer className="mx-auto mt-4 max-w-2xl text-center text-lg text-crema/80">{mision.pilares.subtitulo}</p>
             )}
 
-            <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            <div data-aparecer-grupo className="mt-12 grid gap-6 sm:grid-cols-2">
               {mision.pilares.items.map((pilar) => {
                 const Icono = ICONOS_PILAR[pilar.icono];
                 return (
@@ -69,9 +69,9 @@ export default function NosotrosPage() {
         <GestionCalidad />
 
         <section className="py-4">
-          <h2 className="font-bold text-3xl text-verde-profundo sm:text-4xl">Misión, visión y valores</h2>
+          <h2 data-aparecer className="font-bold text-3xl text-verde-profundo sm:text-4xl">Misión, visión y valores</h2>
 
-          <div className="mt-10 grid gap-6 text-left md:grid-cols-2">
+          <div data-aparecer-grupo className="mt-10 grid gap-6 text-left md:grid-cols-2">
             <div className="rounded-2xl bg-verde-profundo p-8">
               <p className="text-sm font-bold tracking-wide text-esmeralda uppercase">Misión</p>
               <p className="mt-3 text-lg leading-relaxed text-crema">{misionVisionValores.mision}</p>
@@ -82,8 +82,8 @@ export default function NosotrosPage() {
             </div>
           </div>
 
-          <p className="mt-12 text-sm font-bold tracking-wide text-esmeralda uppercase">Valores</p>
-          <div className="mt-4 grid gap-6 text-left sm:grid-cols-2">
+          <p data-aparecer className="mt-12 text-sm font-bold tracking-wide text-esmeralda uppercase">Valores</p>
+          <div data-aparecer-grupo className="mt-4 grid gap-6 text-left sm:grid-cols-2">
             {valores.map((valor) => (
               <div key={valor.titulo} className="rounded-2xl border border-verde-profundo/10 bg-card/40 p-6">
                 <p className="font-bold text-verde-profundo">{valor.titulo}</p>

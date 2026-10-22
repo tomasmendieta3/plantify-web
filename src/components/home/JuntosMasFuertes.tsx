@@ -7,17 +7,17 @@ export default function JuntosMasFuertes() {
     <section className="bg-crema">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-stretch">
-          <div className="relative min-h-[420px] overflow-hidden rounded-3xl">
+          <div data-aparecer className="relative min-h-[420px] overflow-hidden rounded-3xl">
             <Image
               src={images.teamBuilding.src}
               alt={images.teamBuilding.alt}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-700 ease-out hover:scale-105"
             />
           </div>
 
-          <div className="flex flex-col justify-center gap-6">
+          <div data-aparecer-grupo className="flex flex-col justify-center gap-6">
             <h2 className="font-black text-3xl leading-tight text-verde-profundo sm:text-4xl">
               Juntos somos más fuertes.
             </h2>

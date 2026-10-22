@@ -24,7 +24,7 @@ const ICONOS: Record<string, LucideIcon> = {
 
 function GrupoEntregables({ items, claro }: { items: typeof entregables; claro?: boolean }) {
   return (
-    <ul className="mx-auto flex w-full max-w-sm flex-col gap-5 text-left">
+    <ul data-aparecer-grupo className="mx-auto flex w-full max-w-sm flex-col gap-5 text-left">
       {items.map((item) => {
         const Icono = ICONOS[item.icono];
         return (
@@ -60,7 +60,7 @@ function BoxEntregables({
           alt={imagen.alt}
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"
-          className={`object-cover ${imagenClassName}`}
+          className={`object-cover transition-transform duration-700 ease-out hover:scale-105 ${imagenClassName}`}
         />
       </div>
       <div className="mt-8">
@@ -76,15 +76,15 @@ export default function QueRecibis() {
 
   return (
     <section className="bg-card/40 px-5 py-20 text-center sm:px-8 lg:px-12">
-      <h2 className="font-black text-3xl leading-tight text-verde-profundo sm:text-4xl">
+      <h2 data-aparecer className="font-black text-3xl leading-tight text-verde-profundo sm:text-4xl">
         Qué recibís
       </h2>
-      <p className="mx-auto mt-4 max-w-2xl text-lg text-verde-profundo/70">
+      <p data-aparecer className="mx-auto mt-4 max-w-2xl text-lg text-verde-profundo/70">
         Una vez que sos parte, el equipo desarrolla todo en 2 bloques:{" "}
         <strong className="font-bold text-verde-profundo">comunicación interna y externa.</strong>
       </p>
 
-      <div className="mx-auto mt-12 grid max-w-5xl items-start gap-16 lg:grid-cols-2 lg:gap-10">
+      <div data-aparecer-grupo className="mx-auto mt-12 grid max-w-5xl items-start gap-16 lg:grid-cols-2 lg:gap-10">
         <BoxEntregables
           titulo="Institucional"
           imagen={images.cartelNativas}

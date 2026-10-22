@@ -58,12 +58,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es-AR"
       data-scroll-behavior="smooth"
       className={`${nunito.variable} h-full antialiased`}
+      // AparecerAlScroll: la clase js-aparecer la agrega el script de abajo antes del primer pintado
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-crema text-verde-profundo">
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        {/* sin JS el contenido se ve igual: solo se oculta para animar si el script corre */}
+        <script
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js-aparecer')" }}
         />
         <SiteChrome>{children}</SiteChrome>
       </body>

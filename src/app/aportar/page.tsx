@@ -35,7 +35,7 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
             <div className="absolute inset-0 bg-black/70" />
 
             <div className="absolute inset-0 flex items-center justify-center p-6 text-center sm:p-10">
-              <div className="max-w-xl">
+              <div data-aparecer-grupo className="max-w-xl">
                 <h1 className="text-5xl font-extrabold text-white leading-[1.7] sm:text-6xl sm:leading-[1.7]">
                   Plantá tu árbol
                 </h1>
@@ -69,7 +69,7 @@ export default async function AportarPage({ searchParams }: PageProps<"/aportar"
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-5 pb-16 sm:px-8">
+      <section data-aparecer className="mx-auto max-w-3xl px-5 pb-16 sm:px-8">
         <FormularioAporte
           sectorSlug={sector?.slug ?? "general"}
           sectorNombre={sector?.empresa ?? "Los Tualdos"}

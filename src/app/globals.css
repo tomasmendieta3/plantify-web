@@ -113,3 +113,75 @@ body {
   animation: marquee-scroll 28s linear infinite;
 }
 
+
+/* Aparición al hacer scroll (la activa AparecerAlScroll con data-aparecio). Solo efecto: fade + leve subida.
+   data-aparecer → el elemento; data-aparecer-grupo → sus hijos, escalonados. */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+html.js-aparecer [data-aparecer]:not([data-aparecio]),
+html.js-aparecer [data-aparecer-grupo]:not([data-aparecio]) > * {
+  opacity: 0;
+}
+
+[data-aparecer][data-aparecio],
+[data-aparecer-grupo][data-aparecio] > * {
+  animation: aparecer 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+[data-aparecer-grupo][data-aparecio] > :nth-child(2) { animation-delay: 110ms; }
+[data-aparecer-grupo][data-aparecio] > :nth-child(3) { animation-delay: 220ms; }
+[data-aparecer-grupo][data-aparecio] > :nth-child(4) { animation-delay: 330ms; }
+[data-aparecer-grupo][data-aparecio] > :nth-child(5) { animation-delay: 440ms; }
+[data-aparecer-grupo][data-aparecio] > :nth-child(6) { animation-delay: 550ms; }
+[data-aparecer-grupo][data-aparecio] > :nth-child(n + 7) { animation-delay: 660ms; }
+
+/* Contorno verde de la card "Aportá" del home: cuando la sección entra en pantalla se traza
+   alrededor de la card en 3 s y queda fijo */
+@keyframes resaltar-contorno {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.resaltar-contorno {
+  stroke: var(--esmeralda);
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+[data-aparecio] .resaltar-contorno,
+html:not(.js-aparecer) .resaltar-contorno {
+  animation: resaltar-contorno 3s ease-in-out forwards;
+}
+
+/* data-deslizar: entra desde el borde derecho de la pantalla (--desde lo calcula AparecerAlScroll) */
+@keyframes deslizar-derecha {
+  from {
+    opacity: 0;
+    transform: translateX(var(--desde, 100vw));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+html.js-aparecer [data-deslizar]:not([data-aparecio]) {
+  opacity: 0;
+}
+
+[data-deslizar][data-aparecio] {
+  animation: deslizar-derecha 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}

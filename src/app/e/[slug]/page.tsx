@@ -47,7 +47,7 @@ export default async function EmpresaLandingPage({
         </div>
       </div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-md flex-col items-center px-5 py-10 text-center">
+      <div data-aparecer-grupo className="relative mx-auto flex min-h-screen max-w-md flex-col items-center px-5 py-10 text-center">
         <div
           className="relative h-16 w-full"
           style={{ width: empresaLanding.logoAncho }}

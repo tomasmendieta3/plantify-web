@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="mx-auto flex min-h-[60vh] max-w-lg flex-col items-start justify-center px-5 py-24 sm:px-8">
+    <div data-aparecer-grupo className="mx-auto flex min-h-[60vh] max-w-lg flex-col items-start justify-center px-5 py-24 sm:px-8">
       <p className="font-bold text-5xl text-verde-profundo">404</p>
       <h1 className="mt-4 text-2xl text-verde-profundo">No encontramos esta página</h1>
       <p className="mt-3 text-verde-profundo/70">

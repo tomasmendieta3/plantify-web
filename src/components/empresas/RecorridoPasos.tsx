@@ -8,7 +8,7 @@ export default function RecorridoPasos({ pasos }: { pasos: PasoRecorrido[] }) {
 
   return (
     <div>
-      <ol className="relative mt-12 grid gap-6 text-left lg:grid-cols-6 lg:gap-4 lg:text-center">
+      <ol data-aparecer-grupo className="relative mt-12 grid gap-6 text-left lg:grid-cols-6 lg:gap-4 lg:text-center">
         <div
           aria-hidden
           className="absolute top-12 bottom-12 left-12 w-0.5 bg-esmeralda/40 lg:top-12 lg:right-[8.33%] lg:bottom-auto lg:left-[8.33%] lg:h-0.5 lg:w-auto"

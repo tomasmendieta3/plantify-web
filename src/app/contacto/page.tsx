@@ -20,7 +20,7 @@ export default async function ContactoPage({ searchParams }: PageProps<"/contact
   return (
     <div className="flex min-h-screen flex-col bg-verde-profundo">
       <div className="flex flex-1 items-center justify-center px-5 py-16 sm:px-8">
-        <div className="w-full max-w-xl rounded-3xl bg-crema p-8 sm:p-12">
+        <div data-aparecer className="w-full max-w-xl rounded-3xl bg-crema p-8 sm:p-12">
           {esVisita ? (
             <h1 className="font-black text-3xl text-verde-profundo sm:text-4xl">Coordinar tu visita</h1>
           ) : (
